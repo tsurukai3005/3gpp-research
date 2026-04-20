@@ -8,6 +8,7 @@ CLAUDE.md からポインタで参照される。
 ```
 00_framework/
 ├── principles.md          ← 不変原則（全ての行動の基盤）
+├── skill-contract.md      ← スキル契約（全スキル共通の Will / Will Not / 出力スキーマ）
 ├── review-policy.md       ← レビューポリシー（軽量、後から拡張可能）
 ├── sources.md             ← 情報源リンク集
 ├── strategy-summary.md    ← 戦略文書の要約

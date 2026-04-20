@@ -11,6 +11,7 @@
 調査・分析・記録の全ての行動は `00_framework/` のルールパーツに従う。
 
 - **不変原則**: `00_framework/principles.md`
+- **スキル契約**: `00_framework/skill-contract.md` — 全スキル共通の行動規範・禁止事項・出力スキーマ
 - **分析軸（6軸）**: `00_framework/axes/` — 1軸1ファイル、全トピックに必ず適用
 - **分析レンズ**: `00_framework/lenses/` — 状況に応じて適用するオプショナル視点
 - **ペルソナ**: `00_framework/personas/` — 需要側の多面的モデル
