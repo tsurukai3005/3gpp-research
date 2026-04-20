@@ -5,7 +5,13 @@
       "Bash(git commit:*)",
       "Bash(grep -E \"\\\\.md$\")",
       "WebSearch",
-      "WebFetch"
+      "WebFetch",
+      "Bash(curl -s \"https://api.semanticscholar.org/graph/v1/paper/search?query=6G+frame+structure+numerology&year=2024-2026&limit=10&fields=title,authors,year,url,externalIds\")",
+      "Bash(python3 -c \"import sys,json; data=json.load\\(sys.stdin\\); [print\\(f{p.get\\(''''title'''',''''''''\\)} | {p.get\\(''''year'''',''''''''\\)} | {p.get\\(''''url'''',''''''''\\)}\\) for p in data.get\\(''''data'''',[]\\)]\")",
+      "Bash(curl -s \"https://api.semanticscholar.org/graph/v1/paper/search?query=ISAC+frame+design+integrated+sensing+communication&year=2024-2026&limit=10&fields=title,authors,year,url\")",
+      "Bash(curl -s \"https://api.semanticscholar.org/graph/v1/paper/search?query=sub-THz+OFDM+frame+structure+phase+noise&year=2024-2026&limit=10&fields=title,authors,year,url\")",
+      "Bash(curl -s \"https://api.semanticscholar.org/graph/v1/paper/search?query=inter-numerology+interference+mitigation+5G+NR&year=2024-2026&limit=10&fields=title,authors,year,url\")",
+      "Bash(curl -s \"https://api.semanticscholar.org/graph/v1/paper/search?query=AI+adaptive+numerology+selection+6G&year=2024-2026&limit=10&fields=title,authors,year,url\")"
     ]
   }
 }
