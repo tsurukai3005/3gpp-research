@@ -61,25 +61,162 @@
 
 本リポジトリは [Claude Code](https://claude.com/claude-code) をリサーチアシスタントとして活用する。
 
-### スキル（調査・分析）
+以下、**フレーム構造の調査**（5G のフレーム/サブフレーム/スロットを理解し、
+4G からの変化と 6G の方向性を考える）を例にして各コマンドの使い方を示す。
 
-| コマンド | 用途 |
-|:---|:---|
-| `/survey-topic` | トピックを6軸で体系調査し `10_topics/` に記録 |
-| `/analyze-gap` | 学術/3GPP/実装制約のギャップを3バケットで可視化 |
-| `/success-pattern` | 過去世代の成功・失敗から6Gの条件を抽出 |
-| `/digest-paper` | 論文を読み3GPP実装制約との差分を記録 |
-| `/connect-dots` | トピック間の相乗効果・矛盾・組合せ価値を発見 |
-| `/demand-reverse` | ペルソナの課題から技術候補を逆引き |
+### Phase 1: 調査 — まず知識を作る
 
-### コマンド（運用）
+#### `/survey-topic` — トピックの体系調査
 
-| コマンド | 用途 |
-|:---|:---|
-| `/commit` | 変更をカテゴリ別に分類し適切な粒度でコミット |
-| `/review` | 研究ノートを不変原則・6軸の観点でレビュー |
-| `/status` | 全ノートの status/confidence 一覧 |
-| `/weekly-summary` | 週次研究サマリーの生成 |
+新しいトピックに着手するときの最初の一手。
+
+```
+/survey-topic フレーム構造
+```
+
+- 6軸でフレーム構造を調査し、4G → 5G NR の変化を整理
+- 3GPP 仕様（TS 38.211 等）の出典付きでノートを生成
+- `10_topics/cross-cutting/frame-structure.md` に保存
+
+#### `/digest-paper` — 論文の構造化メモ
+
+関連論文を見つけたとき。survey-topic の後に深掘りとして使う。
+
+```
+/digest-paper https://arxiv.org/abs/XXXX.XXXXX
+```
+
+- 論文の主張を 3-5 点で要約し、**前提仮定**を明示的にリスト化
+- **3GPP 実装制約とのギャップ**をテーブルで記述（最重要セクション）
+- `50_sources/papers/` に保存
+
+例: 6G の新フレーム構造を提案する論文 →
+「可変長スロットを前提としているが、NR の DCI では μ で固定。
+動的変更には新シグナリングが必要」→ このギャップが特許の種。
+
+### Phase 2: 分析 — 知識から洞察を引き出す
+
+#### `/analyze-gap` — ギャップ分析
+
+survey-topic でノートができた後、特許の種を探すときに使う。
+
+```
+/analyze-gap フレーム構造
+```
+
+3つのバケットでギャップを分類:
+- **Gap A:** 学術で解決済みだが 3GPP に未取込
+- **Gap B:** 3GPP FFS に残っており学術でも議論中（特許の最短距離）
+- **Gap C:** 実装制約ギャップ（進歩性の最大の源泉）
+
+例: 「DCI ビット数の制約下でスロット構成をどう通知するか」→ Gap C。
+
+#### `/success-pattern` — 過去世代の成功・失敗パターン
+
+「4G → 5G で何が変わったか」を構造的に理解したいときに使う。
+
+```
+/success-pattern フレーム構造
+```
+
+- 3G/4G/5G のフレーム構造の進化をマトリクスで比較
+- 普及要因軸で分析し、「6G で成功するための条件」を3点に絞って出力
+
+例: 4G（1ms固定→シンプル）→ 5G（ヌメロロジー→柔軟だが UE 実装複雑化）
+→ 6G への示唆: 柔軟性と実装コストのトレードオフが鍵。
+
+#### `/connect-dots` — トピック間の接続
+
+2つのトピックの組合せに価値がないか探るときに使う。
+
+```
+/connect-dots フレーム構造 AI-CSI-feedback
+/connect-dots フレーム構造 ambient-iot --persona personas/industries/mno-operator.md
+```
+
+- 共通軸・相乗効果・矛盾を分析し、`40_ideas/` に考察メモを保存
+- `--persona` でステークホルダー視点の評価を追加
+
+例: フレーム構造 × Ambient IoT →
+「超低消費電力デバイス向けにスロット構造をどう簡素化するか」という問いが生まれる。
+
+#### `/demand-reverse` — ペルソナ課題からの逆引き
+
+技術起点ではなく、ユーザー課題起点で考えたいときに使う。
+
+```
+/demand-reverse personas/industries/mno-operator.md ネットワークスライシングの遅延保証
+/demand-reverse personas/regions/southeast-asia.md カバレッジコスト
+```
+
+- ペルソナのペインポイントから `10_topics/` の全トピックをスキャンし適合度を評価
+- 「技術的に最適」ではなく「現実的に導入可能か」を重視
+
+例: MNO の「スライシングごとの遅延保証」→ フレーム構造の柔軟化が候補に浮上。
+
+### Phase 3: 運用 — 成果を管理する
+
+#### `/review` — ノートの品質チェック
+
+ノートを書いた直後、コミット前の品質ゲートとして使う。
+
+```
+/review 10_topics/cross-cutting/frame-structure.md
+/review    ← ステージング中の変更をまとめてレビュー
+```
+
+出典の完全性・実装制約の意識・世代比較・Why/What/How 構造・6軸の網羅性をチェック。
+
+#### `/commit` — カテゴリ別コミット
+
+```
+/commit
+```
+
+変更ファイルをディレクトリ別に自動分類し、カテゴリごとに個別コミットを作成。
+例: `research(frame-structure): フレーム構造の初期調査ノートを追加`
+
+#### `/status` — 全ノートの状態一覧
+
+```
+/status
+```
+
+draft のまま放置されたノート、confidence: low のまま未調査のノートなどを可視化。
+
+#### `/weekly-summary` — 週次振り返り
+
+```
+/weekly-summary
+```
+
+今週のコミットを集約し、各ノートの未完了 Next Steps を一箇所にまとめる。
+
+#### `/create-issue` — GitHub Issue 登録
+
+調査中に「これは別タスクで深掘りすべき」と思ったときに使う。
+
+```
+/create-issue "6G フレーム構造: 可変スロット長の DCI 設計を調査"
+```
+
+#### `/pr-template` — PR 説明文の生成
+
+```
+/pr-template
+```
+
+### 推奨ワークフロー
+
+```
+Step 1  /survey-topic フレーム構造           → 10_topics/ にノート生成
+Step 2  /digest-paper <関連論文>             → 50_sources/papers/ にメモ（複数回）
+Step 3  /success-pattern フレーム構造        → 4G/5G の教訓を構造化
+Step 4  /analyze-gap フレーム構造            → 特許の種（Gap B/C）を特定
+Step 5  /connect-dots フレーム構造 <他トピック>  → 組合せ価値を探索
+Step 6  /review → /commit                   → 品質チェックして保存
+定期    /status → /weekly-summary            → 全体の進捗管理
+```
 
 ## ライセンス
 
