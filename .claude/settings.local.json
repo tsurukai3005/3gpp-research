@@ -23,7 +23,9 @@
       "Bash(git mv:*)",
       "Bash(rm -f documents/README.md documents/phy-fundamentals/.gitkeep documents/README.md documents/README.md documents/README.md documents/README.md docs/presentations/.gitkeep)",
       "Bash(rmdir documents/phy-fundamentals documents docs/presentations docs)",
-      "Bash(git rm:*)"
+      "Bash(git rm:*)",
+      "Bash(find documents:*)",
+      "Bash(python -c \":*)"
     ]
   }
 }
