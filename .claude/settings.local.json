@@ -11,7 +11,19 @@
       "Bash(curl -s \"https://api.semanticscholar.org/graph/v1/paper/search?query=ISAC+frame+design+integrated+sensing+communication&year=2024-2026&limit=10&fields=title,authors,year,url\")",
       "Bash(curl -s \"https://api.semanticscholar.org/graph/v1/paper/search?query=sub-THz+OFDM+frame+structure+phase+noise&year=2024-2026&limit=10&fields=title,authors,year,url\")",
       "Bash(curl -s \"https://api.semanticscholar.org/graph/v1/paper/search?query=inter-numerology+interference+mitigation+5G+NR&year=2024-2026&limit=10&fields=title,authors,year,url\")",
-      "Bash(curl -s \"https://api.semanticscholar.org/graph/v1/paper/search?query=AI+adaptive+numerology+selection+6G&year=2024-2026&limit=10&fields=title,authors,year,url\")"
+      "Bash(curl -s \"https://api.semanticscholar.org/graph/v1/paper/search?query=AI+adaptive+numerology+selection+6G&year=2024-2026&limit=10&fields=title,authors,year,url\")",
+      "Bash(git -C /c/Users/admin/Documents/GitHub/3gpp-research log --format=\"%ai %s\" -- \"documents/phy-fundamentals/frame-structure.md\")",
+      "Bash(git -C /c/Users/admin/Documents/GitHub/3gpp-research log --format=\"%ai %s\" -- \"documents/phy-fundamentals/operating-bands-channel-arrangement.md\")",
+      "Bash(git -C /c/Users/admin/Documents/GitHub/3gpp-research log --format=\"%ai %s\" -- \"documents/phy-fundamentals/gap-202604.md\")",
+      "Bash(git -C /c/Users/admin/Documents/GitHub/3gpp-research log --format=\"%ai %s\" -- \"docs/presentations/nr-frame-structure.md\")",
+      "Bash(git -C /c/Users/admin/Documents/GitHub/3gpp-research log --format=\"%ai %s\" -- \"docs/3gpp-research-design-v2.md\")",
+      "Bash(git -C /c/Users/admin/Documents/GitHub/3gpp-research log --format=\"%ai %s\" -- \"docs/presentation-prompt-v1.md\")",
+      "Bash(git -C /c/Users/admin/Documents/GitHub/3gpp-research log --format=\"%ai %s\" -- \"docs/標準化特許申請のための調査戦略.md\")",
+      "Bash(mkdir -p documents)",
+      "Bash(git mv:*)",
+      "Bash(rm -f documents/README.md documents/phy-fundamentals/.gitkeep documents/README.md documents/README.md documents/README.md documents/README.md docs/presentations/.gitkeep)",
+      "Bash(rmdir documents/phy-fundamentals documents docs/presentations docs)",
+      "Bash(git rm:*)"
     ]
   }
 }

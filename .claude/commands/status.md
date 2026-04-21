@@ -4,7 +4,7 @@
 
 ## 手順
 
-1. `10_topics/`, `20_history/`, `30_meetings/`, `40_ideas/`, `50_sources/` 配下の
+1. `documents/`, `documents/`, `documents/`, `documents/`, `documents/` 配下の
    全 `.md` ファイル（README.md 除く）を走査する
 2. 各ファイルの frontmatter から `status`, `confidence`, `updated` を抽出する
 3. 以下の形式で一覧を出力する
@@ -19,13 +19,13 @@
 |:---|:---|:---|:---|:---|
 | ... | draft | low | 2026-01-15 | 3ヶ月以上未更新 |
 
-### 10_topics/
+### documents/
 | ファイル | status | confidence | 最終更新 |
 |:---|:---|:---|:---|
 | mimo/cell-free-mmimo.md | reviewed | medium | 2026-04-10 |
 | ... | ... | ... | ... |
 
-### 20_history/
+### documents/
 ...
 
 ### 統計

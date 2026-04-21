@@ -29,11 +29,11 @@
 | (例) 単一セル | マルチセル干渉 | 干渉下での性能が不明 |
 
 ### 関連トピック
-- `10_topics/` のどのノートに紐づくか
+- `documents/` のどのノートに紐づくか
 
 ### Next Steps
 - この論文を踏まえて次に調べるべきこと
 
 ## 出力ファイル名
 
-`50_sources/papers/YYYY-MM-DD__author__slug.md`
+`documents/YYYY-MM-DD_論文メモ-author-slug.md`

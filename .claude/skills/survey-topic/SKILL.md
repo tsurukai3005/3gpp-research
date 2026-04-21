@@ -1,6 +1,6 @@
 ---
 name: survey-topic
-description: 指定したトピックを6軸で体系的に調査し、10_topics/ 配下の Markdown として記録する
+description: 指定したトピックを6軸で体系的に調査し、documents/ 配下の Markdown として記録する
 user-invocable: true
 ---
 
@@ -26,10 +26,10 @@ user-invocable: true
 
 ## 実行フロー
 
-1. `00_framework/principles.md` を読み、6原則を確認する
-2. `00_framework/axes/` 配下の全6ファイルを読み、各軸の問いかけを把握する
-3. `00_framework/templates/survey-topic.md` を読み、7つの調査項目を確認する
-4. `00_framework/sources.md` を読み、情報源の優先順位を確認する
+1. `framework/principles.md` を読み、6原則を確認する
+2. `framework/axes/` 配下の全6ファイルを読み、各軸の問いかけを把握する
+3. `framework/templates/survey-topic.md` を読み、7つの調査項目を確認する
+4. `framework/sources.md` を読み、情報源の優先順位を確認する
 5. 以下の優先順で情報を収集する:
    - **3GPP ポータル**: 該当する WI/SI の有無、Tdoc リスト、Chairman's Notes
    - **arXiv / IEEE**: 主要論文（引用数上位、直近2年）
@@ -41,7 +41,7 @@ user-invocable: true
 7. 6軸のうち該当する軸を frontmatter `axes:` に記録する
 8. **前世代（3G/4G/5G）との対比**セクションが空にならないことを確認する
 9. **Next Steps** を記載する（検索クエリ、文書番号、URL を含む具体的なアクション）
-10. `10_topics/<category>/<slug>.md` に保存する（`status: draft`）
+10. `documents/YYYY-MM-DD_<slug>.md` に保存する（`status: draft`）
 11. 関連する既存トピックがあれば `related:` に追加する
 
 **情報が不十分な場合**: 見つからなかった項目は `[要確認]` と明記し、Next Steps に調査方法を記載する。空欄のまま放置しない。
@@ -49,14 +49,14 @@ user-invocable: true
 ## 出力
 
 - **形式**: ファイル保存 + チャットにサマリー表示
-- **保存先**: `10_topics/<category>/<slug>.md`
+- **保存先**: `documents/YYYY-MM-DD_<slug>.md`
   - category: `mimo/`, `coding/`, `ai/`, `iot/` 等（既存カテゴリに合わせる。該当なければ新設）
-- **frontmatter**: `00_framework/skill-contract.md` の共通スキーマに準拠
+- **frontmatter**: `framework/skill-contract.md` の共通スキーマに準拠
 - **status**: `draft`
 
 ## このスキル固有の注意点
 
-- **カテゴリの判断**: 既存の `10_topics/` 配下のディレクトリ構造を確認し、最も近いカテゴリに配置する。複数カテゴリにまたがる場合は主要な側に置き、`related:` で他方をリンクする
+- **カテゴリの判断**: 既存の `documents/` 配下のディレクトリ構造を確認し、最も近いカテゴリに配置する。複数カテゴリにまたがる場合は主要な側に置き、`related:` で他方をリンクする
 - **粒度の判断**: 1トピック = 1つの独立した技術概念。「MIMO」は広すぎ、「Cell-Free Massive MIMO のパイロット汚染対策」は狭すぎ。「Cell-Free Massive MIMO」程度が適切
 - **3GPP 情報が存在しない場合**: 学術段階のトピックでも調査可能。「3GPP での議論状況: なし（学術段階）」と明記する
 

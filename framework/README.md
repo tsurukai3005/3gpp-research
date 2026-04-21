@@ -1,4 +1,4 @@
-# 00_framework — 調査フレームワーク
+# framework — 調査フレームワーク
 
 このディレクトリは Claude の行動を規定するルールパーツの集合体。
 CLAUDE.md からポインタで参照される。
@@ -6,7 +6,7 @@ CLAUDE.md からポインタで参照される。
 ## 構造
 
 ```
-00_framework/
+framework/
 ├── principles.md          ← 不変原則（全ての行動の基盤）
 ├── skill-contract.md      ← スキル契約（全スキル共通の Will / Will Not / 出力スキーマ）
 ├── review-policy.md       ← レビューポリシー（軽量、後から拡張可能）

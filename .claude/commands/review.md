@@ -14,7 +14,7 @@
 1. 対象を特定する:
    - 引数なし → `git diff --staged` があればそれを、なければ `git diff HEAD~1` を対象にする
    - 引数あり → 指定ファイルを読む
-2. `00_framework/principles.md` の不変原則に照らしてチェックする
+2. `framework/principles.md` の不変原則に照らしてチェックする
 3. 以下の5つの観点でレビューする
 4. 結果をチャットに出力する
 

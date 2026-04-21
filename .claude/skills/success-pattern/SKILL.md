@@ -21,15 +21,15 @@ user-invocable: true
 
 ## 入力と前提
 
-- **必須入力**: トピック名（`10_topics/` にノートがあると精度が上がるが、必須���はない）
-- **前提条件**: なし（ただし `20_history/` に世代別ノートがあれば活用する）
+- **必須入力**: トピック名（`documents/` にノートがあると精度が上がるが、必須���はない）
+- **前提条件**: なし（ただし `documents/` に世代別ノートがあれば活用する）
 - **実行不可の条件**: なし（歴史的事実は公開情報から収集可能）
 
 ## 実行フロー
 
-1. `20_history/` 配下の世代別ノートがあれば読む
-2. `00_framework/templates/generation-comparison.md` を読み、マトリクス構造を確認する
-3. `00_framework/axes/05-adoption-factors.md` を読み、普及要因の5項目を確認する
+1. `documents/` 配下の世代別ノートがあれば読む
+2. `framework/templates/generation-comparison.md` を読み、マトリクス構造を確認する
+3. `framework/axes/05-adoption-factors.md` を読み、普及要因の5項目を確認する
 4. 対象トピックを過去世代に投影し、5列×7行のマトリクスを作成する:
    - 列: 3G UMTS / 4G LTE / 5G NR / 5G-Advanced / 6G 構想
    - 行: 技術選択肢 / 解決した課題 / 新たに生じた課題 / キラーアプリ / 事業者 ROI / 普及要因 / 知財プレイヤー
@@ -45,7 +45,7 @@ user-invocable: true
 ## 出力
 
 - **形式**: チャット表示（デフォルト）。保存する場合はファイル
-- **保存先**: `20_history/<slug>__success-pattern.md` または `40_ideas/` 配下
+- **保存先**: `documents/YYYY-MM-DD_<slug>_success-pattern.md` または `documents/` 配下
 - **frontmatter**: 共通スキーマ準拠
 - **status**: `draft`
 

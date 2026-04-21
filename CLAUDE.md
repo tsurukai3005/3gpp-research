@@ -8,22 +8,39 @@
 
 ## フレームワーク
 
-調査・分析・記録の全ての行動は `00_framework/` のルールパーツに従う。
+調査・分析・記録の全ての行動は `framework/` のルールパーツに従う。
 
-- **不変原則**: `00_framework/principles.md`
-- **スキル契約**: `00_framework/skill-contract.md` — 全スキル共通の行動規範・禁止事項・出力スキーマ
-- **分析軸（6軸）**: `00_framework/axes/` — 1軸1ファイル、全トピックに必ず適用
-- **分析レンズ**: `00_framework/lenses/` — 状況に応じて適用するオプショナル視点
-- **ペルソナ**: `00_framework/personas/` — 需要側の多面的モデル
-- **問いかけテンプレ**: `00_framework/templates/` — スキルが参照する定型質問
-- **レビューポリシー**: `00_framework/review-policy.md`
-- **情報源リスト**: `00_framework/sources.md`
+- **不変原則**: `framework/principles.md`
+- **スキル契約**: `framework/skill-contract.md` — 全スキル共通の行動規範・禁止事項・出力スキーマ
+- **分析軸（6軸）**: `framework/axes/` — 1軸1ファイル、全トピックに必ず適用
+- **分析レンズ**: `framework/lenses/` — 状況に応じて適用するオプショナル視点
+- **ペルソナ**: `framework/personas/` — 需要側の多面的モデル
+- **問いかけテンプレ**: `framework/templates/` — スキルが参照する定型質問
+- **レビューポリシー**: `framework/review-policy.md`
+- **情報源リスト**: `framework/sources.md`
+
+## リポジトリ構造
+
+```
+3gpp-research/
+├── framework/      ← 調査ルール・分析軸の定義
+├── documents/      ← 全メモ（フラット、日付プレフィックス）
+├── CLAUDE.md
+└── README.md
+```
+
+### documents/ の命名規則
+
+- 週ごとのフォルダ: `MM-DD_MM-DD/`（例: `2026-04-21_04-27/`）
+- ファイル名: 内容の要約（日付なし、タグなし）
+- 目的が混ざったメモも許容する
+- 年またぎの場合: `2026-12-29_2027-01-04/`
 
 ## スキル一覧
 
 | スキル | 用途 |
 |:---|:---|
-| `/survey-topic` | トピックを6軸で体系調査し `10_topics/` に記録 |
+| `/survey-topic` | トピックを6軸で体系調査し `documents/` に記録 |
 | `/analyze-gap` | 学術/3GPP/実装制約のギャップを3バケットで可視化 |
 | `/success-pattern` | 過去世代の成功・失敗から6Gの条件を抽出 |
 | `/digest-paper` | 論文を読み3GPP実装制約との差分を記録 |
@@ -41,14 +58,3 @@
 | `/weekly-summary` | 今週の研究活動サマリーと Next Steps 集約 |
 | `/pr-template` | PR の説明文を自動生成 |
 | `/status` | 全ノートの status/confidence 一覧と要注意ファイル |
-
-## リポジトリ構造
-
-| ディレクトリ | 役割 |
-|:---|:---|
-| `00_framework/` | 調査ルールの定義（メタ情報） |
-| `10_topics/` | トピック別知識ベース（時系列を超えた概念整理） |
-| `20_history/` | 過去世代の分析（普及要因の学び） |
-| `30_meetings/` | 会合ごとのスナップショット（時点情報） |
-| `40_ideas/` | アイデア・考察メモ |
-| `50_sources/` | 読んだ文献のメモ |

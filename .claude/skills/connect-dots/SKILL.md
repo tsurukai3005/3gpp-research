@@ -22,15 +22,15 @@ user-invocable: true
 
 ## 入力と前提
 
-- **必須入力**: 2つのトピック名（`10_topics/` にノートが存在すること）
-- **オプション**: ペルソナファイル（`00_framework/personas/` 配下）
+- **必須入力**: 2つのトピック名（`documents/` にノートが存在すること）
+- **オプション**: ペルソナファイル（`framework/personas/` 配下）
 - **前提条件**: 両トピックのノートに axes が記載されていること（空でも可だが精度が下がる）
-- **実行不可の条件**: 指定トピックのノートが `10_topics/` に存在しない場合 → 先に `/survey-topic` を提案
+- **実行不可の条件**: 指定トピックのノートが `documents/` に存在しない場合 → 先に `/survey-topic` を提案
 
 ## 実行フロー
 
-1. `00_framework/templates/connect-dots.md` を読み、分析手順を確認する
-2. `10_topics/` から両トピックのノートを読む
+1. `framework/templates/connect-dots.md` を読み、分析手順を確認する
+2. `documents/` から両トピックのノートを読む
 3. **共通軸の比較**: 両トピックの frontmatter の `axes` を比較し、共通する値と相違する値を特定する
 4. **相乗効果の仮説生成**: 共通軸を起点に、組合せで生まれる価値を仮説として記述する
    - 形式: 「A + B により [KPI] が [メカニズム] で改善される」
@@ -42,16 +42,16 @@ user-invocable: true
 6. **ペルソナ視点の評価**（`--persona` 指定時）:
    - 指定ペルソナファイルを読む
    - この組合せがペルソナにとって価値があるか、コスト的に成立するかを評価する
-   - 標準化の場で反対されそうな理由を検討する（必要に応じて `00_framework/lenses/standardization-dynamics.md` を参照）
+   - 標準化の場で反対されそうな理由を検討する（必要に応じて `framework/lenses/standardization-dynamics.md` を参照）
 7. **Next Steps** を記載する
-8. `40_ideas/YYYY-MM-DD__<topicA>-x-<topicB>.md` に保存する
+8. `documents/YYYY-MM-DD_<topicA>-x-<topicB>.md` に保存する
 
 **トピックの axes が薄い場合**: ノート本文の内容から軸の値を推定し、`[推定]` と明記する。
 
 ## 出力
 
 - **形式**: ファイル保存 + チャットにサマリー表示
-- **保存先**: `40_ideas/YYYY-MM-DD__<topicA>-x-<topicB>.md`
+- **保存先**: `documents/YYYY-MM-DD_<topicA>-x-<topicB>.md`
 - **frontmatter**: 共通スキーマ + 以下の追加フィールド:
   ```yaml
   connection:

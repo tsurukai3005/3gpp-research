@@ -4,9 +4,9 @@
 
 ## 入力
 
-- トピック A: `10_topics/` のノート
-- トピック B: `10_topics/` のノート
-- （オプション）ペルソナ: `00_framework/personas/` のファイル
+- トピック A: `documents/` のノート
+- トピック B: `documents/` のノート
+- （オプション）ペルソナ: `framework/personas/` のファイル
 
 ## 分析の手順
 
@@ -54,4 +54,4 @@
 
 ## 出力先
 
-`40_ideas/YYYY-MM-DD__topicA-x-topicB.md`
+`documents/YYYY-MM-DD_接続考察-topicA-x-topicB.md`

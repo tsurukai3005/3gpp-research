@@ -6,12 +6,12 @@
 
 1. `git status` と `git diff --staged` および `git diff` で変更内容を確認する
 2. 変更ファイルをカテゴリ別に分類する:
-   - `00_framework/` → フレームワーク変更
-   - `10_topics/` → トピック追加・更新
-   - `20_history/` → 世代分析
-   - `30_meetings/` → 会合メモ
-   - `40_ideas/` → アイデア・考察
-   - `50_sources/` → 文献メモ
+   - `framework/` → フレームワーク変更
+   - `documents/` → トピック追加・更新
+   - `documents/` → 世代分析
+   - `documents/` → 会合メモ
+   - `documents/` → アイデア・考察
+   - `documents/` → 文献メモ
    - `.claude/` → スキル・コマンド変更
 3. カテゴリごとに個別のコミットを作成する（細粒度コミット）
 4. `git log --oneline -10` で直近のコミットスタイルを確認し、一貫性を保つ

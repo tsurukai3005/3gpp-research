@@ -1,6 +1,6 @@
 ---
 name: digest-paper
-description: 論文を読み、3GPP実装制約との差分を強調した構造化メモを 50_sources/papers/ に保存する
+description: 論文を読み、3GPP実装制約との差分を強調した構造化メモを documents/ に保存する
 user-invocable: true
 ---
 
@@ -28,7 +28,7 @@ user-invocable: true
 ## 実行フロー
 
 1. 論文の内容を取得する（URL / PDF / ユーザー提供の情報）
-2. `00_framework/templates/paper-digest.md` を読み、抽出項目を確認する
+2. `framework/templates/paper-digest.md` を読み、抽出項目を確認する
 3. メタ情報を抽出する:
    - 著者 / 年 / 会議 or ジャーナル / DOI or arXiv ID
 4. 主張（Contribution）を3-5点で要約する
@@ -41,16 +41,16 @@ user-invocable: true
    |:---|:---|:---|
    | 完全 CSI | 限られた PUCCH リソース | CSI 量子化誤差への耐性が未検証 |
 
-7. 該当する `10_topics/` ノートの `related:` にリンクを追記する
+7. 該当する `documents/` ノートの `related:` にリンクを追記する
 8. **Next Steps** を記載する
-9. `50_sources/papers/YYYY-MM-DD__<first-author>__<slug>.md` に保存する
+9. `documents/YYYY-MM-DD_<first-author>_<slug>.md` に保存する
 
 **サーベイ論文の場合**: 1つのダイジェストファイルにまとめるが、個別技術ごとにギャップテーブルのセクションを分ける。特に重要な技術は Next Steps で個別の `/digest-paper` 実行を提案する。
 
 ## 出力
 
 - **形式**: ファイル保存 + チャットにサマリー表示
-- **保存先**: `50_sources/papers/YYYY-MM-DD__<first-author>__<slug>.md`
+- **保存先**: `documents/YYYY-MM-DD_<first-author>_<slug>.md`
 - **frontmatter**: 共通スキーマ + 以下の追加フィールド:
   ```yaml
   paper:

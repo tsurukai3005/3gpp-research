@@ -21,15 +21,15 @@ user-invocable: true
 
 ## 入力と前提
 
-- **必須入力**: `10_topics/` に該当トピックのノートが存在すること
+- **必須入力**: `documents/` に該当トピックのノートが存在すること
 - **前提条件**: `/survey-topic` 等で基本情報が整理済みであること
 - **実行不可の条件**: 対象トピックのノートが存在しない場合 → 先に `/survey-topic` の実行を提案する
 
 ## 実行フロー
 
-1. `10_topics/` から対象トピックのノートを読み込む
-2. `00_framework/templates/gap-analysis.md` を読み、3バケットの定義と問いかけを確認する
-3. `00_framework/axes/06-ip.md` を読み、知財評価の基準を確認する
+1. `documents/` から対象トピックのノートを読み込む
+2. `framework/templates/gap-analysis.md` を読み、3バケットの定義と問いかけを確認する
+3. `framework/axes/06-ip.md` を読み、知財評価の基準を確認する
 4. 最新情報を確認する:
    - **arXiv**: 直近1年の関連論文で新たに解決された課題がないか
    - **3GPP**: 該当 WI/SI の最新 Chairman's Notes で FFS 項目を確認
@@ -43,14 +43,14 @@ user-invocable: true
    - spec-mapping: 将来の TS/TR のどの部分に対応しうるか
 7. **Next Steps** を記載する
 8. 結果をチャットに出力する
-9. 永続化する場合は `10_topics/<slug>/gap-YYYYMM.md` に保存する
+9. 永続化する場合は `documents/YYYY-MM-DD_<slug>_gap.md` に保存する
 
 **FFS 項目が見つからない場合**: Gap B を「該当なし（現時点で FFS 項目未確認）」とし、Next Steps に確認方法（具体的な会合番号、AI 番号）を記載する。
 
 ## 出力
 
 - **形式**: チャット表示（デフォルト）。ユーザーが保存を希望すればファイル保存
-- **保存先**: `10_topics/<slug>/gap-YYYYMM.md`
+- **保存先**: `documents/YYYY-MM-DD_<slug>_gap.md`
 - **frontmatter**: 共通スキーマ + `gap-type: [A, B, C]`（該当するバケット）
 - **status**: `draft`
 
