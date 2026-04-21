@@ -44,6 +44,7 @@ sources:
 related:
   - ../cross-cutting/waveform-design.md
   - ../phy-fundamentals/resource-allocation.md
+  - operating-bands-channel-arrangement.md
 ---
 
 ## 1. 定義と背景（Why）
