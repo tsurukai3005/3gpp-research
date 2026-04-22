@@ -86,79 +86,44 @@ lang: ja
 
 ---
 
-### Slide 0: 今日の対象 — TS 38.101-1 Section 5 と TS 38.211 Section 4 ★★★
+### Slide 1: この発表で扱う周波数リソース概念 ★★★
 
-**対応セクション**: TS 38.101-1 Section 5 全体 / TS 38.211 Section 4 全体
+**対応セクション**: TS 38.101-1 Sec 5 全体 + TS 38.211 Sec 4 全体
 
 #### 視覚コンテンツ
-- 今回のスコープを明示:
-  - TS 38.101-1 Section 5 — Operating bands and channel arrangement（RF/規制要件）
-  - TS 38.211 Section 4 — Frame structure and physical resources（物理層リソース構造）
-- 2段ブロック図:
-  - 上段: TS 38.101-1 Sec 5 — Operating Band / Channel BW（チャネル帯域幅） / ガードバンド / ラスター / バンドコンビネーション
-  - 下段: TS 38.211 Sec 4 — Resource Grid / CRB（キャリア全体の RB 番号）・PRB（BWP 内のローカル RB 番号） / BWP（Bandwidth Part: UE の動作帯域幅） / CA（Carrier Aggregation: 複数キャリアの束ね）
-  - 矢印: 上段→下段（「使える帯域が決まった上で構造化」）
+- 概念一覧（仕様セクション順。2仕様の分担を見出しで示す）:
+
+**TS 38.101-1 Sec 5 — 周波数帯域の範囲・幅・配置位置を規定する**
+- **Operating Band** (5.2) — UE が使用できる周波数帯を定める
+- **Channel Bandwidth** (5.3) — 1キャリアの占有幅を定める
+- **Transmission BW Configuration** (5.3.2) — データに使える RB 数を定める
+- **Channel Raster / NR-ARFCN** (5.4.2) — キャリアの配置位置を指定する
+- **Synchronization Raster / GSCN** (5.4.3) — SSB の配置位置を指定する
+
+**TS 38.211 Sec 4 — 帯域内を RB 単位で分割し、UE に割り当てる構造を規定する**
+- **SCS: Subcarrier Spacing** (4.2) — リソースの周波数粒度と時間粒度を定める
+- **CRB: Common Resource Block** (4.4.4) — キャリア全体の RB にグローバル番号を付ける
+- **BWP: Bandwidth Part** (4.4.5) — UE の動作帯域幅を定める
+- **PRB: Physical Resource Block** (4.4.4) — スケジューリングで RB を指定する
+- **CA: Carrier Aggregation** (4.5) — 複数キャリアを束ねる
+
 - 注記: TS 38.101 シリーズは Part 1（FR1 SA）/ Part 2（FR2 SA）/ Part 3（インターバンド）/ Part 4（性能要件）に分かれる。今回は **Part 1 の Section 5 のみ**が対象
-- 注記: 周波数リソースに関連する仕様は他にも TS 38.213（セルサーチ手順）、TS 38.214（リソース割当）、TS 38.331（RRC: Radio Resource Control による設定）等があるが、今回は上記2セクションに限定する
+- 注記: 周波数リソースに関連する仕様は他にも TS 38.213（セルサーチ手順）、TS 38.214（リソース割当）、TS 38.331（RRC による設定）等があるが、今回は上記2セクションに限定する
 
 #### 原稿（推定時間: 60秒）
-- 対象: TS 38.101-1 Section 5 + TS 38.211 Section 4
-- この2つの仕様はそれぞれ別の問いに答える:
-  - 38.101-1 Sec 5（RAN4 担当）: 規制・RF面 — どの周波数帯で、どれだけの幅を、どこに配置できるか
-  - 38.211 Sec 4（RAN1 担当）: 物理層設計 — その帯域をどう構造化してリソースを管理するか
+- この発表で扱う周波数リソース概念の一覧
+- 2つの仕様が役割を分担している:
+  - TS 38.101-1 Sec 5（RAN4 担当）: 周波数帯域の範囲・幅・配置位置を規定する
+  - TS 38.211 Sec 4（RAN1 担当）: その帯域内を RB 単位で分割し、UE に割り当てる構造を規定する
+- 38.101-1 側: Operating Band → Channel BW → Transmission BW Config で帯域の範囲と実効幅を定め、Channel Raster と Sync Raster でキャリアと SSB の配置位置を指定する
+- 38.211 側: SCS がリソースの粒度を定め、CRB → BWP → PRB でキャリア内を分割する。CA で複数キャリアを束ねる
 - TS 38.101 シリーズ: Part 1（FR1 SA）/ Part 2（FR2）/ Part 3（インターバンド）/ Part 4（性能）→ 今回は Part 1 の Sec 5 のみ
 - 他にも関連仕様あり（TS 38.213, 38.214, 38.331 等）→ 今回はこの2セクションに限定
-
-#### 補足
-- トランジション: "まず登場する概念の全体像を確認してから、各セクションの詳細に入ります"
-- Q&A予想: "なぜ1つの仕様にまとめないのか?" → 担当WGが異なる（RAN4 vs RAN1）、観点が異なる（RF実装 vs 信号処理）
-
----
-
-### Slide 1: 周波数リソースの概念マップ — Operating Band から PRB まで ★★★
-
-**対応セクション**: TS 38.101-1 Sec 5.2/5.3 + TS 38.211 Sec 4.4
-
-#### 視覚コンテンツ
-- 概念マップ（各概念の役割と粒度の関係を示す。包含関係と変換/参照の違いを区別する）:
-```
-Operating Band (TS 38.101-1 Sec 5.2)
-  規制が許可する周波数範囲。例: n78 = 3300〜3800 MHz
-    │ この中にキャリアを配置する
-    ▼
-Channel Bandwidth (TS 38.101-1 Sec 5.3)
-  1本のキャリアが占有する幅。例: 100 MHz
-    │ ガードバンドを除いた実効帯域を RB 数で表現
-    ▼
-Transmission BW Configuration (Sec 5.3.2)
-  データに使える RB 数。例: N_RB = 273 (= 98.28 MHz 分)
-    │ RB を Point A 基準で通し番号にしたものが CRB
-    ▼
-Resource Grid — CRB (TS 38.211 Sec 4.4.4)
-  キャリア全体での RB の通し番号。gNB のリソース管理に使用
-    │ UE が実際に使う範囲を切り出す
-    ▼
-Bandwidth Part (TS 38.211 Sec 4.4.5)
-  CRB の連続サブセット。UE の動作帯域幅を定義
-    │ BWP 内で 0 から番号を振り直す
-    ▼
-PRB (TS 38.211 Sec 4.4.4)
-  BWP 内のローカル番号 (0〜N_size,BWP-1)。スケジューリングに使用
-```
-- 注記: 上から下に向かって粒度が細かくなる。ただし全てが入れ子の包含関係ではなく、「同じものを RB 数で表現し直す」「ローカル番号に変換する」といった参照・変換の関係も含まれる
-
-#### 原稿（推定時間: 70秒）
-- この発表で登場する概念の全体像を示す。上から下に向かって粒度が細かくなる
-- Operating Band: 規制が許可する周波数範囲（バンドの位置と幅）
-- Channel Bandwidth: オペレーターがその中に配置する1本のキャリアの幅（MHz 単位）
-- Transmission BW Configuration: ガードバンドを除いた実効帯域を RB（Resource Block: 12サブキャリアの束）の数で表現したもの
-- CRB (Common Resource Block): キャリア全体で通し番号を振った RB。gNB がリソース管理に使うグローバル座標
-- BWP (Bandwidth Part): CRB のうち UE が実際にモニタ・送受信する連続範囲
-- PRB (Physical Resource Block): BWP 内で 0 から振り直したローカル番号。DCI（Downlink Control Information: スケジューリング指示）でのリソース指定に使う
 - 各概念の依存関係は最後のまとめで整理する。まず個別に見ていく
 
 #### 補足
-- トランジション: "これらの概念を理解する前提として、SCS（Subcarrier Spacing: サブキャリア間隔）を確認します"
+- トランジション: "まず SCS を前提知識として確認してから、各概念の詳細に入ります"
+- Q&A予想: "なぜ1つの仕様にまとめないのか?" → 担当WGが異なる（RAN4 vs RAN1）、観点が異なる（RF実装 vs 信号処理）
 
 ---
 
