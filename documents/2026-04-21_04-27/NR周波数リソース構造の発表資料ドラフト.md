@@ -93,19 +93,19 @@ lang: ja
 #### 視覚コンテンツ
 - 概念一覧（仕様セクション順。2仕様の分担を見出しで示す）:
 
-**TS 38.101-1 Sec 5 — 周波数帯域の範囲・幅・配置位置を規定する**
-- **Operating Band** (5.2) — UE が使用できる周波数帯を定める
-- **Channel Bandwidth** (5.3) — 1キャリアの占有幅を定める
-- **Transmission BW Configuration** (5.3.2) — データに使える RB 数を定める
-- **Channel Raster / NR-ARFCN** (5.4.2) — キャリアの配置位置を指定する
-- **Synchronization Raster / GSCN** (5.4.3) — SSB の配置位置を指定する
+**TS 38.101-1 Sec 5 — 周波数帯域の範囲・幅・配置位置**
+- **Operating Band** (5.2) — UE が使用できる周波数帯
+- **Channel Bandwidth** (5.3) — 1つの通信チャネルが占める帯域幅
+- **Transmission BW Configuration** (5.3.2) — チャネル内でデータ送受信に使える幅
+- **Channel Raster / NR-ARFCN** (5.4.2) — チャネル中心周波数として使用できる値
+- **Synchronization Raster / GSCN** (5.4.3) — SSB（セル発見用の同期信号）の中心周波数として使用できる値
 
-**TS 38.211 Sec 4 — 帯域内を RB 単位で分割し、UE に割り当てる構造を規定する**
-- **SCS: Subcarrier Spacing** (4.2) — リソースの周波数粒度と時間粒度を定める
-- **CRB: Common Resource Block** (4.4.4) — キャリア全体の RB にグローバル番号を付ける
-- **BWP: Bandwidth Part** (4.4.5) — UE の動作帯域幅を定める
-- **PRB: Physical Resource Block** (4.4.4) — スケジューリングで RB を指定する
-- **CA: Carrier Aggregation** (4.5) — 複数キャリアを束ねる
+**TS 38.211 Sec 4 — チャネル内部の分割と UE への割当構造**
+- **SCS: Subcarrier Spacing** (4.2) — サブキャリアの周波数間隔
+- **CRB: Common Resource Block** (4.4.4) — チャネル全体の通し番号
+- **BWP: Bandwidth Part** (4.4.5) — UE が実際に送受信する帯域範囲
+- **PRB: Physical Resource Block** (4.4.4) — BWP 内のリソース割当単位
+- **CA: Carrier Aggregation** (4.5) — 複数チャネルの束ね合わせ
 
 - 注記: TS 38.101 シリーズは Part 1（FR1 SA）/ Part 2（FR2 SA）/ Part 3（インターバンド）/ Part 4（性能要件）に分かれる。今回は **Part 1 の Section 5 のみ**が対象
 - 注記: 周波数リソースに関連する仕様は他にも TS 38.213（セルサーチ手順）、TS 38.214（リソース割当）、TS 38.331（RRC による設定）等があるが、今回は上記2セクションに限定する
