@@ -2,7 +2,7 @@
 title: "NR 周波数リソースの構造 — TS 38.101-1 Section 5 & TS 38.211 Section 4"
 status: draft
 created: 2026-04-21
-updated: 2026-04-22
+updated: 2026-04-23
 audience: "部署全員（勉強会）。大半は発表者より3GPP/無線通信に詳しい"
 takeaway: "TS 38.101-1 Sec 5 と TS 38.211 Sec 4 は周波数リソースの『何が使えるか』と『どう構造化するか』を分担し、各概念には明確な存在理由とトレードオフがある"
 duration_min: 20
@@ -71,7 +71,7 @@ lang: ja
 
 ### 主張の順序
 
-0. 導入: 2仕様の分担と全体階層 + SCS の前提知識
+0. 導入: 2仕様の分担と概念の全体像 + SCS の前提知識
 1. TS 38.101-1 Section 5.2 — Operating Bands
 2. TS 38.101-1 Section 5.3 — UE Channel Bandwidth
 3. TS 38.101-1 Section 5.4 — Channel Arrangement（3層ラスター、NR-ARFCN、Point A 決定経路、GSCN、セルサーチ）
@@ -95,94 +95,105 @@ lang: ja
   - TS 38.101-1 Section 5 — Operating bands and channel arrangement（RF/規制要件）
   - TS 38.211 Section 4 — Frame structure and physical resources（物理層リソース構造）
 - 2段ブロック図:
-  - 上段: TS 38.101-1 Sec 5 — Operating Band / Channel BW / ガードバンド / ラスター / バンドコンビネーション
-  - 下段: TS 38.211 Sec 4 — Resource Grid / CRB・PRB / BWP / CA
+  - 上段: TS 38.101-1 Sec 5 — Operating Band / Channel BW（チャネル帯域幅） / ガードバンド / ラスター / バンドコンビネーション
+  - 下段: TS 38.211 Sec 4 — Resource Grid / CRB（キャリア全体の RB 番号）・PRB（BWP 内のローカル RB 番号） / BWP（Bandwidth Part: UE の動作帯域幅） / CA（Carrier Aggregation: 複数キャリアの束ね）
   - 矢印: 上段→下段（「使える帯域が決まった上で構造化」）
 - 注記: TS 38.101 シリーズは Part 1（FR1 SA）/ Part 2（FR2 SA）/ Part 3（インターバンド）/ Part 4（性能要件）に分かれる。今回は **Part 1 の Section 5 のみ**が対象
-- 注記: 周波数リソースに関連する仕様は他にも TS 38.213（セルサーチ）、TS 38.214（リソース割当）、TS 38.331（RRC設定）等があるが、今回は上記2セクションに限定する
+- 注記: 周波数リソースに関連する仕様は他にも TS 38.213（セルサーチ手順）、TS 38.214（リソース割当）、TS 38.331（RRC: Radio Resource Control による設定）等があるが、今回は上記2セクションに限定する
 
 #### 原稿（推定時間: 60秒）
 - 対象: TS 38.101-1 Section 5 + TS 38.211 Section 4
+- この2つの仕様はそれぞれ別の問いに答える:
+  - 38.101-1 Sec 5（RAN4 担当）: 規制・RF面 — どの周波数帯で、どれだけの幅を、どこに配置できるか
+  - 38.211 Sec 4（RAN1 担当）: 物理層設計 — その帯域をどう構造化してリソースを管理するか
 - TS 38.101 シリーズ: Part 1（FR1 SA）/ Part 2（FR2）/ Part 3（インターバンド）/ Part 4（性能）→ 今回は Part 1 の Sec 5 のみ
 - 他にも関連仕様あり（TS 38.213, 38.214, 38.331 等）→ 今回はこの2セクションに限定
-- 38.101-1 Sec 5: 規制・RF面 — どの周波数帯で、どれだけの幅を、どこに配置できるか
-- 38.211 Sec 4: 物理層設計 — その帯域をどうリソースグリッドに構造化するか
 
 #### 補足
-- トランジション: "まず全体の階層構造を確認してから、各セクションの詳細に入ります"
+- トランジション: "まず登場する概念の全体像を確認してから、各セクションの詳細に入ります"
 - Q&A予想: "なぜ1つの仕様にまとめないのか?" → 担当WGが異なる（RAN4 vs RAN1）、観点が異なる（RF実装 vs 信号処理）
 
 ---
 
-### Slide 1: 周波数軸の階層構造 — Operating Band から PRB まで ★★★
+### Slide 1: 周波数リソースの概念マップ — Operating Band から PRB まで ★★★
 
 **対応セクション**: TS 38.101-1 Sec 5.2/5.3 + TS 38.211 Sec 4.4
 
 #### 視覚コンテンツ
-- 縦方向の階層図:
+- 概念マップ（各概念の役割と粒度の関係を示す。包含関係と変換/参照の違いを区別する）:
 ```
 Operating Band (TS 38.101-1 Sec 5.2)
-  例: n78 = 3300〜3800 MHz
-    ↓
+  規制が許可する周波数範囲。例: n78 = 3300〜3800 MHz
+    │ この中にキャリアを配置する
+    ▼
 Channel Bandwidth (TS 38.101-1 Sec 5.3)
-  例: 100 MHz @ 30 kHz SCS
-    ↓
+  1本のキャリアが占有する幅。例: 100 MHz
+    │ ガードバンドを除いた実効帯域を RB 数で表現
+    ▼
 Transmission BW Configuration (Sec 5.3.2)
-  例: N_RB = 273 RB
-    ↓
+  データに使える RB 数。例: N_RB = 273 (= 98.28 MHz 分)
+    │ RB を Point A 基準で通し番号にしたものが CRB
+    ▼
 Resource Grid — CRB (TS 38.211 Sec 4.4.4)
-  Point A 基準で番号付け
-    ↓
+  キャリア全体での RB の通し番号。gNB のリソース管理に使用
+    │ UE が実際に使う範囲を切り出す
+    ▼
 Bandwidth Part (TS 38.211 Sec 4.4.5)
-  CRB の連続サブセット
-    ↓
+  CRB の連続サブセット。UE の動作帯域幅を定義
+    │ BWP 内で 0 から番号を振り直す
+    ▼
 PRB (TS 38.211 Sec 4.4.4)
-  BWP 内のローカル番号 (0〜N_size,BWP-1)
+  BWP 内のローカル番号 (0〜N_size,BWP-1)。スケジューリングに使用
 ```
+- 注記: 上から下に向かって粒度が細かくなる。ただし全てが入れ子の包含関係ではなく、「同じものを RB 数で表現し直す」「ローカル番号に変換する」といった参照・変換の関係も含まれる
 
-#### 原稿（推定時間: 60秒）
-- Operating Band: 規制が許可する周波数範囲
-- Channel Bandwidth: オペレーターがその中に置くキャリアの幅
-- Transmission BW Configuration: ガードバンド除外後の実効帯域（RB数で表現）
-- Resource Grid / CRB: Point A 基準で番号付けされた RB の全体集合
-- BWP: UE が実際にモニタする CRB の連続サブセット
-- PRB: BWP 内のローカル番号（0〜N_size,BWP-1）
-- この階層の各レベル間の依存関係（何が何を制約するか）は最後のまとめで整理する。まず個別に見ていく
+#### 原稿（推定時間: 70秒）
+- この発表で登場する概念の全体像を示す。上から下に向かって粒度が細かくなる
+- Operating Band: 規制が許可する周波数範囲（バンドの位置と幅）
+- Channel Bandwidth: オペレーターがその中に配置する1本のキャリアの幅（MHz 単位）
+- Transmission BW Configuration: ガードバンドを除いた実効帯域を RB（Resource Block: 12サブキャリアの束）の数で表現したもの
+- CRB (Common Resource Block): キャリア全体で通し番号を振った RB。gNB がリソース管理に使うグローバル座標
+- BWP (Bandwidth Part): CRB のうち UE が実際にモニタ・送受信する連続範囲
+- PRB (Physical Resource Block): BWP 内で 0 から振り直したローカル番号。DCI（Downlink Control Information: スケジューリング指示）でのリソース指定に使う
+- 各概念の依存関係は最後のまとめで整理する。まず個別に見ていく
 
 #### 補足
-- トランジション: "この階層を理解する前提として、SCS を確認します"
+- トランジション: "これらの概念を理解する前提として、SCS（Subcarrier Spacing: サブキャリア間隔）を確認します"
 
 ---
 
-### Slide 1b: サブキャリア間隔（SCS）— 以降のスライドの前提知識 ★★★
+### Slide 1b: SCS（Subcarrier Spacing: サブキャリア間隔）— 以降のスライドの前提知識 ★★★
 
 **対応セクション**: TS 38.211 Section 4.2 (Numerology) / TS 38.101-1 Section 5.3 が前提とする
 
 #### 視覚コンテンツ
 - SCS の定義式: `SCS = 15 × 2^μ kHz`（μ = ニューメロロジーインデックス）
+- SCS の役割: OFDM（Orthogonal Frequency Division Multiplexing）信号の各サブキャリアの周波数間隔。SCS が大きいほどシンボル長が短くなり、スロットも短くなる
 - 対応表:
 
-| μ | SCS (kHz) | スロット長 | 主な用途 |
-|:--|:----------|:----------|:---------|
-| 0 | 15 | 1 ms | FR1 低帯域、LTE共存 |
-| 1 | 30 | 0.5 ms | FR1 中帯域（主流） |
-| 2 | 60 | 0.25 ms | FR1/FR2 境界 |
-| 3 | 120 | 125 μs | FR2 mmWave |
+| μ | SCS (kHz) | スロット長 | シンボル数/スロット | 主な用途 |
+|:--|:----------|:----------|:------------------|:---------|
+| 0 | 15 | 1 ms | 14 | FR1 低帯域、LTE 共存 |
+| 1 | 30 | 0.5 ms | 14 | FR1 中帯域（主流） |
+| 2 | 60 | 0.25 ms | 14 | FR1/FR2 境界 |
+| 3 | 120 | 125 μs | 14 | FR2 mmWave |
 
 - 注記: Section 5.3 の N_RB テーブルは SCS ごとに行が分かれる。SCS が決まらないと RB 数が決まらない
+- 注記: スロット内の一部シンボルのみで送信するミニスロット（2/4/7 シンボル）もあり、URLLC 向けにスロット長未満の低遅延を実現する（本発表では詳細は扱わない）
 
-#### 原稿（推定時間: 40秒）
+#### 原稿（推定時間: 50秒）
 - SCS = 15 × 2^μ kHz（μ = ニューメロロジーインデックス）
-- μ=0: 15 kHz, μ=1: 30 kHz, μ=2: 60 kHz, μ=3: 120 kHz
-- 2のべき乗に限定する理由:
-  - FFT サイズが常に 2^N → 実装効率
-  - サンプリングレート 30.72 MHz × 2^μ が 2 のべき乗スケーリングで導出可能
-  - スロット境界が異なる μ 間で必ずネスト
-- Section 5.3 の N_RB テーブルは SCS ごとに行が分かれる → SCS 選択が帯域幅設計の前提
+- SCS は OFDM 信号のサブキャリア間隔。SCS が大きいほどシンボルとスロットが短くなる
+- μ=0: 15 kHz (1ms スロット), μ=1: 30 kHz (0.5ms), μ=2: 60 kHz (0.25ms), μ=3: 120 kHz (125μs)
+- 2のべき乗倍に限定する理由（3つ）:
+  - FFT（高速フーリエ変換）サイズが 2^N になる → ASIC/FPGA でパイプライン化・並列化が容易で、回路面積と消費電力で有利
+  - サンプリングレートが LTE 基本クロック 30.72 MHz の 2^μ 倍になる → PLL（Phase-Locked Loop: 位相同期回路）を共通化でき、別クロック源が不要
+  - 異なる μ 間でスロット境界が必ずネストする（30 kHz の 1 スロット = 15 kHz の半スロットにぴったり収まる）→ スケジューリングと RB 整列が単純化
+- Section 5.3 の N_RB テーブルは SCS ごとに行が分かれる → SCS 選択が帯域幅設計の出発点
 
 #### 補足
 - トランジション: "では最上位の Operating Band、Section 5.2 から。"
-- Q&A予想: "なぜ2のべき乗以外がダメか?" → 45kHz(15×3) だとサンプリングレートが30.72MHzの3倍。2のべき乗スケーリングで導出できず別PLLが必要
+- Q&A予想: "なぜ2のべき乗以外がダメか?" → 例えば 45 kHz (15×3) だとサンプリングレートが 30.72 MHz の 3 倍になり、2 のべき乗スケーリングで導出できず別 PLL が必要になる
 
 ---
 
@@ -210,7 +221,7 @@ PRB (TS 38.211 Sec 4.4.4)
 
 #### 補足
 - トランジション: "SUL がなぜ必要か、少し補足します"
-- 注記: バンド番号がLTEと揃えてある理由（DSS対応）は口頭で一言触れる ★
+- 注記: バンド番号が LTE と揃えてある理由（DSS: Dynamic Spectrum Sharing 対応）は口頭で一言触れる ★
 
 ---
 
@@ -309,7 +320,7 @@ PRB (TS 38.211 Sec 4.4.4)
 
 #### 補足
 - トランジション: "なぜ 100 MHz ぴったり使えないのか。ガードバンドの計算式が Section 5.3.3 にあります"
-- Q&A予想: "275 RB 制限はどこで決まる?" → TS 38.211 で定義。DCI のビット数制約と FFT サイズの実装制約に由来
+- Q&A予想: "275 RB 制限はどこで決まる?" → TS 38.211 Table 4.4.2-1 で N_RB^max = 275 と定義。主因は FFT サイズ 4096 に対して 12×275 = 3300 サブキャリアが実用的な上限（使用率≈80%）であること。DCI（Downlink Control Information）のリソース割当ビット数制約も副次的に関係
 
 ---
 
@@ -326,7 +337,7 @@ Minimum GB [kHz] = (BW_channel × 1000 - N_RB × SCS × 12) / 2 - SCS / 2
   - `BW_channel × 1000`: チャネル全体 [kHz]
   - `N_RB × SCS × 12`: データ占有帯域 [kHz]
   - `/ 2`: 両端に均等配分
-  - `- SCS/2`: DC サブキャリア不使用の補正
+  - `- SCS/2`: キャリア中心周波数と CRB グリッド中心の半サブキャリア分のずれを補正
 - 計算例: 30 kHz, 100 MHz → (100000 - 273×30×12)/2 - 30/2 = (100000 - 98280)/2 - 15 = 860 - 15 = 845 kHz
 - なぜ「最小」か: N_RB に Section 5.3.2 の**最大値**を代入しているため、RB を最大限使い切った場合に残る最も狭いガードバンドが算出される。実際の BWP がキャリア全幅より狭ければ、ガードバンドはこれより広くなる
 
@@ -336,14 +347,14 @@ Minimum GB [kHz] = (BW_channel × 1000 - N_RB × SCS × 12) / 2 - SCS / 2
   - BW_channel×1000: チャネル全体 [kHz]
   - N_RB×SCS×12: データ占有帯域 [kHz]
   - /2: 両端に均等配分
-  - -SCS/2: DC サブキャリア不使用の補正
+  - -SCS/2: キャリア中心周波数と CRB グリッド中心の半サブキャリア分のずれを補正
 - 計算例: 30 kHz, 100 MHz → (100000-98280)/2 - 15 = 845 kHz
 - なぜ「最小」か: N_RB に 5.3.2 の最大値を代入 → RB を使い切った場合の最も狭いマージン
-- 目的: 隣接チャネル干渉 (ACI) 防止 + フィルタのロールオフ特性の吸収
+- 目的: 隣接チャネル干渉（ACI: Adjacent Channel Interference）防止 + フィルタのロールオフ特性の吸収
 
 #### 補足
 - トランジション: "5.3.4 は RB 整列、5.3.5 はバンド別の許容帯域幅です"
-- Q&A予想: "なぜ DC サブキャリアを引く?" → -SCS/2 項はキャリア中心周波数とリソースグリッド中心の半サブキャリア分のずれを補正するもの。NR の DL では DC サブキャリアに RE がマップされうるが rate matching で回避する場合あり（TS 38.211/38.214 依存）。UL では DC サブキャリアを含まない設計。LO リーク対策が背景
+- Q&A予想: "なぜ -SCS/2 を引く?" → キャリア中心周波数と CRB グリッド中心が半サブキャリア分ずれていることの補正。NR の DL では DC サブキャリア（キャリア中心）に RE（Resource Element）がマップされうるが rate matching で回避する場合あり（TS 38.211/38.214 依存）。UL では DC サブキャリアを含まない設計。LO（Local Oscillator）リーク対策が背景
 
 ---
 
@@ -429,9 +440,13 @@ Minimum GB [kHz] = (BW_channel × 1000 - N_RB × SCS × 12) / 2 - SCS / 2
 粗い ←────────────────────────────→ 細かい
 
 同期ラスター(GSCN)     チャネルラスター         グローバル周波数ラスター
+(Global Synchronization
+ Channel Number)
 GSCN間隔: 100kHz     バンド別 ΔF_Raster       5/15/60 kHz ステップ
 または1000kHz(*1)
 （SSB の配置位置）    （キャリア中心の配置位置）  （NR-ARFCN の計算基盤）
+ SSB = SS/PBCH Block                             NR-ARFCN = NR Absolute
+ (同期信号ブロック)                                Radio Frequency Channel Number
       │                     │                        │
       └─ セルサーチで使用    └─ キャリア設定で使用      └─ 全周波数参照の基盤
 ```
@@ -443,17 +458,17 @@ GSCN間隔: 100kHz     バンド別 ΔF_Raster       5/15/60 kHz ステップ
 | n77, n78, n79 (C バンド) | 15 kHz | 高精度配置が可能 |
 | 一部バンド | サブセットラスター | 特定位置のみ有効（規制・共存制約） |
 
-- 核心: SSB の中心 ≠ キャリアの中心（オフセットは kSSB で通知）
+- 核心: SSB（SS/PBCH Block: 同期信号ブロック）の中心 ≠ キャリアの中心（オフセットは kSSB で通知）
 
 #### 原稿（推定時間: 60秒）
-- Section 5.4: チャネル配置のルール
-- 3層ラスター構造:
-  - グローバル周波数ラスター (5/15/60 kHz): 全周波数参照の基盤、NR-ARFCN 計算用
+- Section 5.4: チャネル配置のルール。キャリアや同期信号をスペクトラム上のどこに配置できるかを定義
+- ラスター = キャリアや信号を配置できる離散的な周波数位置の集合。NR では目的に応じて3層ある:
+  - グローバル周波数ラスター (5/15/60 kHz): 全周波数参照の基盤。NR-ARFCN（NR Absolute Radio Frequency Channel Number: 周波数を一意に指定する整数値）の計算に使用
   - チャネルラスター (バンド別 ΔF_Raster): キャリア中心を置ける離散位置
     - sub-3 GHz: 100 kHz、C バンド (n77/78): 15 kHz（より細かい配置が可能）
     - 一部バンドではサブセットラスター（特定位置のみ有効）
-  - 同期ラスター/GSCN (~1.2 MHz): SSB 配置位置。意図的に粗い
-- SSB 中心 ≠ キャリア中心（オフセットは MIB 内 kSSB で通知）
+  - 同期ラスター/GSCN (Global Synchronization Channel Number, ~1.2 MHz): SSB 配置位置。UE のセルサーチ走査候補を絞るために意図的に粗い
+- SSB 中心 ≠ キャリア中心（オフセットは MIB: Master Information Block 内の kSSB で通知）
 
 #### 補足
 - トランジション: "まずチャネル間隔の基本式から"
@@ -514,10 +529,10 @@ F_REF [kHz] = F_REF-Offs + ΔF_Global × (N_REF - N_REF-Offs)
 - 計算例: 3600 MHz → N_REF = 600,000 + (3,600,000 - 3,000,000)/15 = **640,000**
 
 #### 原稿（推定時間: 50秒）
-- NR-ARFCN: キャリア中心周波数を一意に指定する整数値
+- NR-ARFCN（NR Absolute Radio Frequency Channel Number）: キャリア中心周波数を一意に指定する整数値。RRC シグナリングやセルサーチでキャリアの位置を特定するために使用
 - 式: F_REF = F_REF-Offs + ΔF_Global × (N_REF - N_REF-Offs)
 - 3つの周波数範囲: ΔF = 5 kHz (0-3GHz) / 15 kHz (3-24.25GHz) / 60 kHz (24.25-100GHz)
-- 高周波ほどステップが粗い
+- 高周波ほどステップが粗い（帯域が広いので候補数を抑制。相対精度は十分）
 - 計算例: 3600 MHz → N_REF = 600,000 + (3,600,000-3,000,000)/15 = 640,000
 
 #### 補足
@@ -544,7 +559,7 @@ F_REF [kHz] = F_REF-Offs + ΔF_Global × (N_REF - N_REF-Offs)
 - トレードオフ図: 同期ラスター粗い → セルサーチ高速 / SSB 配置自由度低い
 
 #### 原稿（推定時間: 60秒）
-- 同期ラスター: SSB を配置できる離散的周波数位置。GSCN 番号で指定
+- 同期ラスター: SSB（同期信号ブロック）を配置できる離散的周波数位置。GSCN 番号で指定。UE が電源投入時にセルを探す際、全周波数を総当たりせずこのラスター上の位置だけを走査する
 - 0-3 GHz: SS_ref = N×1200 kHz + M×50 kHz (M∈{1,3,5})、GSCN 間隔は 100 kHz（M 間）または 1000 kHz（N 境界）
 - 3-24.25 GHz: 1.44 MHz ステップ
 - なぜ粗いか: セルサーチで全チャネルラスター位置を走査すると時間がかかりすぎる
@@ -603,25 +618,26 @@ BWP (CRB の連続サブセット)
 - フローチャート:
 ```
 Step 1: 同期ラスター(GSCN)走査 → SSB 候補周波数を絞る
-Step 2: PSS 検出 → 時間同期 + セクタID (N_ID^(2) ∈ {0,1,2})
-Step 3: SSS 検出 → セルグループID → 物理セルID確定 (1008通り)
-Step 4: PBCH 復号 → MIB (SFN, kSSB, CORESET#0設定)
-Step 5: CORESET#0 → SIB1 スケジューリング受信
-Step 6: SIB1 復号 → セルアクセス完了 → ランダムアクセス
+Step 2: PSS (Primary Synchronization Signal) 検出 → 時間同期 + セクタID
+Step 3: SSS (Secondary Synchronization Signal) 検出 → 物理セルID確定 (1008通り)
+Step 4: PBCH (Physical Broadcast Channel) 復号 → MIB (Master Information Block) 取得
+Step 5: CORESET#0 (Control Resource Set) → SIB1 スケジューリング受信
+Step 6: SIB1 (System Information Block 1) 復号 → セルアクセス完了
 ```
 - 強調: Step 1 で同期ラスターが候補を絞ることがセルサーチ高速化の鍵
 
 #### 原稿（推定時間: 50秒）
-- Step 1: GSCN 位置のみを走査 → 候補数を大幅に絞る
-- Step 2: PSS 検出 → 時間同期 + セクタ ID
-- Step 3: SSS 検出 → 物理セル ID 確定 (1008通り)
-- Step 4: PBCH 復号 → MIB (SFN, kSSB, CORESET#0設定)
-- Step 5-6: CORESET#0 → SIB1 → セルアクセス完了
+- セルサーチ: UE が電源投入時やセル再選択時に接続可能なセルを発見する手順
+- Step 1: GSCN 位置のみを走査 → 候補数を大幅に絞る（全チャネルラスター位置の走査は時間がかかりすぎる）
+- Step 2: PSS（Primary Synchronization Signal）検出 → 時間同期 + セクタ ID
+- Step 3: SSS（Secondary Synchronization Signal）検出 → 物理セル ID 確定 (1008通り)
+- Step 4: PBCH（Physical Broadcast Channel）復号 → MIB 取得（フレーム番号、kSSB、CORESET#0 設定）
+- Step 5-6: CORESET#0（Control Resource Set: 制御チャネル領域）→ SIB1（System Information Block 1）→ セルアクセス完了
 - 要点: 同期ラスターの粗さがセルサーチ所要時間を決定する
 
 #### 補足
 - トランジション: "5.4.3.3 で各バンドの GSCN 範囲と SSB の SCS パターンが定義されています"
-- 注記: SSB SCS パターン（Case A: 15kHz, Case B/C: 30kHz）の存在を口頭で触れる ★
+- 注記: SSB の SCS パターン（Case A: 15 kHz, Case B/C: 30 kHz）の存在を口頭で触れる ★
 
 ---
 
@@ -675,8 +691,8 @@ NR:   Cell BW >> UE Active BWP (可変)
 
 | 課題 | BWP による解決 |
 |:-----|:-------------|
-| 100MHz全体モニタの消費電力 | 狭いBWPでADCサンプリングレート低減 |
-| 低コストUEが広帯域セルに参加不可 | 20MHz BWPのみサポートで参加可能（Rel-17 RedCap: 最大20MHz） |
+| 100MHz全体モニタの消費電力 | 狭いBWPで ADC（Analog-to-Digital Converter）サンプリングレート低減 |
+| 低コストUEが広帯域セルに参加不可 | 20MHz BWPのみサポートで参加可能（Rel-17 RedCap（Reduced Capability）: 最大20MHz） |
 | 異なるSCSのサービス混在 | BWPごとに異なるニューメロロジー |
 | 周波数ドメインの動的管理 | BWP切替でUE動作帯域を時間変動 |
 
@@ -713,13 +729,20 @@ N_start,grid ≤ N_start,BWP,i
 N_start,BWP,i + N_size,BWP,i ≤ N_start,grid + N_size,grid
 ```
 - CRB→PRB変換: `n_CRB = n_PRB + N_start,BWP,i`
+- なぜ2つの番号体系があるか:
+  - CRB: キャリア全体のグローバル座標（gNB がリソース管理に使用）
+  - PRB: BWP 内のローカル座標（DCI でのリソース割当に使用）
+  - PRB を使うことで、DCI のリソース割当フィールドのビット数を BWP サイズに応じて最小化できる
 
-#### 原稿（推定時間: 40秒）
+#### 原稿（推定時間: 50秒）
 - 正式定義: "あるキャリアの、あるニューメロロジーμについて、CRB の連続部分集合から選ばれた PRB の連続集合"
 - 定義パラメータ: N_start,BWP,i（開始CRB）+ N_size,BWP,i（連続RB数）
 - 制約: キャリアの Resource Grid からはみ出さないこと
 - PRB: BWP 内でローカルに 0 から番号付け
 - CRB→PRB変換: n_CRB = n_PRB + N_start,BWP,i
+- なぜ2つの番号体系があるか:
+  - CRB はキャリア全体のグローバル座標 → gNB が複数 BWP にまたがるリソースを管理する際に使用
+  - PRB は BWP 内のローカル座標 → DCI でリソース割当を通知する際に使用。BWP サイズに応じてビット数を節約できる（273 RB のフル CRB 番号より少ないビット数で済む）
 
 #### 補足
 - トランジション: "BWP の種類と運用ルールを見ます"
@@ -735,8 +758,8 @@ N_start,BWP,i + N_size,BWP,i ≤ N_start,grid + N_size,grid
 
 | 種別 | 説明 | 設定方法 |
 |:-----|:-----|:---------|
-| Initial BWP (#0) | 初期アクセス用。CORESET#0から導出 | MIB/SIB1 |
-| First Active BWP | RRC設定後に最初のデータ転送BWP | RRC Reconfiguration |
+| Initial BWP (#0) | 初期アクセス用。CORESET#0（Control Resource Set）から導出 | MIB/SIB1 |
+| First Active BWP | RRC（Radio Resource Control）設定後に最初のデータ転送BWP | RRC Reconfiguration |
 | Default BWP | 非活動タイマー満了時のフォールバック先 | RRC |
 | Dedicated BWP | サービス固有 | RRC Reconfiguration |
 
@@ -744,8 +767,8 @@ N_start,BWP,i + N_size,BWP,i ≤ N_start,grid + N_size,grid
 - 制約条件:
   - DL BWP は SSB 帯域幅以上でなければならない
   - 各 DL BWP に最低1つの CORESET（UE-Specific Search Space 付き）が必要
-  - UE はアクティブ BWP 外で PDSCH/PDCCH/CSI-RS/TRS を受信してはならない
-  - Rel-17 RedCap UE: 最大 20 MHz BWP に制限
+  - UE はアクティブ BWP 外で PDSCH（Physical Downlink Shared Channel）/PDCCH（Physical Downlink Control Channel）/CSI-RS/TRS を受信してはならない
+  - Rel-17 RedCap（Reduced Capability）UE: 最大 20 MHz BWP に制限
 
 #### 原稿（推定時間: 50秒）
 - BWP 4種別:
@@ -771,7 +794,7 @@ N_start,BWP,i + N_size,BWP,i ≤ N_start,grid + N_size,grid
 
 | 方式 | 遅延 | トリガー | 用途 |
 |:-----|:-----|:---------|:-----|
-| DCI ベース | ~2 ms | DCI Format 0_1/1_1 | 高速切替（スケジューラ判断） |
+| DCI（Downlink Control Information）ベース | ~2 ms | DCI Format 0_1/1_1 | 高速切替（スケジューラ判断） |
 | タイマーベース | タイマー依存 | bwp-InactivityTimer 満了 | 省電力フォールバック |
 | RRC ベース | ~10 ms | RRC Reconfiguration | 長期的帯域変更 |
 | MAC 起動 | 可変 | Random Access 手順 | 初期アクセス復帰 |
@@ -858,34 +881,35 @@ SCell (15 kHz): |------Slot 0------|------Slot 1------|
                 ↑
                 ca-SlotOffset でオフセット調整
 ```
-- 用途: HARQ タイミングとスケジューリング調整を可能にする
+- 用途: HARQ（Hybrid Automatic Repeat Request: 再送制御）タイミングとスケジューリング調整を可能にする
 
 #### 原稿（推定時間: 30秒）
 - CC 間で SCS が異なる → スロット境界が不整列
 - 例: PCell 30 kHz (0.5 ms slot) / SCell 15 kHz (1 ms slot)
 - ca-SlotOffset: PCell に対する SCell のスロットレベルタイミングオフセット
-- 用途: HARQ タイミングとスケジューリング調整を可能にする
+- 用途: HARQ（再送制御）タイミングとスケジューリング調整を可能にする
 
 #### 補足
 - トランジション: "CA と BWP は2階層のアーキテクチャを形成します"
 
 ---
 
-### Slide 21: 「キャリア + BWP」2階層アーキテクチャ ★★★
+### Slide 21: 「キャリア活性化 + BWP 活性化」の2段階制御 ★★★
 
 **対応セクション**: TS 38.211 Section 4.5 + TS 38.321 (MAC)
 
 #### 視覚コンテンツ
+- 前提説明: CA では SCell は RRC で**設定**された後、MAC CE（MAC Control Element: MAC 層の制御メッセージ）で**活性化**して初めてデータ送受信対象になる。RRC 設定（遅い、~10ms）と MAC CE 活性化（速い、サブフレームレベル）の2段階により、トラフィック変動への迅速な対応と不要 SCell の省電力を両立する
 - 2レベル図:
 ```
-レベル1: キャリア活性化 (MAC CE)
+レベル1: キャリア活性化 (MAC CE で制御)
 ┌──────────────────────────────────────────┐
-│ PCell (常時アクティブ)                     │
+│ PCell (常時アクティブ、デアクティベート不可)  │
 │ SCell 1 (MAC CE でアクティベート/デアクティベート) │
 │ SCell 2 (MAC CE でアクティベート/デアクティベート) │
 └──────────────────────────────────────────┘
-                    ↓
-レベル2: BWP 活性化 (アクティブ CC 内のみ)
+        ↓ アクティブなキャリア内でのみ BWP が動作
+レベル2: BWP 活性化 (DCI/タイマー/RRC で制御)
 ┌──────────────────────────────────────────┐
 │ PCell:  Active DL BWP = BWP#2 (100 MHz)  │
 │ SCell1: Active DL BWP = BWP#1 (50 MHz)   │
@@ -894,14 +918,16 @@ SCell (15 kHz): |------Slot 0------|------Slot 1------|
 ```
 - 重要規則: **各アクティブ CC は DL/UL 各1つのアクティブ BWP を持つ**
 
-#### 原稿（推定時間: 40秒）
+#### 原稿（推定時間: 50秒）
 - NR CA の2段階活性化制御:
-  - レベル1: キャリア活性化 (MAC CE)
-    - PCell: 常時アクティブ
-    - SCell: MAC CE でアクティベート/デアクティベート
+  - レベル1: キャリア活性化 (MAC CE で制御)
+    - SCell は RRC で設定された後、MAC CE で活性化して初めて送受信対象になる
+    - PCell: 常時アクティブ（デアクティベート不可）
+    - SCell: MAC CE でアクティベート/デアクティベート（サブフレームレベルの速度）
+    - 目的: 不要な SCell のモニタを停止して UE の消費電力を抑える
   - レベル2: BWP 活性化（アクティブ CC 内のみ）
     - 各アクティブ CC は DL/UL 各1つの Active BWP を持つ
-- BWP はアクティブなキャリア内でのみ活性化可能
+    - BWP はアクティブなキャリア内でのみ活性化可能
 
 #### 補足
 - トランジション: "最後に、ここまでの概念がどう連鎖しているか全体を俯瞰します"
@@ -952,7 +978,7 @@ Operating Band (5.2)
 ## 想定Q&A
 
 - **Q: 275 RB の上限はどこで決まるか？**
-  A: TS 38.211 で定義。DCI のリソース割当フィールドのビット数とFFTサイズの実装制約に由来。6G cmWave での緩和は FFS
+  A: TS 38.211 Table 4.4.2-1 で N_RB^max = 275 と定義。主因は FFT サイズ 4096 に対して 12×275 = 3300 サブキャリアが実用的な上限（使用率≈80%）であること。DCI のリソース割当ビット数制約も副次的に関係。6G cmWave での緩和は FFS
 
 - **Q: SSB の中心とキャリアの中心が一致しないのはなぜ？**
   A: 同期ラスター（GSCN）とチャネルラスターが独立に定義されているため。オフセットは kSSB パラメータで通知。これにより SSB 配置とキャリア配置を独立に最適化できる
