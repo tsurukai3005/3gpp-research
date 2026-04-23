@@ -25,7 +25,9 @@
       "Bash(rmdir documents/phy-fundamentals documents docs/presentations docs)",
       "Bash(git rm:*)",
       "Bash(find documents:*)",
-      "Bash(python -c \":*)"
+      "Bash(python -c \":*)",
+      "Read(//tmp/**)",
+      "Read(//c/Users/admin/AppData/Local/Temp/**)"
     ]
   }
 }
