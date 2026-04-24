@@ -1,0 +1,484 @@
+---
+title: "Rel-15 NR 物理リソース仕様 (TS 38.211 Sec 4 / TS 38.101-1 Sec 5) の策定議論の変遷"
+status: draft
+confidence: medium
+created: 2026-04-24
+updated: 2026-04-24
+axes:
+  technology-layer: [phy-mimo, cross-layer]
+  generation: [rel-15]
+  value: [throughput, latency, energy-efficiency, coverage]
+  market: [consumer-xr, b2b-industrial, fwa]
+  adoption-factors: [standard-convergence, backward-compat, operator-roi]
+  ip: [novelty, inventive-step, spec-mapping]
+sources:
+  - url: https://www.3gpp.org/DynaReport/TDocExMtg--R1-86--31663.htm
+    title: "3GPP DynaReport — RAN1 #86 Tdoc list"
+    accessed: 2026-04-24
+  - url: https://www.3gpp.org/DynaReport/TDocExMtg--R1-90--17073.htm
+    title: "3GPP DynaReport — RAN1 #90 Tdoc list"
+    accessed: 2026-04-24
+  - url: https://www.3gpp.org/3gpp-groups/radio-access-networks-ran/ran-wg1
+    title: "3GPP — RAN WG1 group page"
+    accessed: 2026-04-24
+  - url: https://www.etsi.org/deliver/etsi_tr/138900_138999/138912/15.00.00_60/tr_138912v150000p.pdf
+    title: "ETSI TR 138 912 V15.0.0 — NR radio access technology (Study Item summary)"
+    accessed: 2026-04-24
+  - url: https://itecspec.com/archive/3gpp-specification-tr-38-802/
+    title: "TR 38.802 — Study on New Radio Access Technology: Physical Layer Aspects (mirror)"
+    accessed: 2026-04-24
+  - url: https://www.etsi.org/deliver/etsi_ts/138200_138299/138211/15.02.00_60/ts_138211v150200p.pdf
+    title: "ETSI TS 138 211 V15.2.0 — NR Physical channels and modulation (Rel-15)"
+    accessed: 2026-04-24
+  - url: https://www.qualcomm.com/content/dam/qcomm-martech/dm-assets/documents/making_5g_nr_a_reality.pdf
+    title: "Qualcomm — Making 5G NR a Reality (Dec 2016)"
+    accessed: 2026-04-24
+  - url: https://www.qualcomm.com/media/documents/files/the-3gpp-release-15-5g-nr-design.pdf
+    title: "Qualcomm — The 3GPP Rel-15 5G NR Design (2018)"
+    accessed: 2026-04-24
+  - url: https://www.ericsson.com/en/reports-and-papers/research-papers/waveform-and-numerology-to-support-5g-services-and-requirements
+    title: "Ericsson Zaidi et al. — Waveform and Numerology to Support 5G Services and Requirements"
+    accessed: 2026-04-24
+  - url: https://www.ericsson.com/en/blog/2017/5/in-the-race-to-5g-cp-ofdm-triumphs
+    title: "Ericsson blog — In the race to 5G, CP-OFDM triumphs (May 2017)"
+    accessed: 2026-04-24
+  - url: https://www.ericsson.com/en/reports-and-papers/books/5g-nr-the-next-generation-wireless-access-technology
+    title: "Ericsson — 5G NR: The Next Generation Wireless Access Technology (Dahlman et al.)"
+    accessed: 2026-04-24
+  - url: https://newsletter.mediatek.com/hubfs/mwc/download/bandwidth-part-adaptation.pdf
+    title: "MediaTek — Bandwidth Part Adaptation white paper (self-attribution of CBP)"
+    accessed: 2026-04-24
+  - url: https://patents.google.com/patent/WO2018203717A1/en
+    title: "Samsung WO2018203717A1 — BWP configurations for single carrier wideband operations (priority 2017-05-04)"
+    accessed: 2026-04-24
+  - url: https://www.freepatentsonline.com/y2018/0131487.html
+    title: "Qualcomm US 2018/0131487 — Decoupling of synchronization raster and channel raster"
+    accessed: 2026-04-24
+  - url: https://arxiv.org/abs/1712.09724
+    title: "Jeon — NR Wide Bandwidth Operations (arXiv, Dec 2017; later IEEE ComMag 2018)"
+    accessed: 2026-04-24
+  - url: https://arxiv.org/abs/2004.00761
+    title: "Lin, Yu, Wiemann — A Primer on Bandwidth Parts in 5G NR (arXiv 2020)"
+    accessed: 2026-04-24
+  - url: https://www.cohere-tech.com/wp-content/uploads/2017/06/R1-167593-Performance-evaluation-of-OTFS-in-single-user-scenarios-am.pdf
+    title: "R1-167593 — OTFS performance evaluation (Cohere Technologies, RAN1#86)"
+    accessed: 2026-04-24
+  - url: https://atisorg.s3.amazonaws.com/archive/3gpp-documents/Rel15/ATIS.3GPP.38.101-1.V15100.pdf
+    title: "TS 38.101-1 Rel-15 v15.10.0 (ATIS mirror)"
+    accessed: 2026-04-24
+  - url: https://atisorg.s3.amazonaws.com/archive/3gpp-documents/Rel15/ATIS.3GPP.38.817-01.V1550.pdf
+    title: "TR 38.817-01 Rel-15 v15.5.0 — General aspects for UE RF for NR (ATIS mirror)"
+    accessed: 2026-04-24
+  - url: https://www.3gpp.org/news-events/3gpp-news/1965-rel-15_news
+    title: "3GPP News — Rel-15 success spans 3GPP groups"
+    accessed: 2026-04-24
+  - url: https://www.3gpp.org/specifications-technologies/releases/release-15
+    title: "3GPP — Release 15 landing page"
+    accessed: 2026-04-24
+  - url: https://www.sharetechnote.com/html/5G/5G_Agreements.html
+    title: "ShareTechNote — 5G RAN1 Agreements log"
+    accessed: 2026-04-24
+related:
+  - TS38.211-Section4-原文準拠和訳.md
+  - TS38.101-1-Section5-原文準拠和訳.md
+  - TS38.211-Section4-BWPとCarrier-Aggregationの体系整理.md
+  - TS38.101-1-Section5-Operating-Bandsの体系整理.md
+  - NR周波数リソース構造の発表資料ドラフト.md
+  - Rel-15-NR-勉強会トピック調査ガイド.md
+---
+
+# Rel-15 NR 物理リソース仕様 (TS 38.211 Sec 4 / TS 38.101-1 Sec 5) の策定議論の変遷
+
+> **本ノートの目的**: 既存の原文準拠和訳ノート（TS 38.211 Sec 4 / TS 38.101-1 Sec 5）が「結果としての条文」を扱うのに対し、本ノートは「どの会議で、どの企業が、何を主張し、どう収束したか」を追跡する。
+>
+> **調査範囲**: 2016年4月 RAN1#84bis（NR SI 開始）〜 2018年6月 RAN#80（Rel-15 SA メインドロップ）。
+>
+> **前提スコープ**:
+> - **RAN1** 担当: TS 38.211（Sec 4 の全体）、Sec 4.4 の BWP / Point A / CRB・PRB・VRB 概念、スロット構造、QCL、フレーム構造
+> - **RAN4** 担当: TS 38.101-1（Sec 5 全体）、運用周波数帯、チャネル帯域、チャネル/同期ラスター、GSCN 数値テーブル
+> - **RAN1 ↔ RAN4 境界**: Point A の定義は RAN1、Point A の ARFCN 変換・数値は RAN4。SUL/SDL はバンド定義が RAN4、BWP 設定が RAN1。
+>
+> **信頼度レベル**:
+> - **high**: 一次・二次の複数情報源で相互確認できた事実
+> - **medium**: 特定ベンダー白書・ShareTechNote 等の二次情報のみ
+> - **[要確認]**: 3GPP FTP 直読のみで検証可能な Tdoc 番号・提案企業（WebFetch で 403 が返ったため未検証）
+
+---
+
+## 1. 定義と背景（Why）
+
+Rel-15（NR 初版）は 3GPP として初めて「LTE を断絶させた」新規無線アクセスの仕様化であり、物理リソースの基礎構造を**ゼロから再設計**する機会となった。ただし完全な更地ではなく、以下の3つの強い制約が議論全体を規定した:
+
+1. **LTE との共存・相互運用性** — FDD 低周波帯の refarming（DSS の萌芽）と EN-DC（NSA Option-3）を必須とするオペレーター要求。
+2. **極端な周波数範囲** — 450 MHz から 52.6 GHz まで**同一の物理層フレームワーク**で扱う要件（FR1/FR2 分離設計）。
+3. **スケジューラビリティ vs. 省電力の両立** — UE の RF 帯域幅（典型 20–100 MHz）と NR キャリア最大帯域幅（FR1 100 MHz、FR2 400 MHz）のミスマッチを運用可能にする仕組み。
+
+これら3制約を同時に満たす設計は LTE では存在せず、Rel-15 議論の核となった。
+
+---
+
+## 2. 会議タイムライン全体像
+
+```
+2016: SI 開始
+ ├── RAN1#84bis  (2016-04 Busan)    ← NR SI kick-off (RP-160671)
+ ├── RAN1#85     (2016-05 Nanjing)  ← scalable numerology 合意形成
+ ├── RAN1#86     (2016-08 Gothenburg) ★ CP-OFDM を DL/UL 共に採用
+ ├── RAN1#86bis  (2016-10 Lisbon)   ← {15,30,60,120,240,480} kHz 候補確定
+ └── RAN1#87     (2016-11 Reno)     ★ 14-symbol slot 採用 / WI 開始 (RP-170855)
+
+2017: 主要構造の合意
+ ├── NR-AH1      (2017-01 Spokane)  ★ 10ms frame / 1ms subframe 維持 / mini-slot 2/4/7
+ ├── RAN1#88     (2017-02 Athens)   ★ 240 kHz は SSB 専用、Tc/κ=64 確定
+ ├── RAN1#88bis  (2017-04 Spokane)  ← SFI 枠組み / BWP 議論開始
+ ├── RAN1#89     (2017-05 Hangzhou) ← SFI via group-common PDCCH
+ ├── NR-AH2      (2017-06 Qingdao)  ★ BWP baseline 合意
+ ├── RAN1#90     (2017-08 Prague)   ← DCI spatial QCL ref 合意 (→ TCI state)
+ ├── NR-AH3      (2017-09 Nagoya)   ← QCL Type A–D ラベル確定
+ ├── RAN1#90bis  (2017-10 Prague)   ← QCL 最終化 / PRG サイズ
+ └── RAN1#91     (2017-12 Reno)     ★ Rel-15 NSA early drop content freeze
+
+2018: Rel-15 凍結
+ ├── RAN#78      (2017-12 Lisbon)   ★ NSA 承認
+ ├── RAN4#86     (2018-02 Athens)   ← FR1 UE 要件凍結 (NSA)
+ ├── RAN1#92     (2018-02–03)       ← ASN.1 凍結準備
+ ├── RAN1#92bis  (2018-04)          ← 残課題クローズ
+ ├── RAN#79      (2018-03)          ★ ASN.1 freeze (NSA)
+ └── RAN#80      (2018-06 La Jolla) ★ Rel-15 SA main drop
+```
+
+**★** = TS 38.211 Sec 4 / TS 38.101-1 Sec 5 の骨格を決めた会議。
+
+---
+
+## 3. 論点別の議論変遷
+
+### 3.1 Numerology（TS 38.211 Sec 4.2 / Sec 4.1）
+
+#### 争点と対立軸
+
+| 論点 | 主張 A | 主張 B | 結論 |
+|:---|:---|:---|:---|
+| SCS のスケール則 | 2^n × 15 kHz（Qualcomm）| 独自候補 (3.75 / 17.5 kHz 等) | A（15 kHz 基点の 2^n 系列で合意、RAN1#85〜#86）|
+| 15 kHz を基点にするか | 基点維持（Ericsson, NTT DOCOMO, Verizon, AT&T）| 上方シフト案（異論は少数）| 維持 — LTE FDD refarming / DSS を見込む |
+| Subframe 1 ms 維持 | 維持（DOCOMO, Ericsson, Nokia）| SCS 連動の可変フレーム（Qualcomm, Huawei 初期）| 維持（NR-AH1）— slot は SCS 連動、subframe は anchor として固定 |
+| 60 kHz の Extended CP | 採用（Huawei, Nokia, Ericsson）— MBSFN/broadcast 想定 | 単一 Normal CP のみ（複雑性懸念）| 採用、ただし **μ=2 のみ** 12-symbol/slot（TS 38.211 Table 4.3.2-2）|
+| 240 kHz の用途 | データチャネル対応も可（一部推進派）| SSB 専用（位相雑音・CP overhead の懸念）| **SSB 専用**（RAN1#88 で確定）|
+| 480 kHz の扱い | Rel-15 導入を推す声 | 時期尚早 | **延期** — Rel-17 で 52.6–71 GHz 拡張時に導入 |
+
+#### Tc と κ=64 の意味
+
+Tc = 1 / (480 × 10³ × 4096) ≈ 0.509 ns、κ = Ts/Tc = 64 は、**LTE の全サンプル境界が NR のサンプル境界と一致する**ことを保証する設計。これは EN-DC（Option-3）で LTE 側の物理層タイミングを NR UE が引き継げることを意味し、NSA を成立させる基盤となった。RAN1#88 で Tc 定義が固まった（TS 38.211 Sec 4.1）。
+
+#### 主要プレイヤー
+
+- **Qualcomm**: 2^n スケーラブル OFDM の最強の推進者（Making 5G NR a Reality, Dec 2016）
+- **Ericsson**: CP-OFDM を DL/UL 共に採用するロジックを主導（Zaidi et al. 2016）
+- **Huawei**: 当初 f-OFDM（windowed/filtered OFDM）を提案したが、RAN1#86 以降は CP-OFDM + scalable numerology に合流
+- **NTT DOCOMO**: NR SID (RP-160671) のラポータ、1ms subframe 維持を強く主張
+- **Nokia**: 同一キャリア内の TDM/FDM 多重化（mixed numerology）を推進
+
+#### 否決された代替案
+
+- **OTFS**（R1-167593, Cohere Technologies, RAN1#86）— 高モビリティ用の遅延-ドップラー領域変調。評価はされたが CP-OFDM と比較して複雑性とエコシステム成熟度で劣り不採用。一次情報 URL: cohere-tech.com の PDF ミラーで存在確認済み。
+
+---
+
+### 3.2 Frame / Slot 構造（TS 38.211 Sec 4.3）
+
+#### 7-symbol vs 14-symbol slot 論争
+
+RAN1#86（2016-08）時点では「SCS ≤ 60 kHz, Normal CP では 7 または 14 OFDM シンボルの slot を許容」と両論併記。しかし **RAN1#87（2016-11 Reno）で 14 シンボルに一本化**。7 シンボル版は「mini-slot」に格下げされ、非スロットベーススケジューリング（2/4/7 シンボル）として URLLC / mmWave 用途に再定義された（NR-AH1 2017-01 で合意）。
+
+#### Mini-slot 推進派 vs 保守派
+
+| 立場 | 企業 | 論拠 |
+|:---|:---|:---|
+| 推進 | Qualcomm, Verizon（ベンダ経由）, Intel, Samsung, LG, MediaTek, InterDigital | URLLC 1 ms 片方向遅延、mmWave ビームスイープ中のデータ送信 |
+| 慎重 | Ericsson, Nokia | DM-RS オーバヘッド増、PDCCH 複雑化。Front-loaded DM-RS + slot-aggregation で代替可能と主張 |
+| 中間 | Huawei/HiSilicon | 当初は 6 GHz 超のみで short-TTI を主張、のち mini-slot 全周波数に合流 |
+
+**結果**: mini-slot PDSCH/PUSCH（2/4/7 シンボル）を標準化（TS 38.214 §5.1.2.1, §7.1.2.1）。同時に slot-aggregation（複数 slot 連結送信）も保持。両論併記で妥協。
+
+#### Flexible TDD / SFI（Slot Format Indicator）
+
+NR の最大の構造革新のひとつが「DL / UL / Flexible の 3値シンボル分類」と「動的オーバライド」。
+
+- **推進**: Qualcomm（SFI 関連特許 US 2018/0279304 出願）、Verizon（FWA / 28 GHz）、Samsung, LG, ZTE — 完全動的 TDD 志向
+- **慎重**: Deutsche Telekom, Orange, NTT DOCOMO — CLI（Cross-Link Interference）懸念。CEPT/ECC の n78 4事業者時間同期要求
+- **中立**: Ericsson, Nokia — 外枠は RRC 半静的、内側の flexible 区間のみ DCI 動的、という 3層構造を提案
+
+**結果**: 3層階層（RAN1#89〜NR-AH2）:
+1. RRC セル固有: `tdd-UL-DL-ConfigurationCommon`
+2. RRC UE 専用: `tdd-UL-DL-ConfigurationDedicated`
+3. DCI format 2_0 / group-common PDCCH SFI: flexible シンボル内のみ動的オーバライド
+
+CLI 管理メカニズムは Rel-15 では実装せず、**Rel-16 の CLI WI に繰り延べ**。これはドイツ事業者4社が n78 を時間同期的に運用せざるを得ない現実への対応。
+
+#### QCL Type A–D（TS 38.211 Sec 4.4.1 / TS 38.214 Sec 5.1.5）
+
+LTE Rel-11 CoMP の QCL Type A/B（CRS vs CSI-RS 判別）を拡張し、**Type D（spatial Rx parameter）を FR2 ビーム管理用に追加**。
+
+- **初期提案**: RAN1#88bis〜#89 で Samsung, Qualcomm, Ericsson が「FR2 ではアナログ Rx ビームを参照 RS から PDSCH に継承する必要があり、spatial 系パラメータは独立の QCL タイプであるべき」と主張。
+- **合意**: RAN1 NR-AH3 (2017-09 Nagoya) / RAN1#90bis (2017-10 Prague) で A/B/C/D のラベル確定。Type D = {spatial Rx parameter} のみ。
+- **Tdoc**: クロスカンパニー summary（ZTE, Huawei, Samsung, LG, Ericsson 共著、RAN1#89 提出）の存在は ETSI reflector で確認できるが、Tdoc 番号 R1-170xxxx は `[要確認]`。
+
+---
+
+### 3.3 Bandwidth Part（TS 38.211 Sec 4.4.5）
+
+#### 動機と争点
+
+NR は最大 400 MHz のキャリアを前提とするが、ほとんどの UE は 20–100 MHz の RF 帯域幅しか持たない。LTE CA のように複数 CC を束ねる方式だと、各 CC に完全な PDCCH / SS ブロック等の制御オーバヘッドが必要で非効率。BWP は「**1 本のキャリア内で UE が RF 的に受信する窓を動的に切替える**」新しい抽象。
+
+#### 提案企業
+
+- **MediaTek**: 自社白書で「Carrier Bandwidth Part 概念は MediaTek エンジニアが 3GPP に提案した」と明記（最も明示的な自己帰属）
+- **Samsung**: 特許 WO2018203717A1「Bandwidth part configurations for single carrier wideband operations」を **2017-05-04 優先日**で出願 — RAN1#88bis と NR-AH2 の間。議論終盤で既に IPR 化着手
+- **Qualcomm**: BWP を「UE 省電力」視点で強く推進（"Making 5G NR a reality" 2016 で既に UE bandwidth adaptation を主張）。ただし「Qualcomm が BWP を発明した」とする一次情報は公開文書内では確認できず `[要確認]`
+- **Intel, Ericsson, Huawei, ZTE, LG**: 参加は確実だが個別 Tdoc は `[要確認]`
+
+#### 合意過程
+
+| 時期 | 状況 |
+|:---|:---|
+| RAN1#87 (2016-11) | TR 38.802 スコープに "wider bandwidth operation" / "UE BW adaptation" 明記（BWP 前段階） |
+| RAN1#88 / #88bis (2017 Q1–Q2) | 候補案競合: (a) 単一広帯域 + 動的スケジューリング / (b) サブバンド / (c) LTE-like CA 流用 / (d) BWP 抽象 |
+| **NR-AH2 (2017-06 Qingdao)** | **BWP baseline 合意**（active DL/UL BWP 1本、中心周波数/帯域/numerology 可変）|
+| RAN1#90 / NR-AH3 / #90bis | **最大 4 BWP/方向**を確定、Initial BWP の SIB1 導出、Default BWP、timer ベース切替、RIV エンコーディング |
+| RAN1#91〜#92bis | DCI / timer / RRC / RA の 4 種切替メカニズム最終化、Point A 表現の確定 |
+| 凍結時 | NSA early drop では "Carrier Bandwidth Part" と呼称、SA main drop で "Bandwidth Part" に短縮 |
+
+#### 「なぜ 4 BWP か」
+
+公開資料では「4」に固定された経緯は明示されず（推測では DCI 2 bit で選択するため）。初期提案と妥協の境界は `[要確認]`。
+
+#### Point A（TS 38.211 Sec 4.4.4.2）
+
+LTE は「キャリア中心周波数」を PRB グリッドのアンカーとしたが、NR で**異なる numerology を同一キャリア内に共存させる**と、中心基準では SCS を変えた瞬間に RB 境界が相対的にずれる（SCS を 2 倍にすると格子ピッチが半分になる）。
+
+解決策は「**最低 SCS（FR1 15 kHz, FR2 60 kHz）の格子で CRB#0 の最低サブキャリア中心**」を Point A と定義し、全 numerology をその入れ子集合として配置すること。これにより異なる SCS の RB 境界が整列する。
+
+- `absoluteFrequencyPointA`（SIB1 / RRC）: 絶対 ARFCN 値
+- `offsetToPointA`（MIB）: SSB の最低 RB から Point A への下方向オフセット（FR1=15 kHz RB、FR2=60 kHz RB 単位）
+
+**提案企業は公開文書では特定できず** `[要確認]`。概念的には複数社のクロスデザインと見られる。
+
+#### Carrier Aggregation（Sec 4.5）
+
+Rel-15 の NR CA は「**LTE CA のフレームワークを流用 + BWP を各 CC に重畳**」で合意。
+
+- 継承: 最大 16 CC、PCell / PSCell / SCell 役割、MAC CE による活性化/非活性化、CIF によるクロスキャリアスケジューリング
+- 変更: 各 CC が独立の numerology と BWP を持てる、CC あたり帯域幅の拡大（最大 400 MHz）
+
+**`ca-SlotOffset` は Rel-15 では未導入、Rel-16 で追加**。Rel-15 の intra-band CA は全 CC のフレーム境界整列を前提とし、異 numerology の inter-band CA でタイミング不整合を扱うシグナリングが時間切れ。RAN1#102-e（Rel-16）の "Unaligned CA" WI で補完。
+
+---
+
+### 3.4 Operating Bands & Channel Arrangement（TS 38.101-1 Sec 5, RAN4）
+
+これは **RAN4 担当**のためプレイヤー構成も異なる。RAN1 が技術アーキテクトに対し、RAN4 は**規制・運用・RF ハードウェア**の三つ巴の調停場。
+
+#### 会議タイムライン
+
+| 会議 | 時期 | 主な成果 |
+|:---|:---|:---|
+| RAN4 NR AH#2 | 2017-06 Qingdao | FR1 バンドリスト初版、チャネルラスター枠組み |
+| RAN4#84 | 2017-08 Berlin | 一次バンドリスト: n1, n2, n3, n5, n7, n8, n20, n28, n38, n41, n50, n51, n66, n70, n71, n74, n75, n76, n77, n78, n79 |
+| RAN4#84bis | 2017-10 Dubrovnik | バンド別 Channel BW 精緻化、**SUL 概念承認** |
+| RAN4#85 | 2017-11 Reno | NSA early drop 向けバンド確定、**SUL n80–n84, n86 追加** |
+| RAN4#86 | 2018-02 Athens | NSA 向け FR1 UE 要件凍結 |
+| RAN4#86bis / #87 / #87bis | 2018-04–07 | SA 完成、**n261 追加**、n259 撤回、GSCN テーブル完成 |
+
+#### 主要バンドの推進勢力
+
+| バンド | 周波数 | 主推進 |
+|:---|:---|:---|
+| n71 (600 MHz FDD) | 617–698 MHz | **T-Mobile US**（FCC 600 MHz incentive auction 2017 整合） |
+| n66 (AWS-3) | 1.7/2.1 GHz | T-Mobile US, AT&T |
+| n41 (2.5 GHz TDD) | 2496–2690 MHz | Sprint US, China Mobile |
+| n77/n78 (C-band) | 3300–4200 / 3300–3800 | 欧州 CEPT 事業者（DT, Vodafone, Orange, Telefonica）、中国3キャリア |
+| n79 (4.5 GHz) | 4400–5000 | **NTT DOCOMO**（MIC 4.5 GHz 割当）、中国移動（4.8–4.9 GHz）|
+| n257 (28 GHz) | 26.5–29.5 GHz | **Japan（DOCOMO, KDDI, SoftBank; MIC 28 GHz 計画）, Korea（KT, SKT; 平昌五輪デモ）** |
+| n258 (26 GHz) | 24.25–27.5 | 欧州 CEPT "26 GHz パイオニアバンド"（DT, Telefonica, Orange）|
+| n260 (39 GHz) | 37–40 GHz | **US: Verizon, AT&T**（FCC 39 GHz オークション系譜）|
+| n261 (28 GHz US) | 27.5–28.35 | **US: Verizon, AT&T**（FCC Upper Microwave Flexible Use）— RAN4#86bis/#87 で追加 |
+| n259 | 31.8–33.4 | 削除 — CEPT が 5G 検討から外したため |
+
+**Tdoc レベルの帰属は多くが `[要確認]`**。3GPP FTP の `/tsg_ran/WG4_Radio/TSGR4_8x/Docs/` は WebFetch で 403。ただし:
+
+- **RP-170855** (NTT DOCOMO, NR WID): 公開情報で確認可
+- **R4-99100** "Definition of Channel Raster" (1999 年の UMTS 時代の原典): 3GPP FTP に直 URL で存在
+
+#### SUL（Supplementary Uplink）導入
+
+- **動機**: 3.5 GHz TDD (n77/78) / 4.5 GHz TDD (n79) は sub-2 GHz FDD 比で UL リンクバジェットが 4–7 dB 劣る + TDD duty cycle で実効時間半減。カバレッジ限界を低周波の UL 専用補助キャリアで救う。
+- **主推進**: **Huawei, Qualcomm**（技術推進）、**China Mobile**（3.5 GHz + 1.8 GHz UL ヘルパーの代表ユースケース）。Ericsson, Nokia 支持。
+- **Rel-15 SUL バンド**: n80, n81, n82, n83, n84, n86（全て LTE FDD UL の再利用）
+- **合意**: RAN4#84bis (2017-10)、Rel-15 v15.0.0 NSA 凍結時に TS 38.101-1 Sec 5 に収録
+
+#### Channel Raster / Sync Raster / GSCN
+
+LTE は 100 kHz 単一ラスターで済んでいたが、NR は:
+
+1. 最大 100 MHz (FR1) / 400 MHz (FR2) の広帯域 → チャネル中心を任意配置したい（ラスターは密に）
+2. SSB を UE が初期スキャンする候補数は絞りたい（同期ラスターは疎に）
+3. Point A と SSB の位置を分離したい（異 numerology 共存のため）
+
+**解決**: Channel Raster（NR-ARFCN、5 kHz / 15 kHz / 60 kHz / 100 kHz のバンド別刻み）と Sync Raster（GSCN、バンド毎に少数の SSB 候補位置のみ）を**分離**。
+
+- **主推進**: **Qualcomm**（特許 US 2018/0131487 "Decoupling of synchronization raster and channel raster" で根拠確認）
+- 共同整形: Ericsson, Nokia, Huawei, Samsung — RAN1/RAN4 joint LS（RAN4#84bis〜#85）で numeric table を詰めた
+
+#### Channel Bandwidth
+
+- FR1: 5, 10, 15, 20, 25, 30, 40, 50, 60, 80, 100 MHz。sub-1 GHz バンドは 20–50 MHz 上限、n77/n78/n79 のみ 100 MHz まで。狭帯域 (5/10/15 MHz) は LTE refarming 用途（Nokia, Ericsson 推進）
+- FR2: 50, 100, 200, 400 MHz。**400 MHz 上限**は Verizon, AT&T, Samsung, Qualcomm（US 28/39 GHz）、DOCOMO, KDDI（Japan 28 GHz）が推進。200/400 MHz は 120 kHz SCS 必須
+
+#### Rel-15 凍結シーケンス
+
+- **NSA early drop**: RAN#78 (2017-12 Lisbon) 承認 → ASN.1 freeze RAN#79 (2018-03)。FR1 主要バンド、FR2 n257/n258/n260、チャネル BW、初期 GSCN を含む。Option-3 EN-DC。
+- **SA main drop**: 物理層 RAN#80 (2018-06 La Jolla)、ASN.1 freeze RAN#81 (2018-09)。**n261 追加**、GSCN 完全版、SA 固有 UE 要件。
+- **Late drop**: ASN.1 目標 RAN#84 (2019-06)、Option-4/7、NR-NR DC。
+
+TS 38.101-1 Sec 5 の版の進化: v15.0.0 (2017-12) → v15.1.0 (2018-03) → v15.2.0 (2018-06) → v15.3.0 (2018-09)。n261 と GSCN 精緻化は v15.2.0 / v15.3.0 に現れる。
+
+---
+
+## 4. 企業別の立場サマリー
+
+| 企業 | Numerology | Frame/Slot | BWP | Bands (RAN4) |
+|:---|:---|:---|:---|:---|
+| **Qualcomm** | 2^n スケール主導、柔軟フレーム初期案 | mini-slot / SFI / dynamic TDD 強推進 | 省電力視点で BWP 推進 | Sync/Channel raster 分離主導、SUL 技術推進 |
+| **Ericsson** | CP-OFDM 主導、15 kHz 基点維持 | 単一 slot + front-loaded DM-RS 派、SFI 3層構造調停 | 参加（具体寄書 [要確認]）| 欧州ポート、LTE refarming 向け狭帯域保持 |
+| **Huawei** | 当初 f-OFDM、後に合流 | mini-slot 中立、高周波数推進 | 参加（具体寄書 [要確認]）| **SUL 主推進**、C-band 中国推進 |
+| **Nokia** | Mixed numerology TDM/FDM 推進 | 単一 slot + slot-aggregation 派、SFI 3層構造 | 参加（具体寄書 [要確認]）| 欧州ポート、LTE refarming |
+| **Samsung** | 参加 | spatial QCL（Type D）早期提案 | **BWP 特許 WO2018203717A1（2017-05 優先）** | FR2 400 MHz 推進（Galaxy 5G 端末整合）|
+| **MediaTek** | 参加 | 参加 | **CBP（Carrier Bandwidth Part）概念の自社帰属主張** | — |
+| **Intel** | 参加 | mini-slot 支持 | 参加、arXiv 1712.09724（Jeon）で動向反映 | — |
+| **LG** | 参加 | mini-slot 支持 | 参加 | — |
+| **ZTE** | 参加 | QCL summary 共著、SFI 支持 | 参加 | — |
+| **NTT DOCOMO** | **1 ms subframe 維持主導**、NR SID ラポータ（RP-160671）| 参加 | 参加 | **n79 / n257 主推進、CLI 慎重派** |
+| **Cohere Technologies** | OTFS 提案 (R1-167593) — 不採用 | — | — | — |
+| **China Mobile** | — | — | — | **SUL 代表ユースケース**、n41 / n79 推進 |
+| **Verizon / AT&T** | 15 kHz 基点支持（LTE refarming）| FWA 向け dynamic TDD 支持 | — | **n260 / n261 主推進**、FR2 400 MHz |
+| **T-Mobile US** | — | — | — | **n71 (600 MHz) 主推進** |
+| **Deutsche Telekom / Orange / Telefonica** | — | **CLI 慎重派**、時間同期 TDD 要請 | — | n77/n78 主推進、n258 推進 |
+
+---
+
+## 5. 論文の理想仮定 vs 3GPP 実装制約ギャップ（原則 2）
+
+Rel-15 議論から抽出されるギャップの典型例:
+
+| 学術論文の仮定 | 3GPP Rel-15 の実装制約 | 進歩性の源泉 |
+|:---|:---|:---|
+| 連続値の SCS を自由選択 | **5 値のみ**（15/30/60/120/240 kHz、実データは 4 値）、しかも 240 は SSB 専用 | 離散 SCS 制約下でのシステム最適化、μ=2 の Extended CP の特殊扱い |
+| 完全動的 TDD で干渉協調可 | **3層階層 + flexible シンボルのみ動的**、CLI は Rel-16 以降 | Flexible シンボル配置最適化、Rel-15 CLI 未対応下での協調（規制対応）|
+| LTE 互換性制約なし | **κ=64 で LTE Ts と同期**、15 kHz 基点必須、Option-3 前提 | NR-LTE DSS / EN-DC 固有の技術（refarming 省略不可）|
+| キャリア中心基準の自由な割当 | **Point A からの入れ子 CRB**、異 SCS 間の格子整列必須 | Mixed numerology 運用の実装、Point A 決定経路の特許余地 |
+| UE RF BW = キャリア BW | **BWP で窓を切替**、DCI/timer/RRC/RA の 4 種切替、最大 4 BWP | BWP 切替遅延最適化、初期 BWP 決定、省電力制御 |
+| 同期・チャネルラスター一体 | **分離設計（GSCN vs NR-ARFCN）**、5 kHz 〜 100 kHz のバンド別刻み | ラスター分離の数値テーブル設計、Qualcomm US 2018/0131487 系の特許空間 |
+| UL / DL 帯域は対称 | **SUL / SDL で非対称カバレッジ救済**、n80–n86 など FDD UL の再利用 | SUL / NUL スイッチング（キャリア選択）、Huawei 系の IPR 集中帯 |
+
+---
+
+## 6. 未解決課題 / 本ノートで検証できなかったもの
+
+### 6.1 Tdoc 番号未検証（`[要確認]` 一覧）
+
+- **Numerology**: RAN1#85〜#88 における各企業の SCS 提案 Tdoc 個別番号
+- **Frame/Slot**: RAN1#86 の mini-slot 初期 Tdoc、R1-168489（use cases）の提案企業
+- **QCL**: Type D 初期提案 R1-1700771 系の提出企業、RAN1#89 の QCL summary の最終 Tdoc 番号（ZTE/Huawei/Samsung/LG/Ericsson 共著）
+- **BWP**: MediaTek / Samsung / Qualcomm の初期 BWP 提案 Tdoc（R1-17xxxxx）
+- **Point A**: 提案企業と初期 Tdoc（公開情報では特定できず）
+- **RAN4**: 各バンド提案の一次 Tdoc（n71 の T-Mobile 寄書、n79 の DOCOMO 寄書、n261 の Verizon/AT&T 寄書、Qualcomm の SUL 寄書、Qualcomm の raster 分離寄書）
+
+### 6.2 構造的に不明な事項
+
+- BWP の「4」という数値の出所（DCI 2 bit の選択で十分、という議論は想像だが、5 以上提案があったか、2 提案があったか等の交渉履歴）
+- 480 kHz SCS を Rel-15 で "defer" と決めた会議の正確な Chairman's Note wording
+- 60 kHz Extended CP の各社態度の Tdoc レベル裏付け（MBSFN/broadcast 用途の推進企業）
+- n261 追加の正確な RAN4 会議（#86bis か #87 か）
+
+### 6.3 環境的制約
+
+本調査では **3GPP FTP の `/ftp/tsg_ran/WG1_RL1/TSGR1_*/Docs/` と `/ftp/tsg_ran/WG4_Radio/TSGR4_*/Docs/` が WebFetch から HTTP 403**。これが Tdoc レベル検証の最大の壁。解決には以下のいずれかが必要:
+- 3GPP Portal の認証セッション（個人アカウント）経由で Chairman's Notes を取得
+- ETSI FTP ミラー経由でのバッチダウンロード
+- ApexStandards や WhatTheSpec.net の検索 UI 経由の Tdoc 検索
+
+---
+
+## 7. 市場・普及の見込みと知財余地
+
+Rel-15 の物理リソース仕様議論は、単なる技術合意ではなく **SEP（標準必須特許）の配置図**そのもの:
+
+| 領域 | 主要 SEP 集中ベンダー（推定）| 進歩性の所在 |
+|:---|:---|:---|
+| Numerology / Tc / κ=64 | Qualcomm, Ericsson | LTE 互換 sampling 設計、mixed numerology 同期 |
+| Mini-slot / URLLC | Qualcomm, Samsung, LG | 2/4/7 シンボル PDSCH マッピング、front-loaded DM-RS 配置 |
+| SFI / Dynamic TDD | **Qualcomm（US 2018/0279304）**, ZTE, Samsung | Group-common PDCCH、3層階層構造 |
+| QCL Type D | Samsung, Qualcomm, Ericsson | FR2 ビーム管理、TCI state シグナリング |
+| BWP | **MediaTek**, **Samsung (WO2018203717A1)**, Qualcomm, Intel | BWP 切替、Initial/Default BWP、RIV エンコーディング |
+| Point A / Resource Grid | 特定困難 | Mixed numerology 格子整列（共同設計） |
+| Channel/Sync Raster 分離 | **Qualcomm (US 2018/0131487)**, 他 | GSCN 数値テーブル、SSB 候補位置設計 |
+| SUL | **Huawei**, Qualcomm | UL/DL 非対称キャリア組合せ、SUL スイッチング DCI |
+| CA（CC + BWP） | Ericsson, Nokia, Samsung | Cross-carrier scheduling + BWP 切替の合成 |
+
+Rel-15 凍結から 8 年（2026-04 時点）経った現在、これら SEP の多くは宣言期限内で ETSI IPR DB に登録済み。**Rel-16 以降の機能追加（CLI 管理、ca-SlotOffset、480 kHz SCS、n259 再登場等）は Rel-15 の骨格を前提にした差分特許**となるため、Rel-15 の骨格特許がライセンス交渉の軸となる。
+
+---
+
+## 8. Next Steps（原則 6）
+
+### 8.1 Tdoc 番号の直接検証（優先）
+
+- [ ] 3GPP Portal（https://portal.3gpp.org/）の認証アクセスで **R1-168489**（RAN1#86 slot use cases）の提案企業を確認
+- [ ] RAN1#89 の QCL types summary Tdoc（ZTE/Huawei/Samsung/LG/Ericsson 共著）の正確な番号を ETSI list archive から特定
+- [ ] RAN1#88bis / NR-AH2 の **BWP 初期提案 Tdoc** を MediaTek / Samsung / Qualcomm について検索（検索クエリ: "R1-1707 bandwidth part MediaTek"）
+- [ ] RAN4#84bis / #85 の **SUL 提案 Tdoc**（Huawei / Qualcomm / China Mobile）を特定
+- [ ] RAN4#86bis / #87 の **n261 追加 Tdoc**（Verizon / AT&T）を特定
+
+### 8.2 Chairman's Notes の体系的取得
+
+- [ ] RAN1#86〜#92bis の Chairman's Notes（`Chairman_Notes_R1_<meeting>.docx`）を FTP 直接取得または ETSI ミラー経由で取得
+- [ ] RAN4#84〜#87bis 同様
+- [ ] 取得後、Word 内の Agreement / Working Assumption / Way Forward 記述を抽出し、本ノートの `[要確認]` 項目を更新
+
+### 8.3 TR/WID/SID の参照
+
+- [ ] **TR 38.802** v14.2.0 全体を精読（Study Item の合意まとめ）
+- [ ] **TR 38.803** RF scenarios（FR2 向け RAN4 インプット）
+- [ ] **TR 38.817-01** (v15.5.0) UE RF 要件全般
+- [ ] **TR 38.817-02** FR2 UE 要件
+- [ ] **TR 38.912** v15.0.0 NR technology reflection
+- [ ] **RP-160671**（NR SID）、**RP-170855**（NR WID）原文確認
+
+### 8.4 個別ディープダイブ候補
+
+- [ ] **OTFS（R1-167593）が採用されなかった理由**の詳細分析 — 6G で再浮上する可能性と SEP 余地の検討
+- [ ] **BWP「4」の交渉経路** — 省電力 vs スケジューラ複雑性のトレードオフ定量化
+- [ ] **Point A の提案企業特定** — クロスベンダー起源なら Rel-15 の "orphan IPR" 領域の可能性
+- [ ] **Rel-16〜Rel-18 での Rel-15 枠組み拡張**（480 kHz SCS, CLI 管理, ca-SlotOffset, 52.6–71 GHz）を別トピックで調査 → `/survey-topic 52.6-71 GHz NR extension` 等
+
+### 8.5 関連ノートへのリンク更新
+
+- [ ] 本ノートへのリンクを `TS38.211-Section4-原文準拠和訳.md` / `TS38.101-1-Section5-原文準拠和訳.md` の `related:` に追加
+- [ ] `NR周波数リソース構造の発表資料ドラフト.md` の発表原稿末尾に「策定議論の裏話」として参照できる形で組み込み（発表時の Q&A 対応）
+
+---
+
+## 9. 信頼度の総評
+
+| セクション | 信頼度 | 根拠 |
+|:---|:---|:---|
+| 会議タイムライン（Sec 2）| medium | 二次情報（ベンダー白書、ShareTechNote）で収束しているが、各日付は一次照合未済 |
+| Numerology（3.1）| medium-high | CP-OFDM 採用、Tc/κ=64、Table 4.2-1 は TS 38.211 で確定事項 |
+| Frame/Slot（3.2）| medium | 14-symbol、mini-slot、SFI 3層構造は仕様で確定。個別企業の態度は二次情報 |
+| BWP（3.3）| medium | MediaTek 自社帰属、Samsung 特許（2017-05）は一次確認。合意会議は二次情報 |
+| QCL Type A-D（3.2 内）| medium | Type D=spatial は仕様で確定。提案企業は [要確認] |
+| Operating Bands（3.4）| medium | バンドリスト・BW テーブルは TS 38.101-1 v15.x で確定。推進企業は公開記録から妥当 |
+| SUL（3.4）| medium-high | SUL バンド・Huawei/Qualcomm 推進は複数情報源で一致 |
+| Channel/Sync Raster 分離（3.4）| medium-high | Qualcomm 特許 US 2018/0131487 で根拠確認 |
+| Tdoc 番号（全般）| low | 大半が [要確認]。一次検証には 3GPP Portal 認証アクセスが必要 |
