@@ -1,6 +1,16 @@
+---
+up: "[[README|templates]]"
+related:
+  - "[[../axes/02-generation]]"
+  - "[[../axes/05-adoption-factors]]"
+  - "[[../strategy-summary]]"
+---
+
 # テンプレート: 世代比較
 
 スキル `/success-pattern` から参照される。
+
+> 親: [[README|templates（テンプレ MoC）]] | 関連: [[../axes/02-generation|軸2 世代]] / [[../axes/05-adoption-factors|軸5 普及要因]]
 
 ## マトリクス構造
 

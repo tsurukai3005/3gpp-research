@@ -1,6 +1,16 @@
+---
+up: "[[README|templates]]"
+related:
+  - "[[demand-reverse]]"
+  - "[[../axes/README]]"
+  - "[[../personas/README]]"
+---
+
 # テンプレート: トピック間接続（考察）
 
 スキル `/connect-dots` から参照される。
+
+> 親: [[README|templates（テンプレ MoC）]] | 関連: [[demand-reverse]] / [[../axes/README|6軸]] / [[../personas/README|personas]]
 
 ## 入力
 
@@ -54,4 +64,7 @@
 
 ## 出力先
 
-`documents/YYYY-MM-DD_接続考察-topicA-x-topicB.md`
+`documents/<yymmdd>_接続考察-topicA-x-topicB.md`（フラット）
+
+frontmatter の `related:` に両トピックを wikilink で列挙し、`up:` には主軸となるトピックを入れる。
+本文中でも `[[topicA]]` と `[[topicB]]` を必ず埋める（[`framework/linking-policy.md`](../linking-policy.md)）。

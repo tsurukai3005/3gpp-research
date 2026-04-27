@@ -1,6 +1,16 @@
+---
+up: "[[README|templates]]"
+related:
+  - "[[connect-dots]]"
+  - "[[../personas/README]]"
+  - "[[../axes/04-market]]"
+---
+
 # テンプレート: 需要からの逆引き
 
 スキル `/demand-reverse` から参照される。
+
+> 親: [[README|templates（テンプレ MoC）]] | 関連: [[connect-dots]] / [[../personas/README|personas]] / [[../axes/04-market|軸4 市場]]
 
 ## 入力
 
@@ -52,4 +62,6 @@
 
 ## 出力
 
-チャットに出力。保存する場合は `documents/YYYY-MM-DD_需要逆引き-persona-slug.md`
+チャットに出力。保存する場合は `documents/<yymmdd>_需要逆引き-persona-slug.md`（フラット）
+
+frontmatter の `related:` に上位候補のトピックノートを wikilink で列挙する（[`framework/linking-policy.md`](../linking-policy.md)）。

@@ -1,6 +1,17 @@
+---
+up: "[[README|templates]]"
+related:
+  - "[[survey-topic]]"
+  - "[[paper-digest]]"
+  - "[[../axes/06-ip]]"
+  - "[[../principles]]"
+---
+
 # テンプレート: ギャップ分析
 
 スキル `/analyze-gap` から参照される。
+
+> 親: [[README|templates（テンプレ MoC）]] | 関連: [[survey-topic]] / [[paper-digest]] / [[../axes/06-ip|軸6 知財]] / [[../principles|原則2 実装制約ギャップ]]
 
 ## 3つのバケット
 

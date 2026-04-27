@@ -1,6 +1,16 @@
+---
+up: "[[README|templates]]"
+related:
+  - "[[paper-digest]]"
+  - "[[gap-analysis]]"
+  - "[[../axes/README]]"
+---
+
 # テンプレート: トピック新規調査
 
 スキル `/survey-topic` から参照される。
+
+> 親: [[README|templates（テンプレ MoC）]] | 関連: [[paper-digest]] / [[gap-analysis]] / [[../axes/README|6軸]]
 
 ## 調査項目
 
@@ -52,11 +62,17 @@ axes:
   ip: [...]
 status: draft
 confidence: low | medium | high
+created: YYYY-MM-DD
 updated: YYYY-MM-DD
 sources:
   - url: https://...
     accessed: YYYY-MM-DD
-related:
-  - ../path/to/related-topic.md
+references:
+  - "[[arXiv-XXXX.XXXXX]]"   # references/ にある一次情報の wikilink
+up: "[[親ノート名]]"           # 0または1本（最も近い親）
+related:                       # 兄弟・関連ノートへの wikilink
+  - "[[260420_NRフレーム構造とリソースブロックの進化まとめ]]"
 ---
 ```
+
+ファイル名は `documents/<yymmdd>_<内容スラッグ>.md`（例: `documents/260427_cell-free-massive-mimo.md`）。サブフォルダ禁止。
