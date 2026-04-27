@@ -11,7 +11,9 @@
 調査・分析・記録の全ての行動は `framework/` のルールパーツに従う。
 
 - **不変原則**: `framework/principles.md`
-- **スキル契約**: `framework/skill-contract.md` — 全スキル共通の行動規範・禁止事項・出力スキーマ
+- **スキル契約**: `framework/skill-contract.md` — 全スキル共通の行動規範・禁止事項・出力スキーマ・命名規則
+- **リンクポリシー**: `framework/linking-policy.md` — Obsidian wikilink、孤立ノート禁止、階層は `up`/`related` で表現
+- **参考文献ポリシー**: `framework/references-policy.md` — 一次情報を `references/` に MD 化する命名・保存規則
 - **分析軸（6軸）**: `framework/axes/` — 1軸1ファイル、全トピックに必ず適用
 - **分析レンズ**: `framework/lenses/` — 状況に応じて適用するオプショナル視点
 - **ペルソナ**: `framework/personas/` — 需要側の多面的モデル
@@ -26,17 +28,28 @@
 ```
 3gpp-research/
 ├── framework/      ← 調査ルール・分析軸の定義
-├── documents/      ← 全メモ（フラット、日付プレフィックス）
+├── documents/      ← 自分の調査ノート（フラット、yymmdd_ プレフィックス）
+├── references/     ← 一次情報（論文・Tdoc・仕様書）の MD 化（フラット、原文の番号/タイトル名）
 ├── CLAUDE.md
 └── README.md
 ```
 
 ### documents/ の命名規則
 
-- 週ごとのフォルダ: `MM-DD_MM-DD/`（例: `2026-04-21_04-27/`）
-- ファイル名: 内容の要約（日付なし、タグなし）
-- 目的が混ざったメモも許容する
-- 年またぎの場合: `2026-12-29_2027-01-04/`
+- 全ファイルは `documents/` 直下に置く（フォルダ分けは保留）
+- ファイル名: `yymmdd_<内容スラッグ>.md`
+  - `yymmdd` は **作成日**（frontmatter `created` の年下2桁+月+日）
+  - 例: `260421_NRフレーム構造の発表資料ドラフト.md`
+- 同日に複数作る場合は内容スラッグで区別
+- ノート間は **必ず Obsidian wikilink** (`[[ファイル名]]`) でつなぐ。孤立ノート禁止
+- 階層は frontmatter の `up`（親ノート、0または1本）と `related`（兄弟、複数）で表現
+
+### references/ の命名規則
+
+- 論文・Tdoc・Chair Notes・仕様書を Markdown 化したものを保存
+- ファイル名は **論文タイトル・寄書番号・arXiv ID をそのまま**（`yymmdd_` を付けない）
+  - 例: `R1-2601750.md`、`arXiv-2508.08225.md`、`TS38.211-v18.6.0.md`、`Chair-Notes-RAN1-124bis.md`
+- 詳細は `framework/references-policy.md`
 
 ## スキル一覧
 

@@ -23,14 +23,15 @@
 
 ```
 3gpp-research/
-├── framework/    調査フレームワーク（分析軸・レンズ・ペルソナ・テンプレート）
-├── documents/       トピック別知識ベース（時系列を超えた概念整理）
-├── documents/      過去世代の分析（普及要因の学び）
-├── documents/     3GPP 会合ごとのスナップショット
-├── documents/        アイデア・考察メモ
-├── documents/      読んだ文献のメモ
-└── docs/            プロジェクト設計ドキュメント
+├── framework/    調査フレームワーク（分析軸・レンズ・ペルソナ・テンプレート、リンク/参考文献ポリシー）
+├── documents/    自分の調査ノート（フラット、ファイル名 yymmdd_<slug>.md）
+├── references/   一次情報の Markdown 化（論文・Tdoc・仕様書、原文の番号/タイトルそのまま）
+├── CLAUDE.md
+└── README.md
 ```
+
+ノート間は Obsidian wikilink (`[[ファイル名]]`) でつなぎ、frontmatter `up` / `related` で階層を表現する。
+孤立ノートは禁止。詳細は `framework/linking-policy.md` と `framework/references-policy.md` を参照。
 
 ## 調査フレームワーク
 
