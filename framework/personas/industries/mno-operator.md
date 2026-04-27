@@ -1,4 +1,15 @@
+---
+up: "[[../README|personas]]"
+related:
+  - "[[chipset-vendor]]"
+  - "[[device-oem]]"
+  - "[[vertical-automotive]]"
+  - "[[../stakeholders/operator-cxo]]"
+---
+
 # 産業ペルソナ: 通信事業者（MNO）
+
+> 親: [[../README|personas]] | 兄弟（産業）: [[chipset-vendor|チップセットベンダー]] / [[device-oem|端末 OEM]] / [[vertical-automotive|自動車]] | 関連: [[../stakeholders/operator-cxo|MNO 経営層]]
 
 ## 基本的な立場
 

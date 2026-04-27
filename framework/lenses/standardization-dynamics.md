@@ -1,7 +1,20 @@
+---
+up: "[[README|lenses]]"
+related:
+  - "[[political-economy]]"
+  - "[[../axes/05-adoption-factors]]"
+  - "[[../personas/stakeholders/3gpp-chair]]"
+  - "[[../personas/industries/chipset-vendor]]"
+---
+
 # レンズ: 標準化力学
 
 **適用場面**: 技術提案が 3GPP で受け入れられるかどうかを評価するとき。
 純粋な学術論文の読解時には不要。
+
+> 親: [[README|lenses（レンズ MoC）]] | 兄弟レンズ: [[political-economy|地政学・企業間力学]]
+> 関連: [[../axes/05-adoption-factors|軸5 普及要因]] / [[../personas/stakeholders/3gpp-chair|3GPP 議長ペルソナ]] / [[../personas/industries/chipset-vendor|チップセットベンダー]]
+
 
 ## 標準化での受容を左右する要因
 

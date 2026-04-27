@@ -1,6 +1,16 @@
+---
+up: "[[README|axes]]"
+related:
+  - "[[02-generation]]"
+  - "[[../lenses/standardization-dynamics]]"
+---
+
 # 軸1: 技術レイヤー
 
 **問い: この技術は物理層のどこに位置し、他のレイヤーとどう結合しているか？**
+
+> 親: [[README|axes（軸 MoC）]] | 兄弟軸: [[02-generation|軸2]] / [[03-value|軸3]] / [[04-market|軸4]] / [[05-adoption-factors|軸5]] / [[06-ip|軸6]]
+
 
 ## 分類
 

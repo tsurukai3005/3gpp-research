@@ -1,4 +1,15 @@
+---
+up: "[[../README|personas]]"
+related:
+  - "[[operator-cxo]]"
+  - "[[regulator]]"
+  - "[[vendor-rd]]"
+  - "[[../../lenses/standardization-dynamics]]"
+---
+
 # ステークホルダーペルソナ: 3GPP 議長 / Feature Lead
+
+> 親: [[../README|personas]] | 兄弟（ステークホルダー）: [[operator-cxo|MNO 経営層]] / [[regulator|規制当局]] / [[vendor-rd|ベンダー R&D]] | 関連: [[../../lenses/standardization-dynamics|標準化ダイナミクス]]
 
 ## 基本的な立場
 

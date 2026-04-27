@@ -1,6 +1,16 @@
+---
+up: "[[README|axes]]"
+related:
+  - "[[04-market]]"
+  - "[[05-adoption-factors]]"
+---
+
 # 軸3: 価値軸
 
 **問い: この技術はどの KPI を改善し、何を犠牲にするか？**
+
+> 親: [[README|axes（軸 MoC）]] | 兄弟軸: [[01-technology-layer|軸1]] / [[02-generation|軸2]] / [[04-market|軸4]] / [[05-adoption-factors|軸5]] / [[06-ip|軸6]]
+
 
 ## KPI 分類
 

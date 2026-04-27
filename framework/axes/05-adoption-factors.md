@@ -1,6 +1,19 @@
+---
+up: "[[README|axes]]"
+related:
+  - "[[02-generation]]"
+  - "[[03-value]]"
+  - "[[04-market]]"
+  - "[[../templates/generation-comparison]]"
+---
+
 # 軸5: 普及要因軸
 
 **問い: この技術はなぜ広まるのか、あるいは広まらないのか？**
+
+> 親: [[README|axes（軸 MoC）]] | 兄弟軸: [[01-technology-layer|軸1]] / [[02-generation|軸2]] / [[03-value|軸3]] / [[04-market|軸4]] / [[06-ip|軸6]]
+> 関連テンプレ: [[../templates/generation-comparison|世代比較マトリクス]]
+
 
 ## 普及を左右する5つの要因
 

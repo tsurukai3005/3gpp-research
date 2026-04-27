@@ -1,4 +1,14 @@
+---
+up: "[[../README|personas]]"
+related:
+  - "[[mno-operator]]"
+  - "[[device-oem]]"
+  - "[[chipset-vendor]]"
+---
+
 # 産業ペルソナ: 自動車産業（B2B 垂直）
+
+> 親: [[../README|personas]] | 兄弟（産業）: [[mno-operator|MNO]] / [[chipset-vendor|チップセットベンダー]] / [[device-oem|端末 OEM]]
 
 ## 基本的な立場
 

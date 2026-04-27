@@ -1,4 +1,15 @@
+---
+up: "[[../README|personas]]"
+related:
+  - "[[3gpp-chair]]"
+  - "[[regulator]]"
+  - "[[vendor-rd]]"
+  - "[[../industries/mno-operator]]"
+---
+
 # ステークホルダーペルソナ: オペレーター経営層（CxO）
+
+> 親: [[../README|personas]] | 兄弟（ステークホルダー）: [[3gpp-chair|3GPP 議長]] / [[regulator|規制当局]] / [[vendor-rd|ベンダー R&D]] | 関連: [[../industries/mno-operator|MNO 産業ペルソナ]]
 
 ## 基本的な立場
 

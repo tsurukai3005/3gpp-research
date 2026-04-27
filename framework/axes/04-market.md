@@ -1,6 +1,18 @@
+---
+up: "[[README|axes]]"
+related:
+  - "[[../personas/README]]"
+  - "[[03-value]]"
+  - "[[05-adoption-factors]]"
+---
+
 # 軸4: 市場軸
 
 **問い: この技術は誰が使い、そのユースケース市場は成熟しているか？**
+
+> 親: [[README|axes（軸 MoC）]] | 兄弟軸: [[01-technology-layer|軸1]] / [[02-generation|軸2]] / [[03-value|軸3]] / [[05-adoption-factors|軸5]] / [[06-ip|軸6]]
+> 連携: [[../personas/README|personas]] と密接に組み合わせて使う
+
 
 ## セグメント分類
 
@@ -21,7 +33,7 @@
 
 ## ペルソナとの連携
 
-より詳細な需要分析には `framework/personas/` のペルソナファイルを参照する。
+より詳細な需要分析には [[../personas/README|personas]] のペルソナファイルを参照する。
 市場軸はセグメント分類を担い、ペルソナは「誰にとって」を深掘りする。
 
 ## frontmatter での記録

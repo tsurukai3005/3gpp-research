@@ -1,4 +1,15 @@
+---
+up: "[[../README|personas]]"
+related:
+  - "[[mno-operator]]"
+  - "[[device-oem]]"
+  - "[[../../lenses/standardization-dynamics]]"
+  - "[[../stakeholders/vendor-rd]]"
+---
+
 # 産業ペルソナ: チップセットベンダー
+
+> 親: [[../README|personas]] | 兄弟（産業）: [[mno-operator|MNO]] / [[device-oem|端末 OEM]] / [[vertical-automotive|自動車]] | 関連: [[../stakeholders/vendor-rd|ベンダー R&D 責任者]]
 
 ## 基本的な立場
 

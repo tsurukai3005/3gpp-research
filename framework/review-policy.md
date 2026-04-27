@@ -28,6 +28,14 @@ draft → reviewed → stable → obsolete
 - `draft` ファイルを引用する場合は `[draft]` と明記する
 - それ以上の制約は現時点では設けない
 
+## リンク健全性チェック（[linking-policy.md](./linking-policy.md)）
+
+レビュー時に以下を確認する:
+
+- ノートに最低1本の wikilink（本文中 or `up` / `related`）があるか
+- 参照している `[[ファイル名]]` が実在するか（赤字 placeholder は `next:` に明記されているか）
+- 引用している論文・Tdoc が `references/` に MD 化されているか、もしくは references 化対象外と判断できるか
+
 ## confidence の目安
 
 | 値 | 意味 | 典型的な状況 |

@@ -1,4 +1,15 @@
+---
+up: "[[../README|personas]]"
+related:
+  - "[[3gpp-chair]]"
+  - "[[operator-cxo]]"
+  - "[[regulator]]"
+  - "[[../industries/chipset-vendor]]"
+---
+
 # ステークホルダーペルソナ: 大手ベンダー R&D
+
+> 親: [[../README|personas]] | 兄弟（ステークホルダー）: [[3gpp-chair|3GPP 議長]] / [[operator-cxo|MNO 経営層]] / [[regulator|規制当局]] | 関連: [[../industries/chipset-vendor|チップセットベンダー]]
 
 ## 基本的な立場
 

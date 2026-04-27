@@ -1,6 +1,17 @@
+---
+up: "[[README|axes]]"
+related:
+  - "[[05-adoption-factors]]"
+  - "[[../templates/generation-comparison]]"
+---
+
 # 軸2: 世代軸
 
 **問い: この技術はどの世代に属し、前世代からどう進化したか？**
+
+> 親: [[README|axes（軸 MoC）]] | 兄弟軸: [[01-technology-layer|軸1]] / [[03-value|軸3]] / [[04-market|軸4]] / [[05-adoption-factors|軸5]] / [[06-ip|軸6]]
+> 関連テンプレ: [[../templates/generation-comparison|世代比較マトリクス]]（`/success-pattern` から呼ばれる）
+
 
 ## 分類
 

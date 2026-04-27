@@ -1,4 +1,14 @@
+---
+up: "[[../README|personas]]"
+related:
+  - "[[chipset-vendor]]"
+  - "[[mno-operator]]"
+  - "[[vertical-automotive]]"
+---
+
 # 産業ペルソナ: 端末 OEM
+
+> 親: [[../README|personas]] | 兄弟（産業）: [[mno-operator|MNO]] / [[chipset-vendor|チップセットベンダー]] / [[vertical-automotive|自動車]]
 
 ## 基本的な立場
 

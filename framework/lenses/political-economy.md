@@ -1,7 +1,19 @@
+---
+up: "[[README|lenses]]"
+related:
+  - "[[standardization-dynamics]]"
+  - "[[../axes/06-ip]]"
+  - "[[../personas/README]]"
+---
+
 # レンズ: 地政学・企業間力学
 
 **適用場面**: 技術の標準化動向を地政学的・経済的文脈から分析するとき。
 技術的な詳細分析時には不要。
+
+> 親: [[README|lenses（レンズ MoC）]] | 兄弟レンズ: [[standardization-dynamics|標準化ダイナミクス]]
+> 関連: [[../axes/06-ip|軸6 知財]] / [[../personas/README|personas（地域・企業ペルソナ）]]
+
 
 ## 地域間の力学
 

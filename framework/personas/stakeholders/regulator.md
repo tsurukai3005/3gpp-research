@@ -1,4 +1,15 @@
+---
+up: "[[../README|personas]]"
+related:
+  - "[[3gpp-chair]]"
+  - "[[operator-cxo]]"
+  - "[[vendor-rd]]"
+  - "[[../../lenses/political-economy]]"
+---
+
 # ステークホルダーペルソナ: 規制当局
+
+> 親: [[../README|personas]] | 兄弟（ステークホルダー）: [[3gpp-chair|3GPP 議長]] / [[operator-cxo|MNO 経営層]] / [[vendor-rd|ベンダー R&D]] | 関連: [[../../lenses/political-economy|地政学・企業間力学]]
 
 ## 基本的な立場
 

@@ -1,4 +1,15 @@
+---
+up: "[[../README|personas]]"
+related:
+  - "[[north-america]]"
+  - "[[europe]]"
+  - "[[japan]]"
+  - "[[../../lenses/political-economy]]"
+---
+
 # 地域ペルソナ: 中国
+
+> 親: [[../README|personas]] | 兄弟（地域）: [[north-america|北米]] / [[europe|欧州]] / [[japan|日本]] / [[southeast-asia|東南アジア]]
 
 ## 通信インフラの特徴
 

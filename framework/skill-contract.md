@@ -14,6 +14,8 @@
 4. **Next Steps を残す** — 次のアクションが即座に実行できる具体性で書く（原則6）
 5. **`framework/principles.md` の6原則に従う** — スキル固有ルールが原則と矛盾する場合、原則が優先
 6. **バイナリ文書はテキスト化してから読む** — `.docx` / `.pptx` / `.odt` / `.rtf` は pandoc で Markdown 化し、生成した `.md` を Read / Grep する。コマンドと運用は [`framework/tools.md`](./tools.md) を参照
+7. **一次情報は `references/` に Markdown 化して保存する** — 論文・Tdoc・Chair Notes・仕様書は本文を抽出して保存。ファイル名は論文タイトル/寄書番号/arXiv ID をそのまま使う。詳細は [`framework/references-policy.md`](./references-policy.md)
+8. **ノート間は必ずリンクでつなぐ** — Obsidian wikilink (`[[ファイル名]]`) を本文に埋め、frontmatter `up` / `related` で階層関係を明示する。孤立ノート（被リンクも発リンクも無いノート）は禁止。詳細は [`framework/linking-policy.md`](./linking-policy.md)
 
 ### 絶対にしないこと（Global Will Not）
 
@@ -80,6 +82,23 @@ Global Will / Will Not に加えて、このスキル特有のルール。
 3. **分岐を書く** — 情報が見つからない場合、トピックが存在しない場合の対処
 4. **出力形式を固定する** — ファイル保存のパスパターン、frontmatter の必須フィールドを明記
 
+## ファイルの保存場所と命名
+
+### `documents/` — 自分の調査ノート（フラット）
+
+- すべて `documents/` 直下に保存する。サブフォルダで分類しない（将来見直し）
+- ファイル名: `yymmdd_<内容スラッグ>.md`
+  - `yymmdd` は **作成日**（frontmatter `created` の年下2桁+月+日）。更新日ではない
+  - 例: `260421_NRフレーム構造の発表資料ドラフト.md`、`260427_RAN1-124bis-DL-CSI-BM-AIML-調査.md`
+- スラッグは日本語可。スペースの代わりにハイフン or アンダースコア
+- 同日に複数作る場合は内容スラッグで区別する（連番は付けない）
+
+### `references/` — 一次情報の Markdown 化（フラット）
+
+- 論文・Tdoc・Chair Notes・仕様書を Markdown 化したものは `references/` 直下に保存
+- ファイル名は **論文タイトル・寄書番号・arXiv ID をそのまま使う**（`yymmdd_` を付けない）
+- 詳細は [`framework/references-policy.md`](./references-policy.md)
+
 ## frontmatter の共通スキーマ
 
 全てのノートファイルは以下の frontmatter を持つ:
@@ -98,11 +117,14 @@ axes:
   market: []             # consumer-xr, b2b-industrial, fwa, ntn, ambient-iot
   adoption-factors: []   # killer-app, standard-convergence, operator-roi, economies-of-scale, backward-compat
   ip: []                 # novelty, inventive-step, spec-mapping
-sources: []              # URL のリスト
-related: []              # 関連ノートへの相対パス
+sources: []              # 出典 URL のリスト（references/ にも置いていればそれを `references` に追記）
+references: []           # references/ 配下の wikilink リスト（このノートが引用する一次情報）
+up: ""                   # 親ノート（wikilink、0または1本）
+related: []              # 関連ノートへの wikilink リスト
 ---
 ```
 
 - `axes` の各項目は該当するもののみ記載（空リストも可）
 - `sources` は最低1件必須（出典なしのノートは作成しない）
+- `up` / `related` の少なくとも一方に最低1本のリンクを入れる（孤立ノート禁止、[`linking-policy.md`](./linking-policy.md)）
 - スキル固有の追加フィールドは各スキルで定義可能
