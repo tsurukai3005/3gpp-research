@@ -45,9 +45,10 @@ user-invocable: true
 ## 出力
 
 - **形式**: チャット表示（デフォルト）。保存する場合はファイル
-- **保存先**: `documents/YYYY-MM-DD_<slug>_success-pattern.md` または `documents/` 配下
-- **frontmatter**: 共通スキーマ準拠
+- **保存先**: `documents/<yymmdd>_<slug>_success-pattern.md`（フラット）
+- **frontmatter**: 共通スキーマ準拠（`up:` に対象トピックノートを wikilink で入れる）
 - **status**: `draft`
+- **リンク**: 対象トピックの調査ノートを `up:` に、関連世代別ノート（あれば）を `related:` に列挙する（[`framework/linking-policy.md`](../../../framework/linking-policy.md)）
 
 ## このスキル固有の注意点
 

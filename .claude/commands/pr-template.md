@@ -30,22 +30,16 @@
 ### フレームワーク変更（framework/）
 - ...
 
-### トピック追加・更新（documents/）
-- ...
-
-### 世代分析（documents/）
-- ...
-
-### 会合メモ（documents/）
-- ...
-
-### アイデア・考察（documents/）
-- ...
-
-### 文献メモ（documents/）
-- ...
-
 ### スキル・コマンド（.claude/）
+- ...
+
+### 自分の調査ノート（documents/）
+- ...
+
+### 参考文献の MD 化（references/）
+- ...
+
+### ドキュメント・設定（CLAUDE.md / README.md / .obsidian / 設定）
 - ...
 
 ## 該当する軸
@@ -55,7 +49,10 @@
 ## レビュー観点
 
 - [ ] 出典の URL は記録されているか
+- [ ] 一次情報は references/ に MD 化されているか
 - [ ] 論文の理想仮定と 3GPP 実装制約の差が意識されているか
 - [ ] 前世代との対比が含まれているか
 - [ ] frontmatter の axes が適切に記録されているか
+- [ ] frontmatter の up / related / references にリンクが入っているか（孤立ノートが生まれていないか）
+- [ ] ファイル名は yymmdd_<slug>.md（documents/）または原文の番号/タイトル（references/）に従っているか
 ```

@@ -57,7 +57,8 @@ user-invocable: true
    - 検索クエリ、Tdoc 番号、文書名を含むアクション
 8. **未カバー領域の特定**: `documents/` にまだノートがないが関連しそうな技術を特定する
    - 見つかった場合は `/survey-topic` の実行を提案する
-9. 保存する場合は `documents/YYYY-MM-DD_demand-reverse_<persona-slug>.md` に保存する
+9. 保存する場合は `documents/<yymmdd>_demand-reverse_<persona-slug>.md` に保存する（フラット）
+10. **リンクを必ず張る**: 適合度上位の候補ノートを `related:` に wikilink で列挙し、本文中でも初出時に `[[トピック名]]` で言及する（[`framework/linking-policy.md`](../../../framework/linking-policy.md)）
 
 **ペルソナの情報が薄い場合**: ペルソナファイルの記載が不十分なら、一般的な知識から補完するが `[ペルソナ情報不足: 一般的知識から推定]` と明記する。
 

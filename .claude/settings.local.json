@@ -61,7 +61,10 @@
       "Bash(pdftotext -v)",
       "Bash(echo \"---exit:$?\")",
       "Bash(winget search *)",
-      "Bash(pdftotext -h)"
+      "Bash(pdftotext -h)",
+      "Bash(grep -n \"^---$\\\\|^related:\\\\|^up:\" documents/260424_Rel-15-企業別戦略背景と対立候補波形.md)",
+      "Bash(grep -n \"^---$\\\\|^related:\\\\|^up:\" documents/260424_Rel-15-物理リソース仕様策定の議論変遷.md)",
+      "Bash(grep -n \"^---$\\\\|^related:\\\\|^up:\" documents/260427_RAN1-124bis-DL-CSI-BM-AIML-調査.md)"
     ]
   }
 }

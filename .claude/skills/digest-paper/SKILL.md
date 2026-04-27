@@ -28,30 +28,41 @@ user-invocable: true
 ## 実行フロー
 
 1. 論文の内容を取得する（URL / PDF / ユーザー提供の情報）
-2. `framework/templates/paper-digest.md` を読み、抽出項目を確認する
-3. メタ情報を抽出する:
+2. `framework/templates/paper-digest.md` と `framework/references-policy.md` を読み、抽出項目と保存規則を確認する
+3. **論文本文を `references/` に MD 化して保存する**:
+   - PDF: `tools.md` §2 の `pdftotext -layout` を使う
+   - docx: `tools.md` §1 の `pandoc -t gfm --wrap=none` を使う
+   - ファイル名は **論文タイトル・寄書番号・arXiv ID をそのまま** 使う（例: `references/arXiv-2508.08225.md`、`references/R1-2503456.md`）
+   - frontmatter は `framework/references-policy.md` §3 のスキーマに従う
+4. メタ情報を抽出する:
    - 著者 / 年 / 会議 or ジャーナル / DOI or arXiv ID
-4. 主張（Contribution）を3-5点で要約する
-5. **前提仮定を明示的にリスト化する**（最重要ステップの準備）:
+5. 主張（Contribution）を3-5点で要約する
+6. **前提仮定を明示的にリスト化する**（最重要ステップの準備）:
    - チャネルモデル / SNR 範囲 / アンテナ構成 / CSI の仮定 / 計算複雑性 / シミュレーション環境
    - 論文が明示していない暗黙の仮定も推定して `[暗黙の仮定]` と明記する
-6. **前提仮定 vs 3GPP 実装制約のギャップテーブルを作成する**（最重要ステップ）:
+7. **前提仮定 vs 3GPP 実装制約のギャップテーブルを作成する**（最重要ステップ）:
 
    | 論文の前提 | 3GPP の現実 | ギャップ |
    |:---|:---|:---|
    | 完全 CSI | 限られた PUCCH リソース | CSI 量子化誤差への耐性が未検証 |
 
-7. 該当する `documents/` ノートの `related:` にリンクを追記する
-8. **Next Steps** を記載する
-9. `documents/YYYY-MM-DD_<first-author>_<slug>.md` に保存する
+8. **ダイジェストノートを `documents/<yymmdd>_<first-author>_<slug>.md` に保存する**
+9. **リンクを必ず張る**（`framework/linking-policy.md`）:
+   - frontmatter `references:` に上で作った `[[references/arXiv-XXXX]]` を1本以上列挙
+   - 関連既存トピックノートを `up`（最も近い親）と `related` に列挙
+   - 本文中でも `[[既存ノート]]` で wikilink を埋める
+   - 関連 `documents/` ノート側の `related:` にも逆方向リンクを追記する
+10. **Next Steps** を記載する
 
 **サーベイ論文の場合**: 1つのダイジェストファイルにまとめるが、個別技術ごとにギャップテーブルのセクションを分ける。特に重要な技術は Next Steps で個別の `/digest-paper` 実行を提案する。
 
 ## 出力
 
-- **形式**: ファイル保存 + チャットにサマリー表示
-- **保存先**: `documents/YYYY-MM-DD_<first-author>_<slug>.md`
-- **frontmatter**: 共通スキーマ + 以下の追加フィールド:
+- **形式**: 2つのファイル（references の原文 MD + documents のダイジェスト）+ チャットにサマリー表示
+- **保存先**:
+  - 原文 MD: `references/<論文番号 or arXiv-ID or 著者-年-タイトル>.md`
+  - ダイジェスト: `documents/<yymmdd>_<first-author>_<slug>.md`
+- **frontmatter**（ダイジェスト側）: 共通スキーマ + 以下の追加フィールド:
   ```yaml
   paper:
     authors: []

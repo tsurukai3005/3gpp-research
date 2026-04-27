@@ -44,20 +44,21 @@ user-invocable: true
    - この組合せがペルソナにとって価値があるか、コスト的に成立するかを評価する
    - 標準化の場で反対されそうな理由を検討する（必要に応じて `framework/lenses/standardization-dynamics.md` を参照）
 7. **Next Steps** を記載する
-8. `documents/YYYY-MM-DD_<topicA>-x-<topicB>.md` に保存する
+8. `documents/<yymmdd>_<topicA>-x-<topicB>.md` に保存する
+9. **リンクを必ず張る**: frontmatter の `related:` に両トピックノートを wikilink で列挙し、本文中でも `[[topic-a]]` と `[[topic-b]]` を埋める。`up:` には主軸となるトピックの方を入れる（[`framework/linking-policy.md`](../../../framework/linking-policy.md)）
 
 **トピックの axes が薄い場合**: ノート本文の内容から軸の値を推定し、`[推定]` と明記する。
 
 ## 出力
 
 - **形式**: ファイル保存 + チャットにサマリー表示
-- **保存先**: `documents/YYYY-MM-DD_<topicA>-x-<topicB>.md`
+- **保存先**: `documents/<yymmdd>_<topicA>-x-<topicB>.md`（フラット）
 - **frontmatter**: 共通スキーマ + 以下の追加フィールド:
   ```yaml
   connection:
-    topic-a: "相対パス"
-    topic-b: "相対パス"
-    persona: "相対パス（使用時）"
+    topic-a: "[[topicA のファイル名]]"
+    topic-b: "[[topicB のファイル名]]"
+    persona: "framework/personas/... の相対パス（使用時のみ）"
   ```
 - **status**: `draft`
 

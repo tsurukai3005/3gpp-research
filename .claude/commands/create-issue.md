@@ -47,8 +47,8 @@
 
 ## 関連ファイル
 
-- `documents/...`
-- `documents/...`
+- `documents/<yymmdd>_<slug>.md`
+- `references/<原文番号 or タイトル>.md`
 
 ## 該当する軸
 

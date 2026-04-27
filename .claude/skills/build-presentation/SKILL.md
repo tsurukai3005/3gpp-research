@@ -223,7 +223,8 @@ Answer: ... (= 伝えたいこと)
 ## 出力
 
 - **形式**: チャット（対話形式で段階的に生成） + 最終ファイル
-- **保存先**: `documents/<該当週フォルダ>/` 配下（リポジトリの命名規則に従う）
+- **保存先**: `documents/<yymmdd>_<slug>.md`（フラット、サブフォルダ禁止。`yymmdd` は作成日）
+- **リンク**: ソースノートを frontmatter `source_notes` および `up:` / `related:` に wikilink で記載する。本文中でも初出時に `[[ソースノート名]]` を埋める（[`framework/linking-policy.md`](../../../framework/linking-policy.md)）
 - **frontmatter**:
 
 ```yaml

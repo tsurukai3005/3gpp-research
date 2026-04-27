@@ -42,6 +42,12 @@
 - 該当する軸が漏れていないか
 - `[要確認]` マークが適切に使われているか
 
+### 6. リンク健全性（[`framework/linking-policy.md`](../../framework/linking-policy.md)）
+- frontmatter `up` / `related` のいずれか、または本文中に最低1本の wikilink (`[[...]]`) があるか（孤立ノートでないか）
+- 引用された一次情報（論文・Tdoc・仕様書）が `references/` に MD 化されているか
+- ファイル名が `yymmdd_<slug>.md`（documents）または原文の番号/タイトル（references）の規則に従っているか
+- 引用している `[[ファイル名]]` が実在するか（リンク切れ）
+
 ## 出力フォーマット
 
 ```markdown
@@ -54,6 +60,9 @@
 - [ ] [出典] ... に URL がない
 - [ ] [実装制約] ... の論文前提が無批判に採用されている
 - [ ] [6軸] 市場軸の記載が欠落している
+- [ ] [リンク] 孤立ノート: up / related が空、本文に wikilink もない
+- [ ] [references] arXiv 2602.08163 が引用されているが references/ に未保存
+- [ ] [命名] yymmdd_ プレフィックスがない
 
 ### 提案
 - ...
