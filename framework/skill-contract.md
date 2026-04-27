@@ -13,6 +13,7 @@
 3. **不確実な情報は `[要確認]` と明記する** — confidence フィールドも設定する（原則5）
 4. **Next Steps を残す** — 次のアクションが即座に実行できる具体性で書く（原則6）
 5. **`framework/principles.md` の6原則に従う** — スキル固有ルールが原則と矛盾する場合、原則が優先
+6. **バイナリ文書はテキスト化してから読む** — `.docx` / `.pptx` / `.odt` / `.rtf` は pandoc で Markdown 化し、生成した `.md` を Read / Grep する。コマンドと運用は [`framework/tools.md`](./tools.md) を参照
 
 ### 絶対にしないこと（Global Will Not）
 
