@@ -19,6 +19,9 @@
 | Apex Standards | https://www.apexstandards.com/ | Tdoc のライト検索 |
 | 6G HOW Agreements | https://www.6ghow.com/agreements/ | RAN1 合意事項の追跡 |
 
+> **3GPP FTP の直接アクセス手順**は [`3gpp-ftp-cookbook.md`](./3gpp-ftp-cookbook.md) を参照。
+> `portal.3gpp.org` / `www.3gpp.org` は WebFetch では 403 になるため、`curl -A "Mozilla/5.0"` で直接取得する。
+
 ## 学術論文
 
 | 情報源 | URL | いつ見るか |
