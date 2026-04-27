@@ -18,6 +18,8 @@
 - **問いかけテンプレ**: `framework/templates/` — スキルが参照する定型質問
 - **レビューポリシー**: `framework/review-policy.md`
 - **情報源リスト**: `framework/sources.md`
+- **外部ツール運用**: `framework/tools.md` — pandoc 等の前処理コマンド（docx → md 等）
+- **3GPP FTP 操作**: `framework/3gpp-ftp-cookbook.md` — Tdoc/Chair Notes 取得手順
 
 ## リポジトリ構造
 

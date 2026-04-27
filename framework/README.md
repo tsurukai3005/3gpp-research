@@ -12,6 +12,8 @@ framework/
 ├── review-policy.md       ← レビューポリシー（軽量、後から拡張可能）
 ├── sources.md             ← 情報源リンク集
 ├── strategy-summary.md    ← 戦略文書の要約
+├── tools.md               ← 外部ツール運用ガイド（pandoc 等の前処理コマンド）
+├── 3gpp-ftp-cookbook.md   ← 3GPP FTP アクセスの実装ガイド
 │
 ├── axes/                  ← 分析軸（1軸1ファイル）
 │   必ず全トピックに適用する独立した座標軸。
