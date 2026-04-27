@@ -42,8 +42,10 @@ sources:
   - url: https://arxiv.org/html/2507.18538v2
     title: "AI/ML Life Cycle Management for Interoperable AI Native RAN（NR_AIML_air_Ph2 解説）"
     accessed: 2026-04-27
+up: "[[260420_標準化特許申請のための調査戦略]]"
 related:
-  - ./Rel-15-NR-勉強会トピック調査ガイド.md
+  - "[[260422_Rel-15-NR-勉強会トピック調査ガイド]]"
+  - "[[260420_NRフレーム構造とリソースブロックの進化まとめ]]"
 ---
 
 # RAN1#124bis（Malta、2026-04-13〜04-17）— DL CSI / Beam Management / AI-ML

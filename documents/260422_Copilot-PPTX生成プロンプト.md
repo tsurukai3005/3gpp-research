@@ -1,3 +1,27 @@
+---
+title: "Copilot PPTX 生成プロンプト"
+status: stable
+confidence: high
+created: 2026-04-22
+updated: 2026-04-22
+axes:
+  technology-layer: []
+  generation: []
+  value: []
+  market: []
+  adoption-factors: []
+  ip: []
+sources:
+  - url: https://copilot.microsoft.com/
+    title: "Microsoft Copilot"
+    accessed: 2026-04-22
+up: "[[260421_発表資料作成プロンプトv1]]"
+related:
+  - "[[260421_発表資料作成プロンプトv1]]"
+  - "[[260421_NRフレーム構造の発表資料ドラフト]]"
+  - "[[260421_NR周波数リソース構造の発表資料ドラフト]]"
+---
+
 # Copilot PPTX 生成プロンプト
 
 ## 概要
