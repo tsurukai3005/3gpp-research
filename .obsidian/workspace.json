@@ -1,0 +1,215 @@
+{
+  "main": {
+    "id": "ba3b4cbc1bf3e2e6",
+    "type": "split",
+    "children": [
+      {
+        "id": "ec47bb20f2fb3ac2",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "1eb78f8ddef00e98",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "グラフビュー"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "62817afeb00b844d",
+    "type": "split",
+    "children": [
+      {
+        "id": "ddb62689aa7740ec",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0667c451460c7689",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "ファイルエクスプローラ"
+            }
+          },
+          {
+            "id": "e0971a939ecf589a",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "検索"
+            }
+          },
+          {
+            "id": "3572f98d8210697c",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "ブックマーク"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "6f1da12e583a2367",
+    "type": "split",
+    "children": [
+      {
+        "id": "8d848fdeed44eb43",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "52203c32efb8c1c2",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "バックリンク"
+            }
+          },
+          {
+            "id": "5eff36542416da1f",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "アウトゴーイングリンク"
+            }
+          },
+          {
+            "id": "7557bb14c6500947",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "タグ"
+            }
+          },
+          {
+            "id": "6a2e864ba6f9efec",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "すべてのプロパティ"
+            }
+          },
+          {
+            "id": "b323c00a5bb8d085",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "アウトライン"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:クイックスイッチャーを開く": false,
+      "graph:グラフビューを開く": false,
+      "canvas:新規キャンバスを作成": false,
+      "daily-notes:今日のデイリーノートを開く": false,
+      "templates:テンプレートを挿入": false,
+      "command-palette:コマンドパレットを開く": false,
+      "bases:新規ベースを作成": false
+    }
+  },
+  "active": "1eb78f8ddef00e98",
+  "lastOpenFiles": [
+    "framework/personas/stakeholders/regulator.md.tmp.5988.1777298136506",
+    "framework/personas/stakeholders/operator-cxo.md.tmp.5988.1777298130687",
+    "framework/personas/stakeholders/3gpp-chair.md.tmp.5988.1777298124597",
+    "framework/personas/industries/vertical-automotive.md.tmp.5988.1777298113217",
+    "framework/personas/regions/japan.md.tmp.5988.1777298076210",
+    "framework/templates/connect-dots.md.tmp.5988.1777298026377",
+    "framework/templates/generation-comparison.md.tmp.5988.1777298015214",
+    "framework/templates/gap-analysis.md.tmp.5988.1777298009058",
+    "framework/templates/paper-digest.md.tmp.5988.1777298000954",
+    "framework/templates/survey-topic.md.tmp.5988.1777297993632",
+    "framework/lenses/political-economy.md.tmp.5988.1777297974699",
+    "framework/templates/README.md",
+    "framework/lenses/README.md",
+    "framework/axes/README.md",
+    "references/README.md",
+    "documents/260421_発表資料作成プロンプトv1.md",
+    "documents/260421_フレーム構造のギャップ分析-学術vs3GPPvs実装制約.md",
+    "documents/260423_TS38.211-Section4-原文準拠和訳.md",
+    "documents/260421_TS38.211-Section4-BWPとCarrier-Aggregationの体系整理.md",
+    "documents/260423_TS38.101-1-Section5-原文準拠和訳.md",
+    "documents/260421_TS38.101-1-Section5-Operating-Bandsの体系整理.md",
+    "documents/260424_Rel-15-物理リソース仕様策定の議論変遷.md",
+    "documents/260424_Rel-15-企業別戦略背景と対立候補波形.md",
+    "documents/260422_Rel-15-NR-勉強会トピック調査ガイド.md",
+    "documents/260427_RAN1-124bis-DL-CSI-BM-AIML-調査.md",
+    "documents/260421_NR周波数リソース構造の発表資料ドラフト.md",
+    "documents/260421_NRフレーム構造の発表資料ドラフト.md",
+    "documents/260422_Copilot-PPTX生成プロンプト.md",
+    "documents/260420_NRフレーム構造とリソースブロックの進化まとめ.md",
+    "documents/260420_標準化特許申請のための調査戦略.md",
+    "documents/260420_プロジェクト設計書v2.md",
+    "framework/references-policy.md",
+    "framework/linking-policy.md"
+  ]
+}
