@@ -64,7 +64,13 @@
       "Bash(pdftotext -h)",
       "Bash(grep -n \"^---$\\\\|^related:\\\\|^up:\" documents/260424_Rel-15-企業別戦略背景と対立候補波形.md)",
       "Bash(grep -n \"^---$\\\\|^related:\\\\|^up:\" documents/260424_Rel-15-物理リソース仕様策定の議論変遷.md)",
-      "Bash(grep -n \"^---$\\\\|^related:\\\\|^up:\" documents/260427_RAN1-124bis-DL-CSI-BM-AIML-調査.md)"
+      "Bash(grep -n \"^---$\\\\|^related:\\\\|^up:\" documents/260427_RAN1-124bis-DL-CSI-BM-AIML-調査.md)",
+      "Bash(curl -sA \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36\" \"https://www.3gpp.org/ftp/tsg_ran/WG1_RL1/TSGR1_124b/Agenda/agenda.csv\")",
+      "Bash(curl -sA \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36\" \"https://www.3gpp.org/ftp/tsg_ran/WG1_RL1/TSGR1_124b/Inbox/Chair_notes/\")",
+      "Bash(curl -sA 'Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36' https://www.3gpp.org/ftp/tsg_ran/WG1_RL1/TSGR1_124b/Inbox/Chair_notes/Chair%20notes%20RAN1%23124bis_eom4.docx -o /tmp/chair_notes_eom4.docx)",
+      "Bash(pandoc /tmp/chair_notes_eom4.docx -t gfm --wrap=none -o /tmp/chair_notes_eom4.md)",
+      "Bash(\"/c/Program Files/Pandoc/pandoc.exe\" /tmp/chair_notes_eom4.docx -t gfm --wrap=none -o /tmp/chair_notes_eom4.md)",
+      "Bash(git diff *)"
     ]
   }
 }
