@@ -55,11 +55,13 @@ up: "[[260420_標準化特許申請のための調査戦略]]"
 related:
   - "[[260422_Rel-15-NR-勉強会トピック調査ガイド]]"
   - "[[260420_NRフレーム構造とリソースブロックの進化まとめ]]"
+  - "[[260428_RAN1-124bis-MIMO-operation-10.5.2]]"
 ---
 
 # RAN1#124bis（Malta、2026-04-13〜04-17）— DL CSI / Beam Management / AI-ML
 
-> 本ノートは「学術理想 vs 3GPP 実装制約」のギャップ可視化を目的とし、Malta 会合の Tdoc / Chair Notes（end-of-meeting v4 = `eom4`）から RAN1 が実際に何を合意したかを整理する。本会合は **2026-04-13〜04-17（5 日間）**、登録 1,724 件の Tdoc が提出された。
+> 本ノートは「学術理想 vs 3GPP 実装制約」のギャップ可視化を目的とし、Malta 会合の Tdoc / Chair Notes（end-of-meeting v4 = `eom4`）から RAN1 が実際に何を合意したかを整理する。  
+> **補足ノート**: 10.5.2（MIMO Operation: PDCCH / PDSCH / PUSCH 伝送方式）の詳細は [[260428_RAN1-124bis-MIMO-operation-10.5.2]] を参照。本ノートでは 10.5.2.4（Beam Management）のみ扱う。本会合は **2026-04-13〜04-17（5 日間）**、登録 1,724 件の Tdoc が提出された。
 > Word 文書（`docx`/`xlsx`）への直接リンクは frontmatter `sources:` を参照。Chair Notes はリビジョン制で `v00`〜`v15`、会期最終日（4/17）以降に `_eom`〜`_eom4` がアップロードされる運用。
 
 ## 1. 会合の基礎情報と一次情報リンク
@@ -273,6 +275,11 @@ related:
 | Agreement | **CSI-RS RE 共有**の 4 ユースケース: 異なる port 数間 / 異なる周波数密度間 / 異なる time domain 間 / 5G CSI-RS と 6G CSI-RS 間 |
 | Agreement | 一般化評価で UMa/InH / 屋内屋外比 / antenna 仮想化 / UL channel/interference / UE Tx/Rx 実装 / 多様な layer/subband |
 | Agreement | **Channel Property Information (CPI)** という新概念を導入: RS 設定支援 / scheduling 連携 / event-triggered CSI / CSI 予測支援に使う情報。各 use case で benchmark, KPI, report 量, 計算複雑度を検討 |
+| Agreement | **時間域 CSI 予測の評価前提**（非 AI / AI 両方）: 中間 metric = サブバンドレベル per レイヤの SGCS・NMSE（NW 側 vs UE 側予測の比較は CSI 報告の影響を考慮）。システム metric = UPT（平均・5%tile）と CSI 報告オーバーヘッド。リンク metric = BLER/SE/スループット。複雑度 = FLOPs/M（AI は加えてパラメータ数/M）。**ベースライン = Sample & Hold**。観測窓の例: periodic CSI-RS で 5/10 ms・5/20 ms、aperiodic で 12/2 ms・8/2 ms・4/2 ms。予測窓の例: 1 instance/10 ms/gap 5 ms、4 instances/10 ms/gap 5 ms |
+| Agreement | **コードブック構造の研究**: 低解像度/高解像度 CSI に対して **W₁W₂**（2 段構成）および **W₁W₂Wf**（周波数次元追加の 3 段構成）をベースラインに評価。各社は最大 rank 仮定・SD/FD 基底選択の前提・コードブックパラメータ・基底フォーマット・暗示的/明示的 CSI のどちらを対象 CSI とするか、複雑度分析を報告 |
+| Agreement | **CJT 校正 CSI 報告の研究**: 複数 TRP 間の位相/遅延校正を支援するための CSI 報告を「サポートするか・どうサポートするか」を研究（CJT 協調品質の維持が目的） |
+| Agreement | **AI ベース CSI 予測の汎化・スケーラビリティ評価**: 以下の 1 つ以上を横断して評価 — 展開シナリオ（UMa/InH 等）、キャリア周波数、屋内/屋外分布、BS アンテナ設定（素子間隔・仮想化・ポートレイアウト・ポート数）、サンプリング比率/パターン、UE パラメータ（速度・SNR/SINR・チャネル推定誤差・アンテナ設定・報告分解能） |
+| Agreement | **AI ベース CSI 圧縮の汎化・スケーラビリティ評価**: TR 38.843 の評価方法をスタートポイントに、以下を対象に評価 — DL チャネル（展開シナリオ・屋内外比・アンテナ仮想化）、UL チャネル/干渉（AWGN/CDL/TDL/UMa、UL SNR 範囲、ノイズパターン）、UL リソースサイズ（CSI フィードバック RE 数）、NW/UE 実装（受信機・チェーン・RF 不完全性）、Tx/Rx ポート/レイヤ数、サブバンド数 |
 
 > **DL CSI が今回最大の論点**になった理由: (a) 5G NR の Type II eType II より良くしないと 6G の意味がない、(b) Near-Field / SNS / 大規模アンテナ（256/512）は学術論文と仕様の最大ギャップ、(c) JSCM は 5G では存在しなかった新領域。
 
@@ -298,7 +305,9 @@ related:
 | Agreement | 時間ドメイン挙動: periodic / aperiodic / semi-persistent、組合せ可 |
 | Agreement | 周波数密度 x ∈ {2, 3, 4, 6, 12} REs/RB |
 | Agreement | **joint DL/UL CSI acquisition の 2 ユースケース**: Use case 1 = SRS ベースを DL 測定/報告で支援、Use case 2 = SRS ベースで他の補助情報も使った MCS/rank 選択 |
-| Agreement | 性能評価用の **SRS error model**: 推定チャネル = 真のチャネル + 白色 Gaussian（分散はスケーリング係数で）、SRS 干渉/不完全 OL 電力制御/UE Tx アンテナ利得不平衡を additionally 考慮可 |
+| Agreement | 性能評価用の **SRS error model**: 推定チャネル = 真のチャネル + 白色 Gaussian（分散はスケーリング係数で）、SRS 干渉/不完全 OL 電力制御/UE Tx アンテナ利得不平衡を additionally 考慮可。数式: H̃_UL = γ(H + E)、σ²_E 例 = 1/(SINR × Δ) で Δ=9dB、γ = √(1/(1+σ²_E)) |
+| Agreement | **アンテナ校正誤差モデル**: Ĥ_DL = diag(δᵢ·e^{jφᵢ}) × H_UL^T × diag(αᵢ·e^{jθᵢ})。振幅誤差 αᵢ の標準偏差例 = **0.35 dB**（Gaussian）、位相誤差 θᵢ の標準偏差例 = **5°**（Gaussian）。UE 側の δᵢ・φᵢ は各社報告。UE DL/UL 相反性の実現可能性も考慮 |
+| Agreement | **挿入損失差モデル**: UL/DL 挿入損失差は Ĥ_DL = A × H_UL^T で表現。A = diag(β₁, β₂, …, β_N_UE)、βᵢ は最大電力アンテナを基準とした電力比（dB スケール）。生成方法は各社報告 |
 
 ## 5. 議論の背景と企業勢力（political dynamics）
 
@@ -361,9 +370,9 @@ related:
 - **9.2**: aperiodic CSI-RS の QCL（Opt-1 vs Opt-2）、CSI-RS RB 制約 3 案、MAC-CE-in-MSG4 での dynamic indication
 - **10.5.1.1**: SSB シンボル数、周期の数値合意は次回以降
 - **10.5.2.4**: L1-SINR 採用、Set-A/Set-B 詳細、AI ベース予測と非 AI ベース手法のベンチマーク方法
-- **10.5.3.1**: ポート数 128/256/512 down-select、CDM 設計、JSCM の testability（RAN4 LS が今後）
+- **10.5.3.1**: ポート数 128/256/512 down-select、CDM 設計、JSCM の testability（RAN4 LS が今後）。時間域 CSI 予測の観測窓/予測窓パラメータ確定。コードブック構造（W₁W₂ vs W₁W₂Wf）の採択。CJT 校正 CSI 報告の仕様化可否
 - **10.5.3.2**: 5G に対する SRS BW 拡張方式（hopping vs sparse vs 再定義）の down-select
-- **10.5.3.3**: tracking RS の具体パラメータ x, Y, N, Ssymb, Sslot
+- **10.5.3.3**: tracking RS の具体パラメータ x, Y, N, Ssymb, Sslot。アンテナ校正誤差の分布パラメータ（X1/Y1/X2/Y2）の確定。挿入損失差モデルの βᵢ 生成方法の合意
 
 ## 8. 市場・知財余地
 
