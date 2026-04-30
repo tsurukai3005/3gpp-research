@@ -82,7 +82,7 @@
 | シェル | 実体 | バージョン |
 |:---|:---|:---|
 | Git Bash | `/mingw64/bin/pdftotext`（= `C:\Program Files\Git\mingw64\bin\pdftotext.exe`） | Xpdf 4.00 |
-| PowerShell / cmd | `C:\Users\admin\texlive\2025\bin\windows\pdftotext.exe`（TeXLive 2025 同梱） | Xpdf 派生 |
+| PowerShell / cmd | `%USERPROFILE%\texlive\2025\bin\windows\pdftotext.exe`（TeXLive 2025 同梱） | Xpdf 派生 |
 
 どちらも単に `pdftotext` で呼べる（PATH 通過済み）。
 
@@ -124,7 +124,7 @@ winget install --id oschwartz10612.Poppler
 導入後、PowerShell から PATH を追加（ユーザー環境変数）:
 
 ```powershell
-$p = 'C:\Users\admin\AppData\Local\Microsoft\WinGet\Links'  # winget 既定の shim パス
+$p = "$env:LOCALAPPDATA\Microsoft\WinGet\Links"  # winget 既定の shim パス
 $u = [Environment]::GetEnvironmentVariable('Path', 'User')
 if (($u -split ';') -notcontains $p) { [Environment]::SetEnvironmentVariable('Path', "$u;$p", 'User') }
 ```
