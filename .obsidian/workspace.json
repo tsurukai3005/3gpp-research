@@ -11,10 +11,14 @@
             "id": "1eb78f8ddef00e98",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "グラフビュー"
+              "type": "markdown",
+              "state": {
+                "file": "documents/260430_RAN1-124-125-13トピック議論変遷.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "260430_RAN1-124-125-13トピック議論変遷"
             }
           }
         ]
@@ -49,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:#124bis",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -70,11 +74,13 @@
               "title": "ブックマーク"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "6f1da12e583a2367",
@@ -178,6 +184,13 @@
   },
   "active": "1eb78f8ddef00e98",
   "lastOpenFiles": [
+    "framework/catalog/meetings.yaml.tmp.35552.1777521432731",
+    "framework/catalog/agenda-items.yaml.tmp.35552.1777521407826",
+    "documents/260501_TN-NTN共通HARQ_変遷.md",
+    "documents/260501_TN-NTN共通HARQ_変遷.md.tmp.35552.1777521372723",
+    "documents/260501_CSI圧縮_inter-vendor-pairing_変遷.md",
+    "references/Chair-Notes-RAN1-124bis-6GR-HARQ-NTN.md",
+    "references/Chair-Notes-RAN1-124-6GR-HARQ-NTN.md",
     "documents/260428_RAN1-124bis-MIMO-operation-10.5.2.md",
     "documents/260427_RAN1-124bis-DL-CSI-BM-AIML-調査.md",
     "documents/260420_標準化特許申請のための調査戦略.md",
@@ -201,16 +214,11 @@
     "framework/personas/industries/vertical-automotive.md.tmp.5988.1777298113217",
     "framework/personas/regions/japan.md.tmp.5988.1777298076210",
     "framework/templates/connect-dots.md.tmp.5988.1777298026377",
-    "framework/templates/generation-comparison.md.tmp.5988.1777298015214",
-    "framework/templates/gap-analysis.md.tmp.5988.1777298009058",
     "framework/templates/README.md",
     "framework/lenses/README.md",
     "framework/axes/README.md",
     "references/README.md",
     "documents/260421_発表資料作成プロンプトv1.md",
-    "documents/260421_フレーム構造のギャップ分析-学術vs3GPPvs実装制約.md",
-    "documents/260420_プロジェクト設計書v2.md",
-    "framework/references-policy.md",
-    "framework/linking-policy.md"
+    "documents/260421_フレーム構造のギャップ分析-学術vs3GPPvs実装制約.md"
   ]
 }
