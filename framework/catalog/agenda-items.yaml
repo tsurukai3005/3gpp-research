@@ -97,10 +97,40 @@ ai_nr_aiml_csi_compression_r19:
     - "two-sided model CSI"
     - "Type-II codebook AI"
     - "JSCC CSI"  # Samsung 系
+    - "JSCM CSI"  # Samsung Joint Source-Channel Modulation
     - "DL CSI compression"
+    - "Case-0"
+    - "Case 0 CSI"
+    - "9.1.1 CSI compression"
+    - "two-part UCI CSI"
+    - "payload pair"
   description: |
     Rel-19 NR_AIML_air_Ph2 の中核アジェンダ。
     エンコーダ（UE 側）/ デコーダ（gNB 側）の two-sided AI モデルで CSI を圧縮する。
+
+ai_nr_aiml_inter_vendor_r19:
+  title: "NR AI/ML Inter-vendor training collaboration (Rel-19/20 9.1.2)"
+  parent_wi: "NR_AIML_air_Ph2"
+  parent_ai: "ai_nr_aiml_csi_compression_r19"
+  current_phase: "WI (specification)"
+  aliases:
+    - "9.1.2"
+    - "inter-vendor training"
+    - "inter-vendor pairing"
+    - "inter-vendor collaboration"
+    - "model exchange"
+    - "Direction A"
+    - "Direction B"
+    - "Direction C"
+    - "pairing ID"
+    - "reference model sharing"
+    - "encoder parameter exchange"
+    - "dataset alignment"
+  description: |
+    Rel-19/Rel-20 NR_AIML_air_Ph2 の inter-vendor 互換性アジェンダ（9.1.2）。
+    UE-side encoder と gNB-side decoder の two-sided AI モデル間で、
+    モデル中身を秘匿しつつ標準連携可能にするフレーム。Apple FL（#124bis）。
+    Direction A=reference model 共有、B=encoder param 交換、C=dataset 整列。
 
 ai_nr_aiml_beam_mgmt_r19:
   title: "NR AI/ML beam management (Rel-19 NR_AIML_air_Ph2)"
@@ -123,3 +153,209 @@ ai_nr_aiml_positioning_r19:
     - "AI positioning"
     - "AI/ML for positioning accuracy enhancement"
     - "AI/ML positioning"
+
+# --- 以下は 260430_RAN1-124-125-13トピック議論変遷.md 作成時に追加 ---
+# AI 番号は agenda.csv 未取得のため [要確認]。aliases のみ整備。
+
+ai_6gr_waveform:
+  title: "6GR Waveform (10.2.1)"
+  parent_si: "6GR_BasicAirInterface"
+  current_phase: "study"
+  aliases:
+    - "6GR waveform"
+    - "6G 波形"
+    - "PAPR reduction"
+    - "FDSS"
+    - "FDSS-SE"
+    - "FDSS-ST"
+    - "DFT-s-OFDM PAPR"
+    - "spectrum extension"
+    - "spectrum truncation"
+    - "tone reservation"
+    - "GMSK approximation FDSS"
+    - "CFR-SE"
+    - "AI/ML PAPR"
+    - "AI ML waveform"
+    - "multi-rank UL DFT-s-OFDM"
+    - "multi-layer DFT-s-OFDM"
+    - "low PAPR waveform"
+    - "Net Gain 6GR"
+    - "Pruning QAM"
+    - "AFDM"
+    - "Zak-OTFS"           # #124bis で deprioritized、追跡用に維持
+    - "CP-OFDM 6G"
+    - "10.2.1"
+  description: |
+    6GR の物理層波形検討。CP-OFDM (DL) / DFT-s-OFDM (UL) 継承を #122 で大枠合意。
+    #124 で UL low-PAPR DFT-s-OFDM 候補 11 種をリスト化、multi-rank UL DFT-s-OFDM を
+    high-priority study に指定、DL DFT-s-OFDM は deprioritize で決着（FL #2 Conclusion）。
+    #124bis で 3 候補（FDSS / FDSS-SE / FDSS-ST for π/2 BPSK）に down-select、
+    Cohere の Zak-OTFS / Zak-OTFS-over-OFDM は noted（廃案）。
+    FL: Klaus / Nokia。Ad-Hoc Chair: NTT DOCOMO。
+
+ai_6gr_channel_coding:
+  title: "6GR Channel Coding (10.3.1)"
+  parent_si: "6GR_BasicAirInterface"
+  current_phase: "study"
+  aliases:
+    - "6GR channel coding"
+    - "6G チャネル符号"
+    - "LDPC 6G"
+    - "Polar 6G"
+    - "channel coding small block"
+    - "6G の符号化"
+    - "10.3.1"
+  description: |
+    LDPC（data）/ Polar（control）の 5G 継承が大枠ベースライン。
+    短ブロック性能、ML 復号、CRAN 親和性が論点。R1-2600522 (EURECOM) 等で議論。
+
+ai_6gr_initial_access:
+  title: "6GR Initial Access (10.5 系 IA umbrella)"
+  parent_si: "6GR_BasicAirInterface"
+  parent_ai: "ai_6gr_mimo_operation"
+  current_phase: "study"
+  aliases:
+    - "6GR IA"
+    - "6G initial access"
+    - "SSB 6G"
+    - "PRACH 6G"
+    - "6G の初期接続"
+    - "MRSS IA"
+    - "synchronization 6G"
+  description: |
+    6G セル探索 / 同期 / RACH の設計。NTN 親和、MRSS（5G-6G 共存）、エネルギー効率が論点。
+
+ai_6gr_scheduling:
+  title: "6GR Scheduling (10.5.4.1)"
+  parent_si: "6GR_BasicAirInterface"
+  current_phase: "study"
+  aliases:
+    - "6GR scheduling"
+    - "6G スケジューリング"
+    - "DCI 6G"
+    - "10.5.4.1"
+    - "early CSI reporting"
+    - "6G-6G aggregation scheduling"
+  description: |
+    PDCCH の「何を送るか」を扱うアジェンダ。10.5.2.1（PDCCH 物理層）と分離。
+    バーストトラフィック対応、6G-6G スペクトルアグリゲーションが論点。
+
+ai_6gr_harq:
+  title: "6GR HARQ related Aspects (10.5.4.3)"
+  parent_si: "6GR_BasicAirInterface"
+  current_phase: "study"
+  aliases:
+    - "6GR HARQ"
+    - "6G HARQ"
+    - "control/HARQ provisions"
+    - "TN/NTN HARQ"
+    - "TN/NTN 共通 HARQ"
+    - "HARQ process number"
+    - "HARQ stalling"
+    - "HARQ disable"
+    - "HARQ-ACK codebook 6G"
+    - "HARQ feedback granularity"
+    - "10.5.4.3"
+  description: |
+    6G の HARQ 関連事項（AI 10.5.4.3 配下）。FL: Kevin (OPPO)。
+    #124 で 9 軸の評価軸 + Mechanism 1 (L1) / 2 (MAC CE) + asynch+adaptive + TB level 確定。
+    #124bis でサブ TB / TB 横断 bundling / HARQ-ACK codebook / payload 1〜1706 bits / timing 4 method
+    (Dynamic DCI / UE-initiated / 半静的 next slot / RRC only) / UL HARQ → fast ARQ trigger。
+    NTN（高 RTT）対応、URLLC 向け低遅延 A/N、A-IoT 非対称性が論点。
+
+ai_6gr_ntn:
+  title: "6GR NTN (10.7)"
+  parent_si: "6GR_BasicAirInterface"
+  current_phase: "study"
+  aliases:
+    - "6GR NTN"
+    - "6G NTN"
+    - "TN/NTN 共通"
+    - "TN/NTN common"
+    - "TN performance prioritized"
+    - "NTN 6G"
+    - "regenerative payload 6G"
+    - "GNSS-less NTN"
+    - "GNSS-based NTN"
+    - "MEO-7000"
+    - "k_offset 6G"
+    - "10.7"
+    - "10.7.1"
+    - "10.7.2"
+  description: |
+    6GR NTN 物理層検討。FL: Alberto (Qualcomm)。
+    #124 で TN performance prioritized 原則 (Conclusion) + GNSS 用語 (based/degraded/less) +
+    orbit/band 評価 (S/Ka/Ku × LEO/GEO) + NTN 固有検討事項リスト (HARQ enable/disable, process 数,
+    timing, multi-satellite, multi-beam 等)。
+    #124bis で HARQ stalling 4 解決策 (feedback disable / multi-slot / process reuse / sufficient count)
+    + TN harmonization の FFS + MEO-7000 追加 + duplex (FD-FDD, HD-FDD UE side) + multi-satellite
+    operation + k_offset 採用 (broadcast、cell/beam specific FFS)。
+
+ai_nr_lp_wus_r19:
+  title: "NR Low-Power Wake-Up Signal (Rel-19 LP_WUS)"
+  parent_wi: "LP_WUS_NR"  # WI 略号は要確認
+  current_phase: "WI (specification)"
+  aliases:
+    - "LP-WUS"
+    - "LP_WUS"
+    - "low power wake-up signal"
+    - "MC-OOK"
+    - "Rel-19 WUS"
+    - "WUS Rel-19"
+    - "LP-SS"
+    - "low power synchronization signal"
+  description: |
+    Rel-19 LP-WUS WI。12 RB（4.32 MHz）, MC-OOK 変調、エンベロープ検出受信機。
+    従来 5G paging 比 80% 電力削減。RAN1 機能フリーズ 2025-06 完了。
+
+ai_nr_ntn_r19_phase3:
+  title: "NR-NTN Phase 3 (Rel-19) + IoT-NTN S&F"
+  parent_wi: "NR_NTN_Ph3"  # WI 略号は要確認
+  current_phase: "WI (specification)"
+  aliases:
+    - "NR-NTN Ph3"
+    - "NR-NTN Phase 3"
+    - "NTN Phase 3"
+    - "regenerative payload"
+    - "store and forward NTN"
+    - "S&F NTN"
+    - "IoT-NTN"
+    - "direct-to-cell"
+    - "D2C satellite"
+  description: |
+    Rel-19 NTN 拡張。regenerative payload（衛星上 gNB）、IoT-NTN S&F 動作。
+    #124 合意「TN performance prioritized when designing common TN/NTN solutions」。
+
+ai_nr_isac_r19:
+  title: "NR ISAC (Rel-19 mono-static sensing SI)"
+  parent_wi: "NR_ISAC_R19"  # WI/SI 略号は要確認
+  current_phase: "study"
+  aliases:
+    - "ISAC"
+    - "integrated sensing and communication"
+    - "integrated sensing communication"
+    - "mono-static sensing"
+    - "gNB sensing"
+    - "UAV sensing"
+    - "通信センシング融合"
+    - "channel modeling ISAC"
+  description: |
+    Rel-19 ISAC channel modeling SI（RAN1#116〜#121）は完了、TR 38.901 拡張承認済。
+    継続 SI として gNB mono-static sensing for UAV を SA2 連携で評価中。
+
+ai_nr_aiot_r19:
+  title: "NR Ambient IoT (Rel-19 SI/WI)"
+  parent_wi: "NR_AIoT_R19"  # WI 略号は要確認
+  current_phase: "WI"
+  aliases:
+    - "A-IoT"
+    - "ambient IoT"
+    - "Rel-19 ambient IoT"
+    - "device 1"
+    - "passive IoT"
+    - "アンビエント IoT"
+    - "RFID 後継"
+    - "battery-less IoT"
+  description: |
+    Rel-19 A-IoT。Device 1（~1 µW peak power、RF envelope detector、SFO ≤ 105 ppm、
+    R2D/D2R 増幅なし）を標準化対象。Rel-20 で Device 2 クラス拡張議論。

@@ -24,37 +24,82 @@
   notes: "RAN1#124bis 調査時に「#123 で 6GR EVM の基礎合意」と参照された会合"
 
 "RAN1#124":
-  date: "[要確認]"  # 2026-02 期想定
-  location: "[要確認]"
+  date: "2026-02-09 to 2026-02-13"
+  location: "Gothenburg, Sweden"
   ftp_folder: "TSGR1_124"
   status: closed
-  ai_map: {}  # [要確認]
-  notes: "Rel-19 NR_AIML_air_Ph2 / 6GR の継続会合"
+  ai_map:
+    ai_6gr_waveform: "10.2.1"               # Chair Notes EoM_03 で確定（260501）
+    ai_6gr_harq: "10.5.4.3"                  # agenda.csv + Chair Notes EoM_03 で確定（260501）
+    ai_6gr_ntn: "10.7"                       # agenda.csv + Chair Notes EoM_03 で確定（260501）
+    ai_nr_ntn_r19_phase3: "8.7"              # agenda.csv で確定（#124 では 8.7、#124bis で 8.6 に繰上り）
+    # NR_AIML_air_Ph2 系の番号は agenda.csv で確定済
+    ai_nr_aiml_csi_compression_r19: "9.1.1"  # agenda.csv で確定（260501）
+    ai_nr_aiml_inter_vendor_r19: "9.1.2"     # agenda.csv で確定（260501）
+  references_in_repo:
+    - "[[260430_RAN1-124-125-13トピック議論変遷]]"
+    - "[[260501_CSI圧縮_inter-vendor-pairing_変遷]]"
+    - "[[260501_6GR-Waveform-PAPR削減_変遷]]"
+    - "[[260501_TN-NTN共通HARQ_変遷]]"
+    - "[[Chair-Notes-RAN1-124-Waveform]]"
+    - "[[Chair-Notes-RAN1-124-6GR-HARQ-NTN]]"
+  notes: |
+    Rel-19 NR_AIML_air_Ph2 / 6GR の継続会合。6GR で PAPR 削減候補 11 種のリスト化合意、
+    multi-rank UL MIMO for DFT-s-OFDM を high-priority study に指定。
+    DL DFT-s-OFDM は deprioritize で決着（FL #2 Conclusion）。FL (10.2.1): Klaus / Nokia。
+    HARQ (10.5.4.3) FL: Kevin (OPPO)、NTN (10.7) FL: Alberto (Qualcomm)。
+    NTN Conclusion で "When targeting a common design TN performance is prioritized" を明文化。
+    Chair Notes EoM_03 取得済 + FL summary v68 取得済 + agenda.csv 取得済（260501）。
+    出典: Chair-Notes-RAN1-124 EoM_03 + agenda.csv + Ofinno blog（2026-04 アクセス）
 
 "RAN1#124bis":
   date: "2026-04-13 to 2026-04-17"
-  location: "Malta"
+  location: "Saint Julians, Malta"
   ftp_folder: "TSGR1_124b"
   status: closed
   ai_map:
+    ai_6gr_waveform: "10.2.1"             # Chair Notes EoM5 で確定（260501）
     ai_6gr_mimo_operation: "10.5.2"
     ai_6gr_mimo_dl_pdcch: "10.5.2.1"
     ai_6gr_mimo_dl_pdsch: "10.5.2.2"
     ai_6gr_mimo_ul_channels: "10.5.2.3"
     ai_6gr_mimo_beam_mgmt: "10.5.2.4"
-    # NR Rel-19 AI/ML 系の番号は要確認（agenda.csv 未パース）
+    ai_6gr_harq: "10.5.4.3"                  # agenda.csv + Chair Notes EoM5 で確定（260501）
+    ai_6gr_ntn: "10.7"                       # agenda.csv + Chair Notes EoM5 で確定（260501）
+    ai_nr_ntn_r19_phase3: "8.6"              # agenda.csv で確定（#124bis では 8.6、#124 では 8.7）
+    ai_nr_aiml_csi_compression_r19: "9.1.1"  # 確認済み（260427_RAN1-124bis-DL-CSI-BM-AIML-調査 §3.1）
+    ai_nr_aiml_inter_vendor_r19: "9.1.2"     # 確認済み（同上 §3.2）
+    # Channel coding 10.3.1, Scheduling 10.5.4.1 は二次情報からの推定（要確認）
   references_in_repo:
     - "[[260427_RAN1-124bis-DL-CSI-BM-AIML-調査]]"
     - "[[260428_RAN1-124bis-MIMO-operation-10.5.2]]"
-  notes: "本リポジトリで初めて詳細調査済みの会合。Chair Notes EoM v4 が確定版"
+    - "[[260430_RAN1-124-125-13トピック議論変遷]]"
+    - "[[260501_CSI圧縮_inter-vendor-pairing_変遷]]"
+    - "[[260501_6GR-Waveform-PAPR削減_変遷]]"
+    - "[[260501_TN-NTN共通HARQ_変遷]]"
+    - "[[Chair-Notes-RAN1-124bis-Waveform]]"
+    - "[[Chair-Notes-RAN1-124bis-6GR-HARQ-NTN]]"
+  notes: |
+    本リポジトリで初めて詳細調査済みの会合。Chair Notes EoM v4（CSI/MIMO 系）/ EoM5（Waveform 系）。
+    Waveform: 11 候補 → 3 候補（FDSS / FDSS-SE / FDSS-ST for π/2 BPSK）に down-select。
+    Cohere の Zak-OTFS は noted（廃案）。FL (10.2.1): Klaus / Nokia。
+    HARQ (10.5.4.3) FL: Kevin (OPPO)、NTN (10.7) FL: Alberto (Qualcomm)。
+    NTN HARQ stalling 4 解決策（feedback disable / multi-slot / process reuse / sufficient count）+
+    TN harmonization は FFS。MEO-7000 軌道を新規追加。k_offset の broadcast 採用。
+    2100 名出席（業界最大級）。Apex Standards に pre-meeting summary あり。
 
 "RAN1#125":
-  date: "[要確認]"  # 2026-05 期想定
+  date: "[要確認]"  # 2026-05〜06 期想定（公開ソース未確定）
   location: "[要確認]"
   ftp_folder: "TSGR1_125"
-  status: planned  # 開催前 or 開催直後（要確認）
+  status: planned  # 2026-04-30 時点で本ノート作成、未開催 or 直前と推定
   ai_map: {}  # [要確認]
-  notes: "FTP listing で TSGR1_125 フォルダの実在は確認済み"
+  references_in_repo:
+    - "[[260430_RAN1-124-125-13トピック議論変遷]]"
+    - "[[260501_CSI圧縮_inter-vendor-pairing_変遷]]"
+  notes: |
+    FTP listing で TSGR1_125 フォルダの実在は確認済み。
+    日付・場所は portal.3gpp.org/Meetings.aspx で要確認。
 
 "RAN1#126":
   date: "[要確認]"
