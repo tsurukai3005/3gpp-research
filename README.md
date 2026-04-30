@@ -265,6 +265,17 @@ Step 6  /review → /commit                   → 品質チェックして保存
 対話で得られた知見は、スキル修正としてコミットするか、
 次回の改訂用にメモリに残す。形式化されたフレームワークは不要。
 
+## 謝辞
+
+本リポジトリの一部の設計は、以下の先行プロジェクトから着想を得ている。
+
+| 着想元 | ライセンス | 影響範囲 |
+|:---|:---|:---|
+| [ericnc09/3gpp-rag-assistant](https://github.com/ericnc09/3gpp-rag-assistant) | MIT, Copyright (c) 2025 Eric Costa | `framework/catalog/` のメタデータ集約という発想（`spec_catalog.py` から着想）。対象・形式・スキーマは異なる別実装 |
+
+将来 `framework/catalog/` 以外のレイヤー（例: 取得スクリプト）で実コードを翻案する場合は、
+当該ファイル冒頭に MIT 帰属表示を追加し、`licenses/` 配下に元 LICENSE を保存する。
+
 ## ライセンス
 
 個人プロジェクト。公開情報に基づく調査ノートのみを含む。
