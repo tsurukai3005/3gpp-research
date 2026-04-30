@@ -18,6 +18,7 @@
 - **分析レンズ**: `framework/lenses/` — 状況に応じて適用するオプショナル視点
 - **ペルソナ**: `framework/personas/` — 需要側の多面的モデル
 - **問いかけテンプレ**: `framework/templates/` — スキルが参照する定型質問
+- **メタデータカタログ**: `framework/catalog/` — RAN1 会合・アジェンダ・WI/SI の YAML カタログ（自然言語 → 安定 ID 解決の参照元）
 - **レビューポリシー**: `framework/review-policy.md`
 - **情報源リスト**: `framework/sources.md`
 - **外部ツール運用**: `framework/tools.md` — pandoc 等の前処理コマンド（docx → md 等）
@@ -61,6 +62,7 @@
 | `/digest-paper` | 論文を読み3GPP実装制約との差分を記録 |
 | `/connect-dots` | トピック間の相乗効果・矛盾・組合せ価値を発見 |
 | `/demand-reverse` | ペルソナの課題から技術候補を逆引き |
+| `/trace-evolution` | 自然言語のトピック語から RAN1 議論変遷を縦に追い、会合横断のタイムラインを生成 |
 | `/build-presentation` | 研究ノートから発表資料を4フェーズで段階構築 |
 
 ## コマンド一覧
