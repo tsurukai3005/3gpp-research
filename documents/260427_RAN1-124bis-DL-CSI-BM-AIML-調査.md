@@ -56,6 +56,8 @@ related:
   - "[[260422_Rel-15-NR-勉強会トピック調査ガイド]]"
   - "[[260420_NRフレーム構造とリソースブロックの進化まとめ]]"
   - "[[260428_RAN1-124bis-MIMO-operation-10.5.2]]"
+  - "[[260430_RAN1-124-125-13トピック議論変遷]]"
+  - "[[260501_CSI圧縮_inter-vendor-pairing_変遷]]"
 ---
 
 # RAN1#124bis（Malta、2026-04-13〜04-17）— DL CSI / Beam Management / AI-ML
