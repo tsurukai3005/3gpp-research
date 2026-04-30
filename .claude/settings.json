@@ -1,0 +1,79 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch",
+
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git mv:*)",
+      "Bash(git rm:*)",
+      "Bash(git diff *)",
+      "Bash(git check-ignore *)",
+
+      "Bash(mkdir -p documents)",
+      "Bash(rm -f documents/README.md documents/phy-fundamentals/.gitkeep documents/README.md documents/README.md documents/README.md documents/README.md docs/presentations/.gitkeep)",
+      "Bash(rmdir documents/phy-fundamentals documents docs/presentations docs)",
+      "Bash(find documents:*)",
+
+      "Bash(grep -E \"\\\\.md$\")",
+      "Bash(grep -v 'sortby\\\\|3gpp.org/$\\\\|3gpp.org/ftp/$\\\\|tsg_ran/$\\\\|WG1_RL1/$\\\\|TSGR1_124b/$')",
+      "Bash(grep -E \"^\\(docx|doc\\)$\")",
+      "Bash(grep -n \"^---$\\\\|^related:\\\\|^up:\" documents/260424_Rel-15-企業別戦略背景と対立候補波形.md)",
+      "Bash(grep -n \"^---$\\\\|^related:\\\\|^up:\" documents/260424_Rel-15-物理リソース仕様策定の議論変遷.md)",
+      "Bash(grep -n \"^---$\\\\|^related:\\\\|^up:\" documents/260427_RAN1-124bis-DL-CSI-BM-AIML-調査.md)",
+      "Bash(xargs -I{} echo {})",
+      "Bash(echo \"---exit:$?\")",
+
+      "Bash(curl -s \"https://api.semanticscholar.org/graph/v1/paper/search?query=6G+frame+structure+numerology&year=2024-2026&limit=10&fields=title,authors,year,url,externalIds\")",
+      "Bash(curl -s \"https://api.semanticscholar.org/graph/v1/paper/search?query=ISAC+frame+design+integrated+sensing+communication&year=2024-2026&limit=10&fields=title,authors,year,url\")",
+      "Bash(curl -s \"https://api.semanticscholar.org/graph/v1/paper/search?query=sub-THz+OFDM+frame+structure+phase+noise&year=2024-2026&limit=10&fields=title,authors,year,url\")",
+      "Bash(curl -s \"https://api.semanticscholar.org/graph/v1/paper/search?query=inter-numerology+interference+mitigation+5G+NR&year=2024-2026&limit=10&fields=title,authors,year,url\")",
+      "Bash(curl -s \"https://api.semanticscholar.org/graph/v1/paper/search?query=AI+adaptive+numerology+selection+6G&year=2024-2026&limit=10&fields=title,authors,year,url\")",
+
+      "Bash(curl -s -A \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36\" \"https://www.3gpp.org/ftp/tsg_ran/WG1_RL1/\" -o /tmp/ran1_root.html)",
+      "Bash(curl -s -A \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36\" \"https://www.3gpp.org/ftp/tsg_ran/WG1_RL1/TSGR1_124b/\" -o /tmp/ran1_124b.html)",
+      "Bash(curl -s -A \"Mozilla/5.0\" \"https://www.3gpp.org/ftp/tsg_ran/WG1_RL1/TSGR1_124b/Agenda/\" -o /tmp/agenda.html)",
+      "Bash(curl -s -A \"Mozilla/5.0\" \"https://www.3gpp.org/ftp/tsg_ran/WG1_RL1/TSGR1_124b/Inbox/\" -o /tmp/inbox.html)",
+      "Bash(curl -s -A \"Mozilla/5.0\" \"https://www.3gpp.org/ftp/tsg_ran/WG1_RL1/TSGR1_124b/Agenda/agenda.csv\" -o /tmp/agenda.csv)",
+      "Bash(curl -s -A \"Mozilla/5.0\" \"https://www.3gpp.org/ftp/tsg_ran/WG1_RL1/TSGR1_124b/Inbox/Tdoc_list/\" -o /tmp/tdoc_list.html)",
+      "Bash(curl -s -A \"Mozilla/5.0\" \"https://www.3gpp.org/ftp/tsg_ran/WG1_RL1/TSGR1_124b/Inbox/Chair_notes/\" -o /tmp/chair.html)",
+      "Bash(curl -s -A \"Mozilla/5.0\" \"https://www.3gpp.org/ftp/tsg_ran/WG1_RL1/TSGR1_124b/Inbox/Tdoc_list/TDoc_List_Meeting_RAN1%23124-bis%20\\(260417\\).xlsx\" -o tdoc_124bis.xlsx)",
+      "Bash(curl -s -A \"Mozilla/5.0\" \"https://www.3gpp.org/ftp/tsg_ran/WG1_RL1/TSGR1_124b/Inbox/Chair_notes/Chair%20notes%20RAN1%23124bis_eom4.docx\" -o chair_eom.docx)",
+      "Bash(curl -sA \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36\" \"https://www.3gpp.org/ftp/tsg_ran/WG1_RL1/TSGR1_124b/Agenda/agenda.csv\")",
+      "Bash(curl -sA \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36\" \"https://www.3gpp.org/ftp/tsg_ran/WG1_RL1/TSGR1_124b/Inbox/Chair_notes/\")",
+      "Bash(curl -sA 'Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36' https://www.3gpp.org/ftp/tsg_ran/WG1_RL1/TSGR1_124b/Inbox/Chair_notes/Chair%20notes%20RAN1%23124bis_eom4.docx -o /tmp/chair_notes_eom4.docx)",
+
+      "Bash(where python *)",
+      "Bash(py --version)",
+      "Bash(py -3 --version)",
+      "Bash(py -3 -c \"import openpyxl; print\\(openpyxl.__version__\\)\")",
+      "Bash(py -3 -m pip install --quiet openpyxl python-docx)",
+      "Bash(py -3)",
+      "Bash(python3 -c \"import sys,json; data=json.load\\(sys.stdin\\); [print\\(f{p.get\\(''''title'''',''''''''\\)} | {p.get\\(''''year'''',''''''''\\)} | {p.get\\(''''url'''',''''''''\\)}\\) for p in data.get\\(''''data'''',[]\\)]\")",
+      "Bash(python -c \":*)",
+
+      "Bash(pandoc --version)",
+      "Bash(where pandoc *)",
+      "Bash(pandoc --list-input-formats)",
+      "Bash(pandoc /tmp/chair_notes_eom4.docx -t gfm --wrap=none -o /tmp/chair_notes_eom4.md)",
+      "Bash(\"/c/Program Files/Pandoc/pandoc.exe\" /tmp/chair_notes_eom4.docx -t gfm --wrap=none -o /tmp/chair_notes_eom4.md)",
+      "Bash(export PATH=\"$PATH:/c/Program Files/Pandoc\")",
+      "Bash(pdftotext -v)",
+      "Bash(pdftotext -h)",
+
+      "Bash(winget --version)",
+      "Bash(winget install *)",
+      "Bash(winget list *)",
+      "Bash(winget search *)",
+      "Bash(choco --version)",
+      "Bash(scoop --version)",
+
+      "Read(//tmp/**)",
+      "Read(//c/Program Files/Pandoc//**)",
+
+      "PowerShell($pandocPath = 'C:\\\\Program Files\\\\Pandoc'; $userPath = [Environment]::GetEnvironmentVariable\\('Path', 'User'\\); if \\($userPath -split ';' -notcontains $pandocPath\\) { $newPath = if \\([string]::IsNullOrEmpty\\($userPath\\)\\) { $pandocPath } else { \"$userPath;$pandocPath\" }; [Environment]::SetEnvironmentVariable\\('Path', $newPath, 'User'\\); Write-Output \"ADDED: $pandocPath\" } else { Write-Output \"ALREADY PRESENT: $pandocPath\" }; Write-Output \"---User PATH after change---\"; [Environment]::GetEnvironmentVariable\\('Path', 'User'\\))",
+      "PowerShell(& 'C:\\\\Program Files\\\\Pandoc\\\\pandoc.exe' --version)"
+    ]
+  }
+}
