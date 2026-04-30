@@ -1,0 +1,38 @@
+# WI/SI カタログ
+#
+# キー: WI/SI 略号（agenda-items.yaml の parent_wi / parent_si と一致）
+#
+# フィールド:
+#   type:        WI | SI
+#   release:     rel-18 | rel-19 | rel-20-6g 等
+#   rapporteur:  rapporteur 企業（個人名併記可）
+#   scope:       配下の安定 AI ID リスト（agenda-items.yaml のキー）
+#   references:  関連する 3GPP 公式ページ等の URL
+#   notes:       メモ（任意）
+
+NR_AIML_air_Ph2:
+  type: WI
+  release: rel-19
+  rapporteur: "Qualcomm (Juan Montojo)"
+  scope:
+    - "ai_nr_aiml_csi_compression_r19"
+    - "ai_nr_aiml_beam_mgmt_r19"
+    - "ai_nr_aiml_positioning_r19"
+  references:
+    - "https://www.3gpp.org/technologies/ai-ml-nr"
+  notes: |
+    Rel-18 SI に続く Rel-19 の WI。Phase 2。
+    CSI 圧縮 / BM / positioning の 3 サブトピックを並行進行。
+
+6GR_BasicAirInterface:
+  type: SI
+  release: rel-20-6g
+  rapporteur: "[要確認]"
+  scope:
+    - "ai_6gr_mimo_operation"
+  references:
+    - "https://www.3gpp.org/technologies/ran-rel-19"
+    - "https://www.3gpp.org/specifications-technologies/releases/release-20"
+  notes: |
+    6G Radio SI の物理層基盤検討。RAN1#123 〜 で本格化。
+    AI 10.5.2（MIMO Operation）が multi-antenna 系の入口。

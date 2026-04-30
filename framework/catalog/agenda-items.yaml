@@ -1,0 +1,125 @@
+# 安定 AI ID カタログ
+#
+# キー命名規則: ai_<scope>_<topic>[_<release>]
+#   scope:   6gr (6G Radio SI), nr (Rel-19 以前)、cross (横串)
+#   topic:   機能の英語スラッグ（snake_case）
+#   release: rel-19, rel-20-6g 等（必要なら付与）
+#
+# フィールド:
+#   title:        正式タイトル（できれば 3GPP 表記そのまま）
+#   parent_si:    親 SI 略号（work-items.yaml のキー）。SI 配下の場合
+#   parent_wi:    親 WI 略号（work-items.yaml のキー）。WI 配下の場合
+#   parent_ai:    上位 AI（umbrella → sub-AI）の場合
+#   current_phase: study | study (initial-design) | WI | WI (specification) | maintenance
+#   aliases:      自然言語ヒット用の別名・略語・日本語表記。**英日両方推奨**
+#   description:  1〜3 行のスコープ説明
+#
+# 運用: 不足 alias はその場で追加（README §3.1）
+
+ai_6gr_mimo_operation:
+  title: "6GR MIMO Operation (umbrella)"
+  parent_si: "6GR_BasicAirInterface"
+  current_phase: "study"
+  aliases:
+    - "6GR MIMO"
+    - "6G MIMO operation"
+    - "MIMO operation 10.5.2"
+    - "6G の MIMO 動作"
+    - "6GR multi-antenna"
+    - "6G multi-antenna system"
+  description: |
+    6G Radio SI における multi-antenna 物理層伝送方式の上位アジェンダ。
+    PDCCH / PDSCH / UL チャネル / Beam Management の各サブ AI を含む。
+
+ai_6gr_mimo_dl_pdcch:
+  title: "6GR DL transmission scheme(s) for downlink control channels"
+  parent_si: "6GR_BasicAirInterface"
+  parent_ai: "ai_6gr_mimo_operation"
+  current_phase: "study (initial-design)"
+  aliases:
+    - "6GR PDCCH"
+    - "6G DL control channel"
+    - "downlink control channels"
+    - "6GR の制御チャネル"
+    - "6G の DL 制御チャネル"
+    - "10.5.2.1"
+  description: |
+    6G PDCCH の物理層伝送方式（どこ・どのように送るか）。
+    「何を送るか」(scheduling) は 10.5.4.1 で別扱い（Note 2 参照）。
+
+ai_6gr_mimo_dl_pdsch:
+  title: "6GR DL transmission scheme(s) for downlink shared channels"
+  parent_si: "6GR_BasicAirInterface"
+  parent_ai: "ai_6gr_mimo_operation"
+  current_phase: "study"
+  aliases:
+    - "6GR PDSCH"
+    - "6G DL shared channel"
+    - "downlink shared channels"
+    - "6GR の共有チャネル"
+    - "6G データチャネル"
+    - "10.5.2.2"
+
+ai_6gr_mimo_ul_channels:
+  title: "6GR UL transmission scheme(s) for uplink channels"
+  parent_si: "6GR_BasicAirInterface"
+  parent_ai: "ai_6gr_mimo_operation"
+  current_phase: "study"
+  aliases:
+    - "6GR PUSCH"
+    - "6GR PUCCH"
+    - "6G UL channels"
+    - "uplink transmission scheme"
+    - "6GR の UL チャネル"
+    - "10.5.2.3"
+
+ai_6gr_mimo_beam_mgmt:
+  title: "6GR Beam management for downlink and uplink"
+  parent_si: "6GR_BasicAirInterface"
+  parent_ai: "ai_6gr_mimo_operation"
+  current_phase: "study"
+  aliases:
+    - "6GR ビーム管理"
+    - "6G beam management"
+    - "BM for 6G"
+    - "6GR の BM"
+    - "10.5.2.4"
+
+ai_nr_aiml_csi_compression_r19:
+  title: "NR AI/ML CSI compression (Rel-19 NR_AIML_air_Ph2)"
+  parent_wi: "NR_AIML_air_Ph2"
+  current_phase: "WI (specification)"
+  aliases:
+    - "CSI 圧縮"
+    - "AI CSI compression"
+    - "AI/ML CSI feedback"
+    - "two-sided CSI"
+    - "two-sided model CSI"
+    - "Type-II codebook AI"
+    - "JSCC CSI"  # Samsung 系
+    - "DL CSI compression"
+  description: |
+    Rel-19 NR_AIML_air_Ph2 の中核アジェンダ。
+    エンコーダ（UE 側）/ デコーダ（gNB 側）の two-sided AI モデルで CSI を圧縮する。
+
+ai_nr_aiml_beam_mgmt_r19:
+  title: "NR AI/ML beam management (Rel-19 NR_AIML_air_Ph2)"
+  parent_wi: "NR_AIML_air_Ph2"
+  current_phase: "WI"
+  aliases:
+    - "AI ビーム管理"
+    - "AI/ML BM"
+    - "AI/ML beam management"
+    - "spatial-domain beam prediction"
+    - "temporal-domain beam prediction"
+    - "AI BM"
+
+ai_nr_aiml_positioning_r19:
+  title: "NR AI/ML positioning (Rel-19 NR_AIML_air_Ph2)"
+  parent_wi: "NR_AIML_air_Ph2"
+  current_phase: "WI"
+  aliases:
+    - "AI 測位"
+    - "AI positioning"
+    - "AI/ML for positioning accuracy enhancement"
+    - "AI/ML positioning"

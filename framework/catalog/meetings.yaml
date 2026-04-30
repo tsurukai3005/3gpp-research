@@ -1,0 +1,65 @@
+# RAN1 会合カタログ
+# キー: 会合略号（"#" を含むので必ずクォート）
+# 値:
+#   date:        会期（"YYYY-MM-DD to YYYY-MM-DD" or 単日）
+#   location:    開催地
+#   ftp_folder:  3GPP FTP の WG1_RL1/ 配下のフォルダ名（例: TSGR1_124b）
+#   status:      planned | ongoing | closed
+#   ai_map:      安定 AI ID（agenda-items.yaml のキー） → 当該会合での AI 番号
+#                未確認は省略（追跡対象のみ埋めればよい）
+#   notes:       メモ（任意）
+#
+# 補足:
+# - 完全な FTP URL は ftp_folder から組み立てる:
+#     https://www.3gpp.org/ftp/tsg_ran/WG1_RL1/<ftp_folder>/
+# - bis 系は小文字 b（例: TSGR1_124b）。詳細は framework/3gpp-ftp-cookbook.md §1.2
+# - ai_map は **追跡対象の AI のみ** 埋める。空欄が多くてよい
+
+"RAN1#123":
+  date: "[要確認]"  # 2025-11 期想定
+  location: "[要確認]"
+  ftp_folder: "TSGR1_123"
+  status: closed
+  ai_map: {}  # [要確認] agenda.csv 未取得
+  notes: "RAN1#124bis 調査時に「#123 で 6GR EVM の基礎合意」と参照された会合"
+
+"RAN1#124":
+  date: "[要確認]"  # 2026-02 期想定
+  location: "[要確認]"
+  ftp_folder: "TSGR1_124"
+  status: closed
+  ai_map: {}  # [要確認]
+  notes: "Rel-19 NR_AIML_air_Ph2 / 6GR の継続会合"
+
+"RAN1#124bis":
+  date: "2026-04-13 to 2026-04-17"
+  location: "Malta"
+  ftp_folder: "TSGR1_124b"
+  status: closed
+  ai_map:
+    ai_6gr_mimo_operation: "10.5.2"
+    ai_6gr_mimo_dl_pdcch: "10.5.2.1"
+    ai_6gr_mimo_dl_pdsch: "10.5.2.2"
+    ai_6gr_mimo_ul_channels: "10.5.2.3"
+    ai_6gr_mimo_beam_mgmt: "10.5.2.4"
+    # NR Rel-19 AI/ML 系の番号は要確認（agenda.csv 未パース）
+  references_in_repo:
+    - "[[260427_RAN1-124bis-DL-CSI-BM-AIML-調査]]"
+    - "[[260428_RAN1-124bis-MIMO-operation-10.5.2]]"
+  notes: "本リポジトリで初めて詳細調査済みの会合。Chair Notes EoM v4 が確定版"
+
+"RAN1#125":
+  date: "[要確認]"  # 2026-05 期想定
+  location: "[要確認]"
+  ftp_folder: "TSGR1_125"
+  status: planned  # 開催前 or 開催直後（要確認）
+  ai_map: {}  # [要確認]
+  notes: "FTP listing で TSGR1_125 フォルダの実在は確認済み"
+
+"RAN1#126":
+  date: "[要確認]"
+  location: "[要確認]"
+  ftp_folder: "TSGR1_126"
+  status: planned
+  ai_map: {}
+  notes: "FTP listing で TSGR1_126 フォルダの実在は確認済み"
