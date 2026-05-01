@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "documents/260430_RAN1-124-125-13トピック議論変遷.md",
+                "file": "documents/260501_NR周波数リソース構造-主要SEPとライセンス売上調査.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "260430_RAN1-124-125-13トピック議論変遷"
+              "title": "260501_NR周波数リソース構造-主要SEPとライセンス売上調査"
             }
           }
         ]
@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#124bis",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -74,8 +74,7 @@
               "title": "ブックマーク"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -184,41 +183,40 @@
   },
   "active": "1eb78f8ddef00e98",
   "lastOpenFiles": [
+    "documents/260501_DSS-Dynamic-Spectrum-Sharing-3GPP採用経緯.md",
+    "documents/260501_NR周波数リソース構造-主要SEPとライセンス売上調査.md",
+    "documents/260501_NR周波数リソース構造-主要SEPとライセンス売上調査.md.tmp.64108.1777612709612",
+    "references/NTT-DOCOMO-2024-05-20-5G-SEP-3rd-place.md",
+    "references/NTT-DOCOMO-2024-05-20-5G-SEP-3rd-place.md.tmp.64108.1777612690175",
+    "documents/260424_Rel-15-企業別戦略背景と対立候補波形.md",
+    "documents/260501_NR周波数リソース構造-主要SEPとライセンス売上調査.md.tmp.64108.1777612075448",
+    "documents/260421_NRフレーム構造の発表資料ドラフト.md",
+    "documents/260420_標準化特許申請のための調査戦略.md",
+    "documents/260420_プロジェクト設計書v2.md",
+    "documents/260420_NRフレーム構造とリソースブロックの進化まとめ.md",
+    "documents/260422_Rel-15-NR-勉強会トピック調査ガイド.md",
+    "documents/260422_Copilot-PPTX生成プロンプト.md",
+    "documents/260501_6GR-Waveform-PAPR削減_変遷.md",
+    "documents/260501_CSI圧縮_inter-vendor-pairing_変遷.md",
+    "documents/260501_TN-NTN共通HARQ_変遷.md",
+    "documents/260430_RAN1-124-125-13トピック議論変遷.md",
+    "documents/260428_RAN1-124bis-MIMO-operation-10.5.2.md",
     "framework/catalog/meetings.yaml.tmp.35552.1777521432731",
     "framework/catalog/agenda-items.yaml.tmp.35552.1777521407826",
-    "documents/260501_TN-NTN共通HARQ_変遷.md",
     "documents/260501_TN-NTN共通HARQ_変遷.md.tmp.35552.1777521372723",
-    "documents/260501_CSI圧縮_inter-vendor-pairing_変遷.md",
     "references/Chair-Notes-RAN1-124bis-6GR-HARQ-NTN.md",
     "references/Chair-Notes-RAN1-124-6GR-HARQ-NTN.md",
-    "documents/260428_RAN1-124bis-MIMO-operation-10.5.2.md",
     "documents/260427_RAN1-124bis-DL-CSI-BM-AIML-調査.md",
-    "documents/260420_標準化特許申請のための調査戦略.md",
     "documents/260427_RAN1-124bis-DL-CSI-BM-AIML-調査.md.tmp.50016.1777338329190",
     "documents/260427_RAN1-124bis-DL-CSI-BM-AIML-調査.md.tmp.50016.1777338308791",
-    "documents/260420_NRフレーム構造とリソースブロックの進化まとめ.md",
     "framework/3gpp-ftp-cookbook.md",
-    "documents/260422_Copilot-PPTX生成プロンプト.md",
-    "documents/260422_Rel-15-NR-勉強会トピック調査ガイド.md",
     "documents/260423_TS38.101-1-Section5-原文準拠和訳.md",
     "documents/260423_TS38.211-Section4-原文準拠和訳.md",
-    "documents/260424_Rel-15-企業別戦略背景と対立候補波形.md",
     "documents/260424_Rel-15-物理リソース仕様策定の議論変遷.md",
     "documents/260421_TS38.211-Section4-BWPとCarrier-Aggregationの体系整理.md",
     "documents/260421_TS38.101-1-Section5-Operating-Bandsの体系整理.md",
     "documents/260421_NR周波数リソース構造の発表資料ドラフト.md",
-    "documents/260421_NRフレーム構造の発表資料ドラフト.md",
     "framework/personas/stakeholders/regulator.md.tmp.5988.1777298136506",
-    "framework/personas/stakeholders/operator-cxo.md.tmp.5988.1777298130687",
-    "framework/personas/stakeholders/3gpp-chair.md.tmp.5988.1777298124597",
-    "framework/personas/industries/vertical-automotive.md.tmp.5988.1777298113217",
-    "framework/personas/regions/japan.md.tmp.5988.1777298076210",
-    "framework/templates/connect-dots.md.tmp.5988.1777298026377",
-    "framework/templates/README.md",
-    "framework/lenses/README.md",
-    "framework/axes/README.md",
-    "references/README.md",
-    "documents/260421_発表資料作成プロンプトv1.md",
-    "documents/260421_フレーム構造のギャップ分析-学術vs3GPPvs実装制約.md"
+    "framework/personas/stakeholders/operator-cxo.md.tmp.5988.1777298130687"
   ]
 }
