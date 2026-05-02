@@ -1,20 +1,20 @@
-# /commit — 研究ノートのコミット
+# /commit — Commit research notes / 研究ノートのコミット
 
-変更内容を分析し、適切な粒度でコミットを生成する。
+Analyze changes and generate commits at appropriate granularity.
 
-## 手順
+## Steps
 
-1. `git status` と `git diff --staged` および `git diff` で変更内容を確認する
-2. 変更ファイルをカテゴリ別に分類する:
-   - `framework/` → フレームワーク変更（軸・レンズ・テンプレ・ポリシー・ペルソナ）
-   - `documents/` → 自分の調査ノート（フラット、`yymmdd_<slug>.md`）
-   - `references/` → 一次情報の MD 化（論文・Tdoc・仕様書）
-   - `.claude/` → スキル・コマンド変更
-   - `CLAUDE.md` / `README.md` / 設定 → ドキュメント・設定
-3. カテゴリごとに個別のコミットを作成する（細粒度コミット）
-4. `git log --oneline -10` で直近のコミットスタイルを確認し、一貫性を保つ
+1. Check changes with `git status`, `git diff --staged`, and `git diff`
+2. Classify changed files by category:
+   - `framework/` → framework changes (axes, lenses, templates, policies, personas)
+   - `documents/` → your own research notes (flat, `yymmdd_<slug>.md`)
+   - `references/` → primary sources rendered as Markdown (papers, Tdocs, specs)
+   - `.claude/` → skill / command changes
+   - `CLAUDE.md` / `README.md` / config → docs and configuration
+3. Create separate commits per category (fine-grained commits)
+4. Run `git log --oneline -10` to confirm recent commit style and stay consistent
 
-## コミットメッセージ形式
+## Commit message format
 
 ```
 <type>(<scope>): <日本語の説明>
@@ -36,9 +36,9 @@
 
 ### scope
 
-ディレクトリまたはトピック名。例: `mimo`, `channel-coding`, `axes`, `personas`, `linking-policy`
+A directory name or topic name. Examples: `mimo`, `channel-coding`, `axes`, `personas`, `linking-policy`
 
-### 例
+### Examples
 
 ```
 research(mimo): Cell-Free Massive MIMO の初期調査ノートを追加
@@ -49,8 +49,8 @@ framework(linking-policy): Obsidian wikilink ルールを追加
 chore(documents): 週フォルダ廃止に伴うリネーム
 ```
 
-## 禁止事項
+## Forbidden
 
-- `git add -A` は使わない（意図しないファイルの混入を防ぐ）
-- `.env` やクレデンシャル系ファイルをコミットしない
-- `--no-verify` は使わない
+- Do not use `git add -A` (prevent unintended file inclusion)
+- Do not commit `.env` or credentials
+- Do not use `--no-verify`

@@ -1,15 +1,15 @@
-# /weekly-summary — 週次研究サマリー
+# /weekly-summary — Weekly research summary / 週次研究サマリー
 
-今週の研究活動を振り返り、サマリーを生成する。
+Look back over this week's research activity and generate a summary.
 
-## 手順
+## Steps
 
-1. `git log --since="1 week ago" --oneline --all` で今週のコミットを取得する
-2. 変更されたファイルを `git log --since="1 week ago" --name-only --all` で取得する
-3. 以下の構造でサマリーを生成する
-4. 結果をチャットに出力する（保存は任意）
+1. Get this week's commits with `git log --since="1 week ago" --oneline --all`
+2. Get changed files with `git log --since="1 week ago" --name-only --all`
+3. Build the summary in the structure below
+4. Output the result to chat (saving is optional)
 
-## サマリー構造
+## Summary structure
 
 ```markdown
 ## 週次研究サマリー: YYYY-MM-DD 〜 YYYY-MM-DD
@@ -38,8 +38,6 @@
 - コミット数: N
 ```
 
-## Next Steps の集約
+## Aggregating Next Steps
 
-各ノートの `## Next Steps` セクションから未完了（`- [ ]`）の項目を
-自動的に収集し、「来週の Next Steps」にまとめる。
-これにより、散在する TODO が1箇所で確認できる。
+Automatically collect unchecked items (`- [ ]`) from each note's `## Next Steps` section and gather them under "来週の Next Steps". This puts scattered TODOs in a single place.

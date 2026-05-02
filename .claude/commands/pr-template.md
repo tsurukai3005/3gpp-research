@@ -1,24 +1,24 @@
-# /pr-template — PR 説明文の生成
+# /pr-template — Generate a PR description / PR 説明文の生成
 
-ブランチの変更内容を分析し、PR の説明文を生成する。
+Analyze the branch's changes and generate a PR description.
 
-## 使い方
+## Usage
 
 ```
-/pr-template              ← 現在のブランチの変更をまとめる
-/pr-template <PR番号>     ← 既存 PR の説明文を生成する
+/pr-template              ← summarize the current branch
+/pr-template <PR number>  ← generate the description for an existing PR
 ```
 
-## 手順
+## Steps
 
-1. 対象を特定する:
-   - 引数なし → `git diff main...HEAD` で現在のブランチの全変更を取得
-   - PR 番号あり → `gh pr diff <番号>` で差分を取得
-2. 変更ファイルをカテゴリ別に分類する
-3. 以下のテンプレートで説明文を生成する
-4. 結果をチャットに出力する
+1. Identify the target:
+   - No argument → use `git diff main...HEAD` to capture all changes on the current branch
+   - PR number given → use `gh pr diff <number>` to capture the diff
+2. Classify changed files by category
+3. Generate the description from the template below
+4. Output the result to chat
 
-## 出力テンプレート
+## Output template
 
 ```markdown
 ## 概要

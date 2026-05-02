@@ -1,15 +1,15 @@
-# /status — 研究ノート全体の状態確認
+# /status — Overview of all research notes / 研究ノート全体の状態確認
 
-全ノートの status / confidence を一覧表示し、陳腐化や未レビュー、リンク健全性を可視化する。
+List status / confidence for every note, and surface staleness, unreviewed entries, and link-hygiene problems.
 
-## 手順
+## Steps
 
-1. `documents/` および `references/` 配下の全 `.md` ファイル（README.md 除く）をフラットに走査する
-2. 各ファイルの frontmatter から `status`, `confidence`, `updated`, `up`, `related` を抽出する
-3. 各ファイルの本文を読んで `[[...]]` wikilink の数を数え、リンク切れ（実在しない wikilink）と孤立ノート（被リンクも発リンクも 0 のノート）を検出する
-4. 以下の形式で一覧を出力する
+1. Flat-scan every `.md` file (excluding README.md) under `documents/` and `references/`
+2. Extract `status`, `confidence`, `updated`, `up`, `related` from each frontmatter
+3. Read each body to count `[[...]]` wikilinks; detect broken links (wikilinks pointing to non-existent files) and orphan notes (zero inbound and outbound links)
+4. Output the listing in the format below
 
-## 出力フォーマット
+## Output format
 
 ```markdown
 ## 研究ノート ステータス一覧（YYYY-MM-DD 時点）
@@ -38,12 +38,12 @@
 - リンク切れ: N
 ```
 
-## 「要注意」の判定基準
+## "Needs attention" criteria
 
-- `status: draft` かつ `updated` が 30 日以上前
-- `status: reviewed` かつ `updated` が 90 日以上前
-- `confidence: low` のまま 60 日以上経過
-- frontmatter に `status` や `axes` が欠落している
-- **孤立ノート**（`up` も `related` も空、かつ本文中の wikilink が 0、かつ被リンクが 0）
-- **リンク切れ**（本文または frontmatter の `[[...]]` が実ファイルを指していない）
-- references から1つも引用されていないノートで `sources` が外部 URL のみの場合（要 references 化検討）
+- `status: draft` and `updated` is over 30 days old
+- `status: reviewed` and `updated` is over 90 days old
+- `confidence: low` for over 60 days
+- frontmatter is missing `status` or `axes`
+- **Orphan note** (`up` and `related` both empty, zero body wikilinks, zero inbound links)
+- **Broken link** (a `[[...]]` in body or frontmatter does not point to a real file)
+- A note that no `references/` entry cites and whose `sources` are external URLs only (consider rendering to references)

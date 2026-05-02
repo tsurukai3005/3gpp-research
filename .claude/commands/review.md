@@ -1,54 +1,54 @@
-# /review — 研究ノートのレビュー
+# /review — Review research notes / 研究ノートのレビュー
 
-変更されたノートの品質をチェックし、レビューコメントを生成する。
+Check the quality of changed notes and produce review comments.
 
-## 使い方
+## Usage
 
 ```
-/review              ← ステージングされた変更 or 直近コミットをレビュー
-/review <file-path>  ← 特定ファイルをレビュー
+/review              ← review staged changes (or HEAD~1 if none staged)
+/review <file-path>  ← review a specific file
 ```
 
-## 手順
+## Steps
 
-1. 対象を特定する:
-   - 引数なし → `git diff --staged` があればそれを、なければ `git diff HEAD~1` を対象にする
-   - 引数あり → 指定ファイルを読む
-2. `framework/principles.md` の不変原則に照らしてチェックする
-3. 以下の5つの観点でレビューする
-4. 結果をチャットに出力する
+1. Identify the target:
+   - No argument → if `git diff --staged` exists, use it; otherwise use `git diff HEAD~1`
+   - Argument given → read the specified file
+2. Check against the invariant principles in `framework/principles.md`
+3. Review against the five viewpoints below
+4. Output the result to chat
 
-## レビュー観点
+## Review viewpoints
 
-### 1. 出典の完全性（原則1）
-- 事実の記述に一次情報の URL が付いているか
-- 文書番号（TS/TR/Tdoc）が記載されているか
-- アクセス日が記録されているか
+### 1. Source completeness (Principle 1)
+- Do factual statements carry the URL of a primary source?
+- Are document numbers (TS/TR/Tdoc) present?
+- Is the access date recorded?
 
-### 2. 実装制約の意識（原則2）
-- 論文の理想仮定をそのまま受け入れていないか
-- 3GPP の実装制約（DCI ビット数、フレーム構造、同期ズレ）との差が言及されているか
+### 2. Implementation-constraint awareness (Principle 2)
+- Are the paper's ideal assumptions accepted uncritically?
+- Are gaps to 3GPP implementation constraints (DCI bit count, frame structure, sync offset) mentioned?
 
-### 3. 世代比較（原則3）
-- 前世代との対比セクションがあるか（survey-topic の場合）
-- 5G の教訓が考慮されているか
+### 3. Generation comparison (Principle 3)
+- Is there a section comparing with previous generations (for survey-topic)?
+- Are the lessons of 5G considered?
 
-### 4. 構造の3層（原則4）
-- Why → What → How の構造になっているか
-- いきなり技術詳細に入っていないか
+### 4. Three-layer structure (Principle 4)
+- Does it follow Why → What → How?
+- Does it dive into technical details prematurely?
 
-### 5. 6軸の網羅性
-- frontmatter の `axes:` が適切に記録されているか
-- 該当する軸が漏れていないか
-- `[要確認]` マークが適切に使われているか
+### 5. Six-axis coverage
+- Are `axes:` in frontmatter recorded appropriately?
+- Are applicable axes missing?
+- Are `[要確認]` markers used appropriately?
 
-### 6. リンク健全性（[`framework/linking-policy.md`](../../framework/linking-policy.md)）
-- frontmatter `up` / `related` のいずれか、または本文中に最低1本の wikilink (`[[...]]`) があるか（孤立ノートでないか）
-- 引用された一次情報（論文・Tdoc・仕様書）が `references/` に MD 化されているか
-- ファイル名が `yymmdd_<slug>.md`（documents）または原文の番号/タイトル（references）の規則に従っているか
-- 引用している `[[ファイル名]]` が実在するか（リンク切れ）
+### 6. Link hygiene ([`framework/linking-policy.md`](../../framework/linking-policy.md))
+- Does either `up` / `related` (or the body) carry at least one wikilink (`[[...]]`)? (Not an orphan note)
+- Are cited primary sources (papers, Tdocs, specs) rendered to Markdown under `references/`?
+- Does the filename follow `yymmdd_<slug>.md` (documents) or the original number/title (references) convention?
+- Do the cited `[[ファイル名]]` actually exist (no broken links)?
 
-## 出力フォーマット
+## Output format
 
 ```markdown
 ## レビュー: <ファイル名>

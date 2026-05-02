@@ -1,24 +1,24 @@
-# /create-issue — GitHub Issue の作成
+# /create-issue — Create a GitHub Issue / GitHub Issue の作成
 
-研究タスクを GitHub Issue として登録する。
+Register a research task as a GitHub Issue.
 
-## 使い方
+## Usage
 
 ```
-/create-issue <タイトル>
-/create-issue <タイトル> --label <ラベル>
+/create-issue <title>
+/create-issue <title> --label <label>
 ```
 
-## 手順
+## Steps
 
-1. タイトルと内容を整理する
-2. 適切なラベルを選択する（引数で指定がなければ自動判定）
-3. `gh issue create` で Issue を作成する
-4. 作成した Issue の URL を表示する
+1. Organize the title and body
+2. Choose an appropriate label (auto-detect if not given as an argument)
+3. Create the issue via `gh issue create`
+4. Display the URL of the created issue
 
-## ラベル体系
+## Label scheme
 
-以下のラベルを使用する（未作成の場合は `gh label create` で作成する）:
+Use the following labels (create with `gh label create` if missing):
 
 | ラベル | 用途 | 色 |
 |:---|:---|:---|
@@ -29,7 +29,7 @@
 | `framework` | フレームワーク改善 | `#d73a4a` |
 | `idea` | アイデア・仮説 | `#f9d0c4` |
 
-## Issue テンプレート
+## Issue template
 
 ```markdown
 ## 目的
@@ -55,11 +55,11 @@
 [technology_layer / generation / value / market / adoption / ip]
 ```
 
-## 自動判定のルール
+## Auto-detection rules
 
-タイトルや内容から以下を推定する:
-- 「調査」「survey」→ `research`
-- 「分析」「gap」「比較」→ `analysis`
-- 「会合」「RAN1」「FFS」→ `meeting`
-- 「論文」「paper」「arXiv」→ `paper`
-- 「アイデア」「仮説」「組合せ」→ `idea`
+Infer from the title or body:
+- 「調査」「survey」 → `research`
+- 「分析」「gap」「比較」 → `analysis`
+- 「会合」「RAN1」「FFS」 → `meeting`
+- 「論文」「paper」「arXiv」 → `paper`
+- 「アイデア」「仮説」「組合せ」 → `idea`
