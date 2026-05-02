@@ -1,0 +1,13 @@
+name: tex.ja-haranoaji-only
+description: |
+  筑紫B丸ゴシック未導入環境向け。原ノ味フォント（IPAex 互換、TeX Live 同梱）のみで
+  ビルドが通るように設定する。最小依存（TeX Live full のみ）で動かしたいとき用。
+skeleton:
+  aspect_ratio: aspectratio=43
+  base_font_size: 9
+  ja_font_preset: haranoaji         # luatexja-preset の haranoaji
+  latin_sans_font: TeX Gyre Heros
+  latin_mono_font: TeX Gyre Cursor
+notes:
+  - "TeX Live full でフォント追加なしでビルドできる最小構成。"
+  - "Latin/JP の混植トーンは ja-aspect43-9pt と異なる（やや太め）。"

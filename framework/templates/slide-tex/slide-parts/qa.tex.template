@@ -1,0 +1,8 @@
+% Slide type: qa
+% Metropolis の standout 環境を使った質疑応答スライド。
+% プレースホルダ:
+%   <<HEADLINE>>   表示文字列。既定は "Q\&A" もしくは "Thank you"。
+
+\begin{frame}[standout]
+<<HEADLINE>>
+\end{frame}

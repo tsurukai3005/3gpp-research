@@ -1,0 +1,15 @@
+% Slide type: agenda
+% プレースホルダ:
+%   <<HEADLINE>>     スライドタイトル（例: "目次"）
+%   <<AGENDA_ITEMS>> \item 行を改行区切りで並べた文字列
+%
+% スキルは AGENDA_ITEMS を以下の形式で生成する:
+%   \item 1.\ Operating Bands と帯域配置
+%   \item 2.\ Subcarrier Spacing と OFDM 内部構造
+%   \item 3.\ ...
+
+\begin{frame}{<<HEADLINE>>}
+\begin{enumerate}
+<<AGENDA_ITEMS>>
+\end{enumerate}
+\end{frame}

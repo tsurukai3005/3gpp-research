@@ -1,0 +1,16 @@
+% Slide type: plain
+% プレースホルダ:
+%   <<HEADLINE>>  スライドタイトル
+%   <<BODY>>      itemize/段落本文。スキルが Markdown 箇条書きを LaTeX に変換して埋める。
+%
+% Markdown → LaTeX 変換ルール（スキル側で実施）:
+%   - "- foo"          → \item foo
+%   - "**word**"       → \textbf{word}
+%   - "*word*"         → \emph{word}
+%   - "`code`"         → \texttt{code}
+%   - 箇条書きのみのスライド → 全体を itemize で囲む
+%   - 段落と箇条書きの混在  → 段落を素のテキスト、箇条書きブロックだけ itemize で囲む
+
+\begin{frame}{<<HEADLINE>>}
+<<BODY>>
+\end{frame}

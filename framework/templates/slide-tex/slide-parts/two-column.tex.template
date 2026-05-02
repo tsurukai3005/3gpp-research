@@ -1,0 +1,18 @@
+% Slide type: two-column
+% プレースホルダ:
+%   <<HEADLINE>>     スライドタイトル
+%   <<LEFT_BODY>>    左カラム本文（itemize 等を含む）
+%   <<RIGHT_BODY>>   右カラム本文
+%
+% スキルがソースノートで `|||` 区切り、または "### 左 / ### 右" 形式から両カラムを抽出する。
+
+\begin{frame}{<<HEADLINE>>}
+\begin{columns}[T,onlytextwidth]
+  \begin{column}{0.48\textwidth}
+<<LEFT_BODY>>
+  \end{column}
+  \begin{column}{0.48\textwidth}
+<<RIGHT_BODY>>
+  \end{column}
+\end{columns}
+\end{frame}

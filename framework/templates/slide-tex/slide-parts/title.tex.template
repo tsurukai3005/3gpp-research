@@ -1,0 +1,6 @@
+% Slide type: title
+% プレースホルダはスキルが metadata から展開する:
+%   <<TITLE>> <<SUBTITLE>> <<AUTHOR>> <<INSTITUTE>> <<DATE>>
+% \maketitle を使うことで Metropolis のタイトル装飾（赤バー）を継承する。
+
+\maketitle

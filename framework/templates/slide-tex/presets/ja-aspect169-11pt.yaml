@@ -1,0 +1,12 @@
+name: tex.ja-aspect169-11pt
+description: |
+  日本語/16:9/11pt。最近の学会・社内発表のワイドスクリーン向け既定。
+  字を大きくしたいときに 4:3 9pt から切り替える。
+skeleton:
+  aspect_ratio: aspectratio=169
+  base_font_size: 11
+  ja_font_preset: tsukuxuB-mgothic
+  latin_sans_font: TeX Gyre Heros
+  latin_mono_font: TeX Gyre Cursor
+notes:
+  - "プロジェクタやリモート画面共有で 16:9 が前提のケース向け。"

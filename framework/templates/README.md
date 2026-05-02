@@ -13,6 +13,7 @@
 | 世代比較 | [[generation-comparison]] | `/success-pattern` | 5列マトリクス（3G〜6G）と普及要因の問い |
 | トピック間接続 | [[connect-dots]] | `/connect-dots` | 共通軸・相乗効果・矛盾の分析手順 |
 | 需要逆引き | [[demand-reverse]] | `/demand-reverse` | ペルソナのペインから候補抽出 |
+| TeX/Beamer スライド | [slide-tex/](slide-tex/) | `/render-tex-slides` | skeleton + slide-parts + presets。PPTX 系（`tools/pptx/`）と命名空間が分離されている |
 
 ## 関連
 

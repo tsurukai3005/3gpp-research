@@ -1,0 +1,17 @@
+% Slide type: image-with-caption
+% プレースホルダ:
+%   <<HEADLINE>>     スライドタイトル
+%   <<IMAGE_PATH>>   figures/ からの相対パス（例: figures/frame_structure.pdf）
+%   <<IMAGE_WIDTH>>  \linewidth 比（例: 0.85）
+%   <<CAPTION>>      画像下のキャプション。空でもよい。
+%
+% 図ファイルが未配置でもビルドは止めない方針なので、
+% スキルは存在チェックの結果だけチャットに報告する。
+
+\begin{frame}{<<HEADLINE>>}
+\centering
+\includegraphics[width=<<IMAGE_WIDTH>>\linewidth]{<<IMAGE_PATH>>}
+
+\vspace{0.5em}
+{\small <<CAPTION>>}
+\end{frame}

@@ -1,0 +1,49 @@
+% !TEX program = lualatex
+% !TEX root    = main.tex
+%
+% Beamer / Metropolis 親ファイル雛形。
+% プレースホルダ <<NAME>> は /render-tex-slides 実行時にスキルが置換する。
+% 本ファイル自体を slides/tex/<yymmdd>_<slug>/main.tex に複製したあと、
+% \input{parts/<id>} の順序は manifest.yaml の slides[] に従って再生成される。
+
+\documentclass[<<ASPECT_RATIO>>,<<BASE_FONT_SIZE>>pt]{beamer}
+
+% --- テーマ ---
+% TeX Live の Metropolis を一次経路にする。
+% framework/templates/slide-tex/assets/metropolistheme/ にベンダ済みの dtx を
+% 置く運用に切り替える場合は、その README の手順に従って texmf 経由で読み込む。
+\usetheme{metropolis}
+
+% --- 言語 / フォント ---
+\usepackage{luatexja}
+\usepackage[<<JA_FONT_PRESET>>]{luatexja-preset}
+\usepackage{fontspec}
+\setsansfont{<<LATIN_SANS_FONT>>}
+\setmonofont{<<LATIN_MONO_FONT>>}
+
+% --- 表組み・図 ---
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+
+% --- 数式 ---
+\usepackage{amsmath, amssymb}
+
+% --- ハイパーリンク（Metropolis 既定の上に最小限） ---
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, urlcolor=blue!60!black, linkcolor=., citecolor=.}
+
+% --- メタデータ（manifest.yaml > metadata: から展開） ---
+\title{<<TITLE>>}
+\subtitle{<<SUBTITLE>>}
+\author{<<AUTHOR>>}
+\institute{<<INSTITUTE>>}
+\date{<<DATE>>}
+
+\begin{document}
+
+% スライド本体（manifest.yaml の slides[] 順に展開される）
+<<SLIDE_INPUTS>>
+
+\end{document}

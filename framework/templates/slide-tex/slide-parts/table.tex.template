@@ -1,0 +1,21 @@
+% Slide type: table
+% プレースホルダ:
+%   <<HEADLINE>>      スライドタイトル
+%   <<COL_SPEC>>      tabular 列指定（例: "lrc"）。スキルが MD のアラインから生成。
+%                       :--- → l / ---: → r / :---: → c
+%   <<HEADER_ROW>>    & 区切りのヘッダ行。末尾は ` \\` を含めない（テンプレで付ける）
+%   <<BODY_ROWS>>     & 区切りの本文行を改行で並べた文字列。各行末は ` \\`。
+%
+% Markdown 表の **bold** / *emph* / `code` は \textbf{} / \emph{} / \texttt{} に置換する。
+% パイプ `\|` のエスケープは `|` に戻す。
+
+\begin{frame}{<<HEADLINE>>}
+\centering
+\begin{tabular}{<<COL_SPEC>>}
+\toprule
+<<HEADER_ROW>> \\
+\midrule
+<<BODY_ROWS>>
+\bottomrule
+\end{tabular}
+\end{frame}

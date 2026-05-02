@@ -1,0 +1,14 @@
+name: tex.ja-aspect43-9pt
+description: |
+  日本語/4:3/9pt。master 発表（東京科学大学）と同じ既定。
+  日本語フォントは筑紫B丸ゴシック（OpenType）を想定。未導入環境では
+  ja-haranoaji-only.yaml を使う。
+skeleton:
+  aspect_ratio: aspectratio=43         # main.tex.template の <<ASPECT_RATIO>> に注入
+  base_font_size: 9                    # <<BASE_FONT_SIZE>>
+  ja_font_preset: tsukuxuB-mgothic     # luatexja-preset の preset 名
+  latin_sans_font: TeX Gyre Heros      # Helvetica 互換、TeX Live 同梱
+  latin_mono_font: TeX Gyre Cursor     # Courier 互換、TeX Live 同梱
+notes:
+  - "master 発表のレイアウトを忠実に再現するための既定プリセット。"
+  - "luatexja-preset の `tsukuxuB-mgothic` が使えない環境では ja-haranoaji-only に切替。"

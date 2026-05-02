@@ -1,0 +1,14 @@
+% Slide type: equation-focus
+% プレースホルダ:
+%   <<HEADLINE>>    スライドタイトル
+%   <<EQUATION>>    align* / equation* 環境に入れる中身（\\ 区切り可、$ 不要）
+%   <<EXPLAIN>>     式の下に置く一行解説（任意。空でも可）
+
+\begin{frame}{<<HEADLINE>>}
+\begin{equation*}
+<<EQUATION>>
+\end{equation*}
+
+\vspace{0.5em}
+<<EXPLAIN>>
+\end{frame}
