@@ -1,49 +1,49 @@
 ---
 name: demand-reverse
-description: ペルソナの課題（ペインポイント）から解決候補となる技術トピックを逆引きする
+description: Reverse-lookup candidate technical topics that solve a persona's pain point. ペルソナの課題（ペインポイント）から解決候補となる技術トピックを逆引き。
 user-invocable: true
 ---
 
 # demand-reverse
 
-## モチベーション
+## Motivation
 
-技術から出発すると「何ができるか」は見えるが、「誰が必要としているか」が抜け落ちやすい。
-ペルソナのペインポイントから逆��きすることで、
-**技術的に最適かどうかではなく、実際に採用されうるか**を問う。
-標準化で採用されるには技術的優位だけでなく、需要側の切実さが必要だからである。
+Starting from a technology surfaces "what it can do" but tends to drop "who needs it".
+Reverse-looking up from persona pain points asks
+**not whether the technology is optimal, but whether it would actually be adopted**.
+For standardization adoption, demand-side urgency matters as much as technical superiority.
 
-## 使い方
+## Usage
 
 ```
 /demand-reverse <persona-file> <pain-point>
 ```
 
-例:
+Examples:
 ```
 /demand-reverse personas/regions/southeast-asia.md カバレッジコスト
 /demand-reverse personas/industries/mno-operator.md エネルギー消費
 /demand-reverse personas/stakeholders/operator-cxo.md 5G投資回収
 ```
 
-## 入力と前提
+## Inputs and prerequisites
 
-- **必須入力**: ペルソナファイルのパス + ペインポイント（自由記述）
-- **前提条件**: 指定ペルソナファイルが `framework/personas/` に存在すること
-- **推奨**: `documents/` に複数のトピックノートが存在すること（候補の母集団）
-- **実行不可の条件**: 指定ペルソナファイルが存在しない場合 → 利用可能なペルソナ一覧を表示する
+- **Required input**: a persona file path + a pain point (free text)
+- **Prerequisites**: the specified persona file exists under `framework/personas/`
+- **Recommended**: multiple topic notes exist under `documents/` (population of candidates)
+- **Cannot proceed when**: the specified persona file does not exist → list the available personas
 
-## 実行フロー
+## Execution flow
 
-1. `framework/templates/demand-reverse.md` を読み、分析手順を確認する
-2. 指定ペルソナファイル（`framework/personas/`）を読む
-3. ペルソナから以下を抽出する:
-   - ペインポイントの一覧
-   - 重視する価値軸（axes.value との対応）
-   - 技術への関心領域
-   - 制約条件（コスト、インフラ、政策）
-4. `documents/` の全トピックをスキャンし、各トピックの `axes.value` と `axes.market` を確認する
-5. ペインポイントとの適合度を以下の4基準で評価する:
+1. Read `framework/templates/demand-reverse.md` and confirm the analysis steps
+2. Read the specified persona file (under `framework/personas/`)
+3. From the persona, extract:
+   - List of pain points
+   - Value axes the persona prioritizes (mapping to `axes.value`)
+   - Areas of technical interest
+   - Constraints (cost, infrastructure, policy)
+4. Scan all topics under `documents/` and check each topic's `axes.value` and `axes.market`
+5. Score fit against the pain point with the four criteria below:
 
    | 基準 | 問い |
    |:---|:---|
@@ -52,21 +52,21 @@ user-invocable: true
    | 実装実現性 | ペルソナの制約（コスト、インフラ）で実現可能か？ |
    | 代替手段の有無 | 既存の代替技術と比較して優位な点は？ |
 
-6. 適合度の高い順にランク付けして出力する（上位5件程度）
-7. **調査提案**: 各候補について次に調べるべき情報源を具体的に提案する
-   - 検索クエリ、Tdoc 番号、文書名を含むアクション
-8. **未カバー領域の特定**: `documents/` にまだノートがないが関連しそうな技術を特定する
-   - 見つかった場合は `/survey-topic` の実行を提案する
-9. 保存する場合は `documents/<yymmdd>_demand-reverse_<persona-slug>.md` に保存する（フラット）
-10. **リンクを必ず張る**: 適合度上位の候補ノートを `related:` に wikilink で列挙し、本文中でも初出時に `[[トピック名]]` で言及する（[`framework/linking-policy.md`](../../../framework/linking-policy.md)）
+6. Rank highest-fit first and output (top 5 or so)
+7. **Investigation proposals**: for each candidate, propose concrete next sources to consult
+   - Actions that include search queries, Tdoc numbers, document names
+8. **Identify uncovered areas**: surface technologies that have no notes under `documents/` yet but are likely relevant
+   - When found, propose running `/survey-topic`
+9. If saving, save to `documents/<yymmdd>_demand-reverse_<persona-slug>.md` (flat)
+10. **Always set links**: list the top-fit candidate notes in `related:` as wikilinks, and embed `[[トピック名]]` at first mention in the body ([`framework/linking-policy.md`](../../../framework/linking-policy.md))
 
-**ペルソナの情報が薄い場合**: ペルソナファイルの記載が不十分なら、一般的な知識から補完するが `[ペルソナ情報不足: 一般的知識から推定]` と明記する。
+**When the persona is thin**: when the persona file is insufficient, supplement from general knowledge but mark `[ペルソナ情報不足: 一般的知識から推定]`.
 
-## 出力
+## Output
 
-- **形式**: チャット表示（デフォルト）。ユーザーが保存を希望すればファイル保存
-- **保存先**: `documents/YYYY-MM-DD_demand-reverse_<persona-slug>.md`
-- **frontmatter**: 共通スキーマ + 以下の追加フィールド:
+- **Format**: chat output (default). File save if the user requests it
+- **Save location**: `documents/YYYY-MM-DD_demand-reverse_<persona-slug>.md`
+- **frontmatter**: common schema + the following extra fields:
   ```yaml
   demand-reverse:
     persona: "相対パス"
@@ -74,16 +74,16 @@ user-invocable: true
   ```
 - **status**: `draft`
 
-## このスキル固有の注意点
+## Skill-specific notes
 
-- **「技術的に最適」と「このペルソナにとって現実的」は別** — コスト制約、インフラ状況、政策環境を必ず考慮する
-- **5G で同様のアプローチが試みられて失敗した例がないかを確認する**
-- **ランキングは絶対的な順位ではない** — 基準間のトレードオフがある場合はその旨を記述する
-- **未カバー領域の発見を重視する** — `documents/` に存在しない技術の発見は、このスキルの重要な副産物
+- **"Technically optimal" and "realistic for this persona" differ** — always factor in cost constraints, infrastructure, and policy environment
+- **Check whether 5G already attempted a similar approach and failed**
+- **The ranking is not absolute** — when criteria trade off, state so
+- **Discovery of uncovered areas matters** — surfacing technologies missing from `documents/` is an important by-product of this skill
 
-## 関連スキル
+## Related skills
 
-- → `/survey-topic` — 未カバー領域として発見された技術の調査
-- → `/analyze-gap` — 候補技術のギャップ分析
-- → `/connect-dots` — 候補技術同士の相乗効果
-- ↔ `/success-pattern` — 候補技術の普及可能性の歴史的検証
+- → `/survey-topic` — investigate technologies discovered as uncovered areas
+- → `/analyze-gap` — gap analysis of candidate technologies
+- → `/connect-dots` — synergies among candidate technologies
+- ↔ `/success-pattern` — historical validation of a candidate technology's adoption potential

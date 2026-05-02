@@ -1,70 +1,72 @@
 ---
 name: analyze-gap
-description: 指定トピックについて学術/3GPP/実装制約のギャップを3バケットで可視化する
+description: For a given topic, classify academic / 3GPP / implementation-constraint gaps into three buckets and visualize them. 指定トピックの学術/3GPP/実装制約ギャップを3バケットで可視化。
 user-invocable: true
 ---
 
 # analyze-gap
 
-## モチベーション
+## Motivation
 
-トピック調査だけでは「何が分かっているか」は整理できるが、
-**「何が解決されていないか」**は見えにくい。
-3種類のギャップを明確に分類することで、特許の種となる未解決課題を特定する。
-特に Gap C（実装制約ギャップ）は、原則2が示す進歩性の最大の源泉である。
+A topic survey alone can organize "what is known", but it leaves
+**"what has not yet been solved"** out of focus.
+By classifying gaps explicitly into three categories, this skill identifies the
+unsolved problems that become seeds for IP.
+In particular, Gap C (the implementation-constraint gap) is the strongest source of
+inventive step, as Principle 2 indicates.
 
-## 使い方
+## Usage
 
 ```
 /analyze-gap <トピック名>
 ```
 
-## 入力と前提
+## Inputs and prerequisites
 
-- **必須入力**: `documents/` に該当トピックのノートが存在すること
-- **前提条件**: `/survey-topic` 等で基本情報が整理済みであること
-- **実行不可の条件**: 対象トピックのノートが存在しない場合 → 先に `/survey-topic` の実行を提案する
+- **Required input**: a note on the target topic must exist under `documents/`
+- **Prerequisites**: basic information must already be organized via `/survey-topic` (or equivalent)
+- **Cannot proceed when**: no note exists for the target topic → propose running `/survey-topic` first
 
-## 実行フロー
+## Execution flow
 
-1. `documents/` から対象トピックのノートを読み込む
-2. `framework/templates/gap-analysis.md` を読み、3バケットの定義と問いかけを確認する
-3. `framework/axes/06-ip.md` を読み、知財評価の基準を確認する
-4. 最新情報を確認する:
-   - **arXiv**: 直近1年の関連論文で新たに解決された課題がないか
-   - **3GPP**: 該当 WI/SI の最新 Chairman's Notes で FFS 項目を確認
-5. ギャップを3バケットで分類する:
-   - **Gap A（学術→3GPP ラグ）**: 学術で解決済みだが 3GPP に未取込。**なぜ取り込まれていないか**を推定する（実装複雑性 / コンセンサス未形成 / タイミング / 後方互換性の壁）
-   - **Gap B（FFS 項目）**: Chairman's Notes に FFS として残っている課題。**特許の最短距離**
-   - **Gap C（実装制約ギャップ）**: 論文の理想仮定と 3GPP 実装制約の差。**進歩性の最大の源泉**。具体的に「論文は X を仮定するが、NR では Y の制約がある」の形式で記述する
-6. 各ギャップに知財軸（軸6）の評価を付ける:
-   - novelty: 先行技術との差は明確か
-   - inventive-step: 実装制約を解決するアプローチに自明でない工夫があるか
-   - spec-mapping: 将来の TS/TR のどの部分に対応しうるか
-7. **Next Steps** を記載する
-8. 結果をチャットに出力する
-9. 永続化する場合は `documents/<yymmdd>_<slug>_gap.md` に保存する
-10. **リンクを必ず張る**: 親トピックのノートを `up:` に、関連ノートを `related:` に wikilink で書く。引用した一次情報は `references/` に MD 化して `references:` から指す（[`framework/linking-policy.md`](../../../framework/linking-policy.md), [`references-policy.md`](../../../framework/references-policy.md)）
+1. Read the note for the target topic from `documents/`
+2. Read `framework/templates/gap-analysis.md` and confirm the three-bucket definition and the questions to ask
+3. Read `framework/axes/06-ip.md` and confirm the IP-evaluation criteria
+4. Confirm the latest information:
+   - **arXiv**: in the last year, are there relevant papers that newly solve any issue?
+   - **3GPP**: confirm FFS items in the latest Chairman's Notes for the WI/SI
+5. Classify gaps into three buckets:
+   - **Gap A (academic → 3GPP lag)**: solved in academia but not yet adopted by 3GPP. Estimate **why it has not been adopted** (implementation complexity / lack of consensus / timing / backward-compat barrier)
+   - **Gap B (FFS items)**: items left as FFS in the Chairman's Notes. **The shortest path to a patent**
+   - **Gap C (implementation-constraint gap)**: difference between the paper's ideal assumptions and 3GPP implementation constraints. **The strongest source of inventive step**. Describe in the form "the paper assumes X, but NR has constraint Y"
+6. Annotate each gap against the IP axis (Axis 6):
+   - novelty: is the difference from prior art clear?
+   - inventive-step: does the approach to resolving the implementation constraint contain a non-obvious idea?
+   - spec-mapping: which part of a future TS/TR could it correspond to?
+7. Write **Next Steps**
+8. Output the result to chat
+9. If persisting, save to `documents/<yymmdd>_<slug>_gap.md`
+10. **Always set links**: write the parent topic note as `up:` and related notes as `related:` wikilinks. Cited primary sources go into `references/` as Markdown and are pointed to from `references:` ([`framework/linking-policy.md`](../../../framework/linking-policy.md), [`references-policy.md`](../../../framework/references-policy.md))
 
-**FFS 項目が見つからない場合**: Gap B を「該当なし（現時点で FFS 項目未確認）」とし、Next Steps に確認方法（具体的な会合番号、AI 番号）を記載する。
+**When no FFS items are found**: set Gap B to "該当なし（現時点で FFS 項目未確認）" and document the verification method (concrete meeting number, AI number) in Next Steps.
 
-## 出力
+## Output
 
-- **形式**: チャット表示（デフォルト）。ユーザーが保存を希望すればファイル保存
-- **保存先**: `documents/<yymmdd>_<slug>_gap.md`（フラット）
-- **frontmatter**: 共通スキーマ + `gap-type: [A, B, C]`（該当するバケット）
+- **Format**: chat output (default). Save to a file if the user requests
+- **Save location**: `documents/<yymmdd>_<slug>_gap.md` (flat)
+- **frontmatter**: common schema + `gap-type: [A, B, C]` (applicable buckets)
 - **status**: `draft`
 
-## このスキル固有の注意点
+## Skill-specific notes
 
-- **Gap C に最も注力する** — 時間配分の目安: Gap A (20%) / Gap B (30%) / Gap C (50%)
-- **「この論文のアイデアを OFDM フレーム構造に落とし込んだらどうなるか？」を常に問う**
-- Gap A で「なぜ取り込まれていないか」が不明な場合は推測せず `[要確認]` とする
-- 複数のギャップが相互に関連する場合、その関係性も記述する
+- **Concentrate on Gap C** — time allocation guideline: Gap A (20%) / Gap B (30%) / Gap C (50%)
+- **Always ask "what would happen if this paper's idea were dropped onto the OFDM frame structure?"**
+- For Gap A, when the reason for non-adoption is unclear, do not guess — mark as `[要確認]`
+- When multiple gaps interrelate, describe the relationship as well
 
-## 関連スキル
+## Related skills
 
-- ← `/survey-topic` — 対象トピックの基本情報が必要
-- → `/digest-paper` — Gap A/C の根拠となる論文の詳細分析
-- → `/connect-dots` — 異なるトピックのギャップ同士の組合せ
-- ↔ `/demand-reverse` — ギャップがどのペルソナの課題を解決するか
+- ← `/survey-topic` — basic information on the target topic is required
+- → `/digest-paper` — detailed analysis of the papers grounding Gap A/C
+- → `/connect-dots` — combinations of gaps from different topics
+- ↔ `/demand-reverse` — which persona's pain point each gap solves

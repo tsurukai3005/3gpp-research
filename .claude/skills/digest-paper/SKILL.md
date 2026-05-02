@@ -1,68 +1,68 @@
 ---
 name: digest-paper
-description: 論文を読み、3GPP実装制約との差分を強調した構造化メモを documents/ に保存する
+description: Read a paper and save a structured memo under documents/ that emphasizes the gap to 3GPP implementation constraints. 論文を読み 3GPP 実装制約との差分を強調した構造化メモを documents/ に保存。
 user-invocable: true
 ---
 
 # digest-paper
 
-## モチベーション
+## Motivation
 
-論文を読むだけでは知財の種は見えない。
-論文が**暗黙に置いている前提仮定**を明示し、それを **3GPP の実装制約と突き合わせる**ことで、
-初めて「どこに進歩性のある解決策が必要か」が浮かび上がる（原則2）。
-このスキルは、論文読解を特許機会の発見に直結させる。
+Reading a paper alone does not surface the seeds of IP.
+Only by making the **assumptions the paper implicitly relies on** explicit and **comparing them with 3GPP implementation constraints**
+does "where an inventive solution is needed" emerge (Principle 2).
+This skill connects paper reading directly to discovering patent opportunities.
 
-## 使い方
+## Usage
 
 ```
 /digest-paper <論文の URL or タイトル>
 ```
 
-## 入力と前提
+## Inputs and prerequisites
 
-- **必須入力**: 論文へのアクセス手段（URL、PDF パス、arXiv ID のいずれか）
-- **前提条件**: なし（論文単体で実行可能）
-- **実行不可の条件**: 論文の内容にアクセスできない場合 → ユーザーに要約の提供を求める
+- **Required input**: a way to access the paper (URL, PDF path, or arXiv ID)
+- **Prerequisites**: none (executable on a paper alone)
+- **Cannot proceed when**: the paper content cannot be accessed → ask the user to provide a summary
 
-## 実行フロー
+## Execution flow
 
-1. 論文の内容を取得する（URL / PDF / ユーザー提供の情報）
-2. `framework/templates/paper-digest.md` と `framework/references-policy.md` を読み、抽出項目と保存規則を確認する
-3. **論文本文を `references/` に MD 化して保存する**:
-   - PDF: `tools.md` §2 の `pdftotext -layout` を使う
-   - docx: `tools.md` §1 の `pandoc -t gfm --wrap=none` を使う
-   - ファイル名は **論文タイトル・寄書番号・arXiv ID をそのまま** 使う（例: `references/arXiv-2508.08225.md`、`references/R1-2503456.md`）
-   - frontmatter は `framework/references-policy.md` §3 のスキーマに従う
-4. メタ情報を抽出する:
-   - 著者 / 年 / 会議 or ジャーナル / DOI or arXiv ID
-5. 主張（Contribution）を3-5点で要約する
-6. **前提仮定を明示的にリスト化する**（最重要ステップの準備）:
-   - チャネルモデル / SNR 範囲 / アンテナ構成 / CSI の仮定 / 計算複雑性 / シミュレーション環境
-   - 論文が明示していない暗黙の仮定も推定して `[暗黙の仮定]` と明記する
-7. **前提仮定 vs 3GPP 実装制約のギャップテーブルを作成する**（最重要ステップ）:
+1. Acquire the paper content (URL / PDF / user-supplied)
+2. Read `framework/templates/paper-digest.md` and `framework/references-policy.md`; confirm the extraction items and save rules
+3. **Markdown-render the paper body and save under `references/`**:
+   - PDF: use `tools.md` §2 `pdftotext -layout`
+   - docx: use `tools.md` §1 `pandoc -t gfm --wrap=none`
+   - Use the **paper title / contribution number / arXiv ID verbatim** as the filename (e.g. `references/arXiv-2508.08225.md`, `references/R1-2503456.md`)
+   - frontmatter follows the schema in `framework/references-policy.md` §3
+4. Extract metadata:
+   - authors / year / venue (conference or journal) / DOI or arXiv ID
+5. Summarize the contribution in 3-5 bullets
+6. **List assumptions explicitly** (preparation for the most important step):
+   - channel model / SNR range / antenna configuration / CSI assumption / computational complexity / simulation environment
+   - For implicit assumptions the paper does not state, mark them as `[暗黙の仮定]`
+7. **Build the assumption vs. 3GPP-implementation-constraint gap table** (the most important step):
 
    | 論文の前提 | 3GPP の現実 | ギャップ |
    |:---|:---|:---|
    | 完全 CSI | 限られた PUCCH リソース | CSI 量子化誤差への耐性が未検証 |
 
-8. **ダイジェストノートを `documents/<yymmdd>_<first-author>_<slug>.md` に保存する**
-9. **リンクを必ず張る**（`framework/linking-policy.md`）:
-   - frontmatter `references:` に上で作った `[[references/arXiv-XXXX]]` を1本以上列挙
-   - 関連既存トピックノートを `up`（最も近い親）と `related` に列挙
-   - 本文中でも `[[既存ノート]]` で wikilink を埋める
-   - 関連 `documents/` ノート側の `related:` にも逆方向リンクを追記する
-10. **Next Steps** を記載する
+8. **Save the digest note as `documents/<yymmdd>_<first-author>_<slug>.md`**
+9. **Always set links** (`framework/linking-policy.md`):
+   - List the `[[references/arXiv-XXXX]]` you created above as at least one entry under frontmatter `references:`
+   - List related existing topic notes under `up` (nearest parent) and `related`
+   - Embed `[[既存ノート]]` wikilinks in the body
+   - Add a reverse link by appending the new note to the related `documents/` notes' `related:`
+10. Write **Next Steps**
 
-**サーベイ論文の場合**: 1つのダイジェストファイルにまとめるが、個別技術ごとにギャップテーブルのセクションを分ける。特に重要な技術は Next Steps で個別の `/digest-paper` 実行を提案する。
+**Survey papers**: consolidate into a single digest file but separate the gap table per individual technique. For especially important techniques, propose individual `/digest-paper` runs in Next Steps.
 
-## 出力
+## Output
 
-- **形式**: 2つのファイル（references の原文 MD + documents のダイジェスト）+ チャットにサマリー表示
-- **保存先**:
-  - 原文 MD: `references/<論文番号 or arXiv-ID or 著者-年-タイトル>.md`
-  - ダイジェスト: `documents/<yymmdd>_<first-author>_<slug>.md`
-- **frontmatter**（ダイジェスト側）: 共通スキーマ + 以下の追加フィールド:
+- **Format**: two files (the original-text Markdown under references + the digest under documents) + a chat summary
+- **Save location**:
+  - Original Markdown: `references/<論文番号 or arXiv-ID or 著者-年-タイトル>.md`
+  - Digest: `documents/<yymmdd>_<first-author>_<slug>.md`
+- **frontmatter** (digest): common schema + the following extra fields:
   ```yaml
   paper:
     authors: []
@@ -72,14 +72,14 @@ user-invocable: true
   ```
 - **status**: `draft`
 
-## このスキル固有の注意点
+## Skill-specific notes
 
-- **ギャップテーブルが空になることは許容しない** — 3GPP 準拠のシミュレーション環境でも「計算複雑性」「後方互換性」「シグナリングオーバーヘッド」等の観点から検討する
-- **論文の主張を無批判に受け入れない** — シミュレーション条件が限定的な場合はその旨を明記する
-- **複数の独立した提案を含む論文**: 各提案について個別にギャップを評価する
+- **An empty gap table is not allowed** — even for 3GPP-conformant simulation environments, examine "computational complexity", "backward compatibility", "signaling overhead", etc.
+- **Do not accept the paper's claims uncritically** — when simulation conditions are limited, state so explicitly
+- **Papers with multiple independent proposals**: evaluate the gap for each proposal individually
 
-## 関連スキル
+## Related skills
 
-- → `/analyze-gap` — 論文のギャップをトピック全体のギャップ分析に統合
-- → `/connect-dots` — 論文のアイデアと他トピックの組合せ可能性
-- → `/survey-topic` — 論文が新トピックの端緒になる場合
+- → `/analyze-gap` — integrate the paper's gap into a topic-wide gap analysis
+- → `/connect-dots` — combine the paper's idea with other topics
+- → `/survey-topic` — when the paper opens a new topic

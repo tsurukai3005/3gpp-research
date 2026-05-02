@@ -1,59 +1,59 @@
 ---
 name: connect-dots
-description: トピック間の相乗効果・矛盾・組合せ価値を発見し、考察メモを生成する
+description: Discover synergy, conflict, and combinational value across topics, and generate a discussion memo. トピック間の相乗効果・矛盾・組合せ価値を発見し考察メモを生成。
 user-invocable: true
 ---
 
 # connect-dots
 
-## モチベーション
+## Motivation
 
-個々のトピックの深掘りだけでは見えない価値がある。
-2つのトピックを交差させることで、**単独では生まれない相乗効果**や、
-**見落としていた矛盾**が浮かび上がる。
-組合せから生まれるアイデアは、単一技術の改良よりも特許としての新規性が高いことが多い。
+Some value remains invisible when topics are examined in isolation.
+Crossing two topics surfaces **synergies that neither produces alone**, as well as
+**conflicts that were being overlooked**.
+Ideas that emerge from combinations often have higher patent novelty than improvements to a single technology.
 
-## 使い方
+## Usage
 
 ```
 /connect-dots <topic-a> <topic-b>
 /connect-dots <topic-a> <topic-b> --persona <persona-file>
 ```
 
-## 入力と前提
+## Inputs and prerequisites
 
-- **必須入力**: 2つのトピック名（`documents/` にノートが存在すること）
-- **オプション**: ペルソナファイル（`framework/personas/` 配下）
-- **前提条件**: 両トピックのノートに axes が記載されていること（空でも可だが精度が下がる）
-- **実行不可の条件**: 指定トピックのノートが `documents/` に存在しない場合 → 先に `/survey-topic` を提案
+- **Required input**: two topic names (notes must exist in `documents/`)
+- **Optional**: a persona file (under `framework/personas/`)
+- **Prerequisites**: both notes should have `axes` populated in frontmatter (empty is allowed but degrades precision)
+- **Cannot proceed when**: notes for the specified topics do not exist in `documents/` → propose `/survey-topic` first
 
-## 実行フロー
+## Execution flow
 
-1. `framework/templates/connect-dots.md` を読み、分析手順を確認する
-2. `documents/` から両トピックのノートを読む
-3. **共通軸の比較**: 両トピックの frontmatter の `axes` を比較し、共通する値と相違する値を特定する
-4. **相乗効果の仮説生成**: 共通軸を起点に、組合せで生まれる価値を仮説として記述する
-   - 形式: 「A + B により [KPI] が [メカニズム] で改善される」
-   - 各仮説に対して「足し算（独立した効果の合算）」か「掛け算（相互作用による増幅）」かを判定する
-   - 仮説を支える根拠（論文、仕様、ユースケース）があれば引用する。なければ `[仮説]` と明記する
-5. **矛盾・トレードオフの検出**: 両トピックの前提や要件が矛盾する点を特定する
-   - 形式: 「A は [X] を前提とするが、B は [Y] を要求する」
-   - 矛盾が解決可能か、それとも本質的にトレードオフかを評価する
-6. **ペルソナ視点の評価**（`--persona` 指定時）:
-   - 指定ペルソナファイルを読む
-   - この組合せがペルソナにとって価値があるか、コスト的に成立するかを評価する
-   - 標準化の場で反対されそうな理由を検討する（必要に応じて `framework/lenses/standardization-dynamics.md` を参照）
-7. **Next Steps** を記載する
-8. `documents/<yymmdd>_<topicA>-x-<topicB>.md` に保存する
-9. **リンクを必ず張る**: frontmatter の `related:` に両トピックノートを wikilink で列挙し、本文中でも `[[topic-a]]` と `[[topic-b]]` を埋める。`up:` には主軸となるトピックの方を入れる（[`framework/linking-policy.md`](../../../framework/linking-policy.md)）
+1. Read `framework/templates/connect-dots.md` and confirm the analysis steps
+2. Read both topic notes from `documents/`
+3. **Compare common axes**: compare the `axes` of both frontmatters and identify values they share and values they differ on
+4. **Generate synergy hypotheses**: starting from shared axes, describe value created by the combination as hypotheses
+   - Form: 「A + B により [KPI] が [メカニズム] で改善される」
+   - For each hypothesis, judge whether it is "additive" (sum of independent effects) or "multiplicative" (amplification through interaction)
+   - Cite supporting evidence (papers, specs, use cases) when available; otherwise mark `[仮説]`
+5. **Detect conflicts / trade-offs**: identify points where the assumptions or requirements of the two topics conflict
+   - Form: 「A は [X] を前提とするが、B は [Y] を要求する」
+   - Evaluate whether the conflict is resolvable or is an essential trade-off
+6. **Persona-perspective evaluation** (when `--persona` is given):
+   - Read the specified persona file
+   - Evaluate whether the combination has value for the persona and is viable cost-wise
+   - Consider reasons it might be opposed in standardization (refer to `framework/lenses/standardization-dynamics.md` as needed)
+7. Write **Next Steps**
+8. Save to `documents/<yymmdd>_<topicA>-x-<topicB>.md`
+9. **Always set links**: list both topic notes under frontmatter `related:` as wikilinks, and embed `[[topic-a]]` and `[[topic-b]]` in the body. Set `up:` to the primary axis topic ([`framework/linking-policy.md`](../../../framework/linking-policy.md))
 
-**トピックの axes が薄い場合**: ノート本文の内容から軸の値を推定し、`[推定]` と明記する。
+**When axes are thin**: infer axis values from the body of the notes and mark `[推定]`.
 
-## 出力
+## Output
 
-- **形式**: ファイル保存 + チャットにサマリー表示
-- **保存先**: `documents/<yymmdd>_<topicA>-x-<topicB>.md`（フラット）
-- **frontmatter**: 共通スキーマ + 以下の追加フィールド:
+- **Format**: file save + chat summary
+- **Save location**: `documents/<yymmdd>_<topicA>-x-<topicB>.md` (flat)
+- **frontmatter**: common schema + the following extra fields:
   ```yaml
   connection:
     topic-a: "[[topicA のファイル名]]"
@@ -62,15 +62,15 @@ user-invocable: true
   ```
 - **status**: `draft`
 
-## このスキル固有の注意点
+## Skill-specific notes
 
-- **「掛け算」の仮説を意識的に探す** — 単に両方のメリットを列挙するのではなく、組合せによる創発的な効果を問う
-- **矛盾はネガティブではない** — 矛盾の解決策こそが特許の種になりうる
-- **同じペアの再分析は可能** — 異なるペルソナや異なる時点で再実行する価値がある。ファイル名の日付で区別する
-- **3トピック以上の接続**: 2トピック限定。3つ以上はペアごとに実行して結果を統合する
+- **Actively look for "multiplicative" hypotheses** — instead of merely listing the merits of both, ask for emergent effects from the combination
+- **Conflicts are not negative** — the resolution of a conflict is itself a seed of IP
+- **Re-analyzing the same pair is allowed** — running again with a different persona, or at a different point in time, can be valuable. Distinguish via the date in the filename
+- **Three or more topic connections**: limited to two. For 3+, run pairwise and integrate the results
 
-## 関連スキル
+## Related skills
 
-- ← `/survey-topic` — 各トピックの基本情報
-- → `/analyze-gap` — 相乗効果の仮説から具体的なギャップへ
-- ↔ `/demand-reverse` — ペルソナの課題から組合せ候補を発見
+- ← `/survey-topic` — basic information for each topic
+- → `/analyze-gap` — turn synergy hypotheses into concrete gaps
+- ↔ `/demand-reverse` — discover combination candidates from persona pain points

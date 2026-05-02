@@ -1,64 +1,64 @@
 ---
 name: success-pattern
-description: 過去世代（3G/4G/5G）の成功・失敗事例から普及要因を学び、6Gの検討課題に照射する
+description: Learn adoption factors from past-generation (3G/4G/5G) successes and failures, and project them onto 6G study items. 過去世代（3G/4G/5G）の成功・失敗事例から普及要因を学び 6G の検討課題に照射。
 user-invocable: true
 ---
 
 # success-pattern
 
-## モチベーション
+## Motivation
 
-技術的に優れているだけでは標準化されない。4G LTE はキラーアプリ（スマートフォン）と
-標準収束の同期で成功し、5G は B2B 未成熟と CAPEX 過大で苦戦した。
-この歴史パターンを現在のトピックに投影することで、
-**6G で採用されるために何が必要か**を構造的に問う。
+Technical excellence alone does not get a feature standardized. 4G LTE succeeded by syncing
+a killer app (smartphones) with standard convergence; 5G has struggled with immature B2B and
+excessive CAPEX. By projecting these historical patterns onto the current topic, this skill
+asks structurally **what is required for 6G adoption**.
 
-## 使い方
+## Usage
 
 ```
 /success-pattern <トピック名>
 ```
 
-## 入力と前提
+## Inputs and prerequisites
 
-- **必須入力**: トピック名（`documents/` にノートがあると精度が上がるが、必須���はない）
-- **前提条件**: なし（ただし `documents/` に世代別ノートがあれば活用する）
-- **実行不可の条件**: なし（歴史的事実は公開情報から収集可能）
+- **Required input**: a topic name (precision improves if a note exists in `documents/`, but is not required)
+- **Prerequisites**: none (but generation-by-generation notes in `documents/` are leveraged when present)
+- **Cannot proceed when**: never (historical facts are collectable from public sources)
 
-## 実行フロー
+## Execution flow
 
-1. `documents/` 配下の世代別ノートがあれば読む
-2. `framework/templates/generation-comparison.md` を読み、マトリクス構造を確認する
-3. `framework/axes/05-adoption-factors.md` を読み、普及要因の5項目を確認する
-4. 対象トピックを過去世代に投影し、5列×7行のマトリクスを作成する:
-   - 列: 3G UMTS / 4G LTE / 5G NR / 5G-Advanced / 6G 構想
-   - 行: 技術選択肢 / 解決した課題 / 新たに生じた課題 / キラーアプリ / 事業者 ROI / 普及要因 / 知財プレイヤー
-5. 普及要因軸（軸5）を中心に以下を問う:
-   - 4G LTE が成功した構造的要因はこのトピックでも機能するか？
-   - 5G が苦戦した要因はこのトピックで繰り返されるリスクがあるか？
-   - 事業者 ROI が成立するシナリオは何か？
-6. 結論を「6G で成功するための条件」の形で3点に絞って出力する
-7. **Next Steps** を記載する
+1. Read existing generation-by-generation notes from `documents/` if any
+2. Read `framework/templates/generation-comparison.md` and confirm the matrix shape
+3. Read `framework/axes/05-adoption-factors.md` and confirm the five adoption-factor items
+4. Project the target topic onto past generations and build a 5-column × 7-row matrix:
+   - Columns: 3G UMTS / 4G LTE / 5G NR / 5G-Advanced / 6G 構想
+   - Rows: technical options / problem solved / problem newly created / killer app / operator ROI / adoption factors / IP players
+5. Centered on the adoption-factors axis (Axis 5), ask:
+   - Do the structural factors that made 4G LTE succeed apply to this topic?
+   - Are the factors that caused 5G to struggle at risk of repeating here?
+   - What scenarios would make operator ROI viable?
+6. Distill the conclusion into 3 points in the form "Conditions for 6G success"
+7. Write **Next Steps**
 
-**マトリクスが埋まらない場合**: 過去世代で該当技術が存在しないセルは「該当なし（この世代では未登場）」とし、類似技術からの推論は `[推論]` と明記する。
+**When the matrix has unfillable cells**: when no equivalent technology existed in the past generation, write 「該当なし（この世代では未登場）」, and mark inferences from similar technologies as `[推論]`.
 
-## 出力
+## Output
 
-- **形式**: チャット表示（デフォルト）。保存する場合はファイル
-- **保存先**: `documents/<yymmdd>_<slug>_success-pattern.md`（フラット）
-- **frontmatter**: 共通スキーマ準拠（`up:` に対象トピックノートを wikilink で入れる）
+- **Format**: chat output (default). File save if requested
+- **Save location**: `documents/<yymmdd>_<slug>_success-pattern.md` (flat)
+- **frontmatter**: follows the common schema (place the target-topic note under `up:` as a wikilink)
 - **status**: `draft`
-- **リンク**: 対象トピックの調査ノートを `up:` に、関連世代別ノート（あれば）を `related:` に列挙する（[`framework/linking-policy.md`](../../../framework/linking-policy.md)）
+- **Links**: place the target topic's survey note under `up:`, and any generation-specific notes under `related:` ([`framework/linking-policy.md`](../../../framework/linking-policy.md))
 
-## このスキル固有の注意点
+## Skill-specific notes
 
-- **3点の条件は検証可能な形で書く** — 「良い技術であること」ではなく「FWA 市場で既存 5G CPE との後方互換性を維持できること」のように具体的にする
-- **5G の苦戦を教訓として扱うが、教条化しない** — 5G と 6G では市場環境が異なる可能性を常に考慮する
-- **情報源の時点を明記する** — 市場データは変動するため、参照時点を記録する
-- マトリクスの「6G 構想」列は現時点の提案であり、確定情報ではないことを明示する
+- **Write the three conditions in a verifiable form** — not 「良い技術であること」 but 「FWA 市場で既存 5G CPE との後方互換性を維持できること」
+- **Treat 5G's struggle as a lesson, not a dogma** — always consider that 5G and 6G may face different market conditions
+- **Record the point-in-time of sources** — market data shifts; record the reference date
+- The "6G 構想" column reflects current proposals, not finalized information; state so explicitly
 
-## 関連スキル
+## Related skills
 
-- ← `/survey-topic` — 対象トピックの技術的背景
-- ↔ `/demand-reverse` — 「誰にとって成功か」をペルソナ視点で補完
-- → `/analyze-gap` — 成功条件を満たすために解決すべきギャップ
+- ← `/survey-topic` — technical background of the target topic
+- ↔ `/demand-reverse` — complement "success for whom" with the persona perspective
+- → `/analyze-gap` — gaps that must close to meet the success conditions

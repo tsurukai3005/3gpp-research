@@ -1,73 +1,72 @@
 ---
 name: survey-topic
-description: 指定したトピックを6軸で体系的に調査し、documents/ 配下の Markdown として記録する
+description: Systematically survey a topic across the 6 analysis axes and write the result as a Markdown note under documents/. 指定トピックを6軸で体系調査し documents/ に記録。
 user-invocable: true
 ---
 
 # survey-topic
 
-## モチベーション
+## Motivation
 
-新しい技術トピックに初めて触れるとき、断片的な情報を集めるだけでは知財の種は見えない。
-6軸の問いを体系的に当てることで、**どこに実装制約ギャップがあるか**（= 特許の進歩性の源泉）を
-初期調査の段階から浮かび上がらせる。
+When first encountering a new technology topic, collecting fragmentary information does not surface the seeds of IP. Applying the six axes' questions systematically lets **the location of implementation-constraint gaps**
+(= the source of inventive step) emerge from the very first survey pass.
 
-## 使い方
+## Usage
 
 ```
 /survey-topic <トピック名>
 ```
 
-## 入力と前提
+## Inputs and prerequisites
 
-- **必須入力**: トピック名（例: `Cell-Free Massive MIMO`、`GRAND decoding`）
-- **前提条件**: なし（このスキルが新規トピックの起点）
-- **実行不可の条件**: トピック名が曖昧すぎて検索クエリに変換できない場合 → ユーザーに具体化を求める
+- **Required input**: a topic name (e.g. `Cell-Free Massive MIMO`, `GRAND decoding`)
+- **Prerequisites**: none (this skill is the entry point for new topics)
+- **Cannot proceed when**: the topic name is too vague to convert into a search query → ask the user to make it concrete
 
-## 実行フロー
+## Execution flow
 
-1. `framework/principles.md` を読み、6原則を確認する
-2. `framework/axes/` 配下の全6ファイルを読み、各軸の問いかけを把握する
-3. `framework/templates/survey-topic.md` を読み、7つの調査項目を確認する
-4. `framework/sources.md` を読み、情報源の優先順位を確認する
-5. `framework/linking-policy.md` と `framework/references-policy.md` を読み、保存規則を確認する
-6. **既存ノートのスキャン**: `documents/` を grep して関連する既存トピックを必ず先に探す（孤立ノートを生まないため）
-7. 以下の優先順で情報を収集する:
-   - **3GPP ポータル**: 該当する WI/SI の有無、Tdoc リスト、Chairman's Notes
-   - **arXiv / IEEE**: 主要論文（引用数上位、直近2年）
-   - **NGMN / ITU-R**: 要件文書での位置づけ
-   - **ベンダーブログ**: Qualcomm / Ericsson / Nokia / Samsung の技術解説
-8. **一次情報の Markdown 化**: 引用する論文・Tdoc・仕様書は `tools.md` に従って `references/` に MD 変換して保存する。命名は論文タイトル/寄書番号/arXiv ID をそのまま使う（`framework/references-policy.md`）
-9. テンプレートの7項目で整理する:
-   - 定義と背景（Why） / 技術要点（What） / 実装制約（How）
-   - 前世代との差分 / 主要プレイヤー / 未解決課題 / 市場・知財余地
-10. 6軸のうち該当する軸を frontmatter `axes:` に記録する
-11. **前世代（3G/4G/5G）との対比**セクションが空にならないことを確認する
-12. **Next Steps** を記載する（検索クエリ、文書番号、URL を含む具体的なアクション）
-13. **ノートを `documents/<yymmdd>_<slug>.md` に保存する**（`status: draft`、`yymmdd` は今日の日付の年下2桁+月+日）
-14. **リンクを必ず張る**:
-    - 引用した references を frontmatter `references:` に wikilink で列挙
-    - 関連既存ノートを `up`（最も近い親 1本）と `related`（兄弟）に列挙
-    - 本文中でも初出の関連トピックは `[[260420_NRフレーム構造とリソースブロックの進化まとめ|フレーム構造]]` のように wikilink で言及する
-    - 親ノート側にも逆方向の `[[新規ノート]]` を追記する（双方向リンク）
+1. Read `framework/principles.md` and confirm the six principles
+2. Read all six files under `framework/axes/` and absorb each axis' questions
+3. Read `framework/templates/survey-topic.md` and confirm the seven survey items
+4. Read `framework/sources.md` and confirm source priority
+5. Read `framework/linking-policy.md` and `framework/references-policy.md` and confirm save rules
+6. **Scan existing notes**: grep `documents/` for related existing topics first (to avoid creating an orphan note)
+7. Collect information in this priority:
+   - **3GPP portal**: presence of the relevant WI/SI, Tdoc list, Chairman's Notes
+   - **arXiv / IEEE**: major papers (top-cited, last 2 years)
+   - **NGMN / ITU-R**: positioning in requirements documents
+   - **Vendor blogs**: technical writeups from Qualcomm / Ericsson / Nokia / Samsung
+8. **Markdown-render primary sources**: papers, Tdocs, and specs that you cite must be converted to Markdown and saved under `references/` per `tools.md`. Use the paper title / contribution number / arXiv ID verbatim as the filename (`framework/references-policy.md`)
+9. Organize per the seven template items:
+   - Definition and background (Why) / technical core (What) / implementation constraints (How)
+   - Diff vs. previous generation / major players / open issues / market and IP headroom
+10. Record applicable axes in frontmatter `axes:`
+11. Confirm that the **diff vs. previous generation (3G/4G/5G)** section is not empty
+12. Write **Next Steps** (concrete actions including search queries, document numbers, URLs)
+13. **Save the note as `documents/<yymmdd>_<slug>.md`** (`status: draft`; `yymmdd` is today's last-two-digits-of-year + month + day)
+14. **Always set links**:
+    - List cited references as wikilinks under frontmatter `references:`
+    - List related existing notes under `up` (one nearest parent) and `related` (siblings)
+    - In the body, mention related topics on first occurrence with wikilinks like `[[260420_NRフレーム構造とリソースブロックの進化まとめ|フレーム構造]]`
+    - Add a reverse `[[新規ノート]]` link from the parent note (bidirectional linking)
 
-**情報が不十分な場合**: 見つからなかった項目は `[要確認]` と明記し、Next Steps に調査方法を記載する。空欄のまま放置しない。
+**When information is insufficient**: mark missing items as `[要確認]` and record the investigation method in Next Steps. Do not leave a section blank.
 
-## 出力
+## Output
 
-- **形式**: ファイル保存 + チャットにサマリー表示
-- **保存先**: `documents/<yymmdd>_<slug>.md`（フラット、サブフォルダ禁止）
-- **frontmatter**: `framework/skill-contract.md` の共通スキーマに準拠（`up` / `related` / `references` を埋める）
+- **Format**: file save + chat summary
+- **Save location**: `documents/<yymmdd>_<slug>.md` (flat, no subfolders)
+- **frontmatter**: follow the common schema in `framework/skill-contract.md` (fill in `up` / `related` / `references`)
 - **status**: `draft`
 
-## このスキル固有の注意点
+## Skill-specific notes
 
-- **粒度の判断**: 1トピック = 1つの独立した技術概念。「MIMO」は広すぎ、「Cell-Free Massive MIMO のパイロット汚染対策」は狭すぎ。「Cell-Free Massive MIMO」程度が適切
-- **3GPP 情報が存在しない場合**: 学術段階のトピックでも調査可能。「3GPP での議論状況: なし（学術段階）」と明記する
-- **フォルダ分けはしない**: ノートはすべて `documents/` 直下に置く。カテゴリ分けは将来必要になってから判断する
+- **Granularity**: 1 topic = 1 independent technical concept. "MIMO" is too broad; "Cell-Free Massive MIMO のパイロット汚染対策" is too narrow; "Cell-Free Massive MIMO" is about right
+- **When 3GPP information is absent**: even purely academic topics may be surveyed. State "3GPP での議論状況: なし（学術段階）" explicitly
+- **Do not use folders**: place every note directly under `documents/`. Defer category folders until they become necessary
 
-## 関連スキル
+## Related skills
 
-- → `/analyze-gap` — 調査結果から具体的なギャップを抽出
-- → `/digest-paper` — 調査中に見つけた重要論文の詳細分析
-- → `/connect-dots` — 他トピックとの相乗効果を探索
+- → `/analyze-gap` — extract concrete gaps from the survey
+- → `/digest-paper` — deep-dive into important papers found during the survey
+- → `/connect-dots` — explore synergies with other topics
