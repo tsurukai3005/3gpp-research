@@ -1,83 +1,82 @@
-# リンクポリシー
+# Linking Policy
 
-Obsidian のグラフビューでドキュメント間の関連を一覧できるよう、
-**ノート間は必ずリンクでつなぐ**。階層もリンクで表現する。
+To make the relationships between documents legible in Obsidian's graph view,
+**always link notes**. Hierarchy is also expressed via links.
 
-このポリシーは全スキル・コマンドの上位ルール。`framework/skill-contract.md` から参照される。
+This policy is a top-level rule for every skill and command, and is referenced from `framework/skill-contract.md`.
 
 ---
 
-## 1. 基本ルール
+## 1. Basic rules
 
-### 1.1 全ノートは最低1本のリンクを持つ
+### 1.1 Every note has at least one link
 
-- 新規ノートを作成・更新するとき、**最低1つの内向き or 外向きリンクを必ず張る**
-- 完全に孤立したノート（グラフビューで島になるノート）は禁止
-- リンク先がまだ存在しない場合は frontmatter `next:` に「次に作るべきノート名」を書き、本文に "[[未作成のノート名]]" として placeholder リンクを張ってよい（Obsidian は赤字で表示する）
+- When creating or updating a note, **always set at least one inbound or outbound link**
+- Fully orphaned notes (islands in the graph view) are forbidden
+- If the link target does not yet exist, write the "next note to create" in frontmatter `next:`, and embed a placeholder wikilink `[[未作成のノート名]]` in the body (Obsidian renders unresolved links in red)
 
-### 1.2 リンク形式は Obsidian Wikilink を標準とする
+### 1.2 Use Obsidian wikilinks as the standard
 
-- 内部リンクは `[[<拡張子なしのファイル名>]]` 形式を第一に使う
-  - 例: `[[260421_TS38.211-Section4-BWPとCarrier-Aggregationの体系整理]]`
-- 別名表示が必要なときは `[[<ファイル名>|表示テキスト]]`
-  - 例: `[[260421_TS38.211-Section4-BWPとCarrier-Aggregationの体系整理|BWP/CA 体系整理]]`
-- 通常の markdown link `[text](path.md)` は外部 URL・GitHub 上の閲覧でも壊れない場面（README、PR 説明、Issue）に限定する
-- セクション参照は `[[<ファイル名>#<見出し>]]`、段落参照は `[[<ファイル名>^block-id]]`
+- Internal links use `[[<filename without extension>]]` first
+  - Example: `[[260421_TS38.211-Section4-BWPとCarrier-Aggregationの体系整理]]`
+- For an alias, use `[[<filename>|表示テキスト]]`
+  - Example: `[[260421_TS38.211-Section4-BWPとCarrier-Aggregationの体系整理|BWP/CA 体系整理]]`
+- Reserve plain Markdown links `[text](path.md)` for situations where they must survive outside Obsidian (READMEs, PR descriptions, issues, external URLs)
+- Section reference: `[[<filename>#<heading>]]`. Block reference: `[[<filename>^block-id]]`
 
-### 1.3 リンクの方向で階層を表現する
+### 1.3 Express hierarchy via link direction
 
-リンクはただの参照ではなく、**親子・兄弟・被参照の関係を frontmatter で明示する**。
+Links are not just references — they encode parent / child / sibling / inbound relationships via frontmatter.
 
-| frontmatter フィールド | 意味 | 値の形式 |
+| frontmatter field | meaning | value form |
 |:---|:---|:---|
-| `up` | 親ノート（このノートの上位概念・MoC） | wikilink を1本（例: `"[[260421_NRフレーム構造の発表資料ドラフト]]"`） |
-| `related` | 兄弟・関連ノート（並列の関係） | wikilink のリスト |
-| `children` | 子ノート（このノートを親として展開した派生ノート） | wikilink のリスト（任意。被リンクで自動把握できるなら省略可） |
-| `next` | このノートの次に書くべきノート | wikilink のリスト（未作成 placeholder を含んでよい） |
+| `up` | Parent note (this note's higher-level concept or MoC) | one wikilink (e.g. `"[[260421_NRフレーム構造の発表資料ドラフト]]"`) |
+| `related` | Sibling / related notes (parallel relationships) | list of wikilinks |
+| `children` | Child notes (notes that branch out from this note as parent) | list of wikilinks (optional — may be omitted if inbound links make it discoverable) |
+| `next` | Notes that should be written next, after this one | list of wikilinks (may include unresolved placeholders) |
 
-- `up` は **0本または1本**。複数の親を持つトピックは「主たる親 1本を `up`」「副次的な親を `related`」に分ける
-- ノートが Map of Content (MoC) や上位の調査結果である場合、子ノートは自分を `up` として参照する。MoC 自身は `children:` を列挙してもよい
-- グラフビューで `up` を使うと階層リンクが視覚的に見える（Local Graph + tag/folder 色分け推奨）
-
----
-
-## 2. ノートを書くときの手順
-
-1. **新規作成前**: `documents/` を grep して既存の関連ノートを必ず探す
-2. **作成中**: 関連トピックに触れるたびに `[[ファイル名]]` で本文中にリンクを埋める
-   - 「フレーム構造」と書くなら `[[260420_NRフレーム構造とリソースブロックの進化まとめ|フレーム構造]]` のように具体ノートにつなぐ
-   - 一次情報（仕様番号・Tdoc 番号）は references/ 内のノートにリンクする（[references-policy.md](./references-policy.md)）
-3. **作成後**: frontmatter の `up` / `related` を埋める。最低 1 つは入れる
-4. **既存ノート側からの逆方向リンク**: 必要なら親ノート側にも `[[新規ノート]]` への言及を追記する（双方向リンクが理想）
+- `up` is **0 or 1 entry**. For topics with multiple parents, place the primary parent in `up` and secondary parents in `related`
+- When a note acts as a Map of Content (MoC) or a higher-level survey, child notes refer back to it via `up`. The MoC itself may enumerate children via `children:`
+- Using `up` in the graph view makes hierarchy visually apparent (Local Graph + tag/folder coloring is recommended)
 
 ---
 
-## 3. リンクハイジーン（リンク健全性）
+## 2. Procedure when writing a note
 
-- ファイルをリネームしたら、本文と frontmatter の両方の wikilink を更新する。Obsidian の自動リネームに頼らず、grep で確認する
-- リンク切れを発見したら、関連スキルでの修正候補とする
-- `/review` および `/status` コマンドでリンク切れと孤立ノートを検出する（実装は段階的に）
+1. **Before creating a new note**: grep `documents/` to find existing related notes
+2. **While writing**: every time a related topic is mentioned, embed a wikilink `[[ファイル名]]` in the body
+   - For "フレーム構造", link to a concrete note like `[[260420_NRフレーム構造とリソースブロックの進化まとめ|フレーム構造]]`
+   - For primary sources (spec numbers, Tdoc numbers), link to a note inside `references/` ([references-policy.md](./references-policy.md))
+3. **After creating**: fill in frontmatter `up` / `related`. At least one entry must be present
+4. **Reverse links from existing notes**: when needed, add a `[[新規ノート]]` reference on the parent note as well (bidirectional linking is ideal)
 
 ---
 
-## 4. framework/ 配下にも適用する
+## 3. Link hygiene
 
-このポリシーは `documents/` の研究ノートだけでなく、`framework/` 配下のルール定義
-ファイル（軸・レンズ・ペルソナ・テンプレ・各種ポリシー）にも適用する。
+- When renaming a file, update wikilinks in both the body and the frontmatter. Do not rely solely on Obsidian's auto-rename — verify with grep
+- When a broken link is found, treat it as a fix candidate for the relevant skill
+- The `/review` and `/status` commands detect broken links and orphan notes (rolled out incrementally)
 
-- 各サブフォルダ（`framework/axes/`, `lenses/`, `personas/`, `templates/`）には
-  README.md を MoC として置く
-- 配下のファイルは frontmatter `up: "[[../README|フォルダ名]]"` で MoC を親として参照する
-- 同じフォルダ内の関連ファイルは `related:` で兄弟リンクする
-- 軸 ↔ ペルソナ、軸 ↔ テンプレ、レンズ ↔ ペルソナのような横断関係も `related:` で繋ぐ
-- 例外: `documents/` 配下の `yymmdd_` プレフィックス命名規則は framework/ には適用しない（framework は意味のあるファイル名そのまま）
+---
 
-## 5. 既存ノートが多くなった後の方針（保留）
+## 4. Apply this policy under `framework/` as well
 
-将来、ノート数が増えてグラフビューが見づらくなった段階で:
+This policy applies not only to research notes under `documents/`, but also to rule-definition
+files under `framework/` (axes, lenses, personas, templates, and various policies).
 
-- ハブノート（MoC: Map of Content）を作って `up` で集約する（framework/ では既にこの形）
-- タグ（`tags:`）による横断分類を追加する
-- フォルダ分け（`documents/mimo/` 等）を再導入するかを判断する
+- Each subfolder (`framework/axes/`, `lenses/`, `personas/`, `templates/`) has a README.md that serves as its MoC
+- Files inside a subfolder reference the MoC via frontmatter `up: "[[../README|フォルダ名]]"`
+- Related files within the same folder are connected via `related:` as siblings
+- Cross-cutting relations (axis ↔ persona, axis ↔ template, lens ↔ persona) are also expressed via `related:`
+- Exception: the `yymmdd_` prefix naming rule of `documents/` does not apply to `framework/` (use the meaningful filenames as-is)
 
-それまでは **フラット + リンクのみで階層を表現** する。
+## 5. Policy after the note count grows (deferred)
+
+Once notes accumulate to the point where the graph view becomes hard to read:
+
+- Introduce hub notes (MoC: Map of Content) and aggregate via `up` (already done under `framework/`)
+- Add cross-cutting classification via tags (`tags:`)
+- Decide whether to reintroduce folder structure (`documents/mimo/` etc.)
+
+Until then, **express hierarchy through flat layout + links only**.

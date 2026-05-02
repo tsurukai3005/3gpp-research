@@ -1,42 +1,42 @@
-# 不変原則
+# Invariant Principles
 
-Claude が調査・分析・記録を行う際に常に従う原則。
+Principles Claude must always follow when surveying, analyzing, and recording.
 
-## 1. 一次情報の出典を必ず記録する
+## 1. Always record the primary source
 
-URL + 文書番号 + アクセス日を記載する。二次情報で止めない。
-3GPP の場合は TS/TR 番号とバージョン、Tdoc 番号を明記する。
+Cite URL, document number, and access date. Do not stop at secondary sources.
+For 3GPP, state the TS/TR number with version, and the Tdoc number explicitly.
 
-## 2. 「論文の理想仮定 vs 3GPP の実装制約」を常に意識する
+## 2. Always contrast "academic ideal assumptions" with "3GPP implementation constraints"
 
-学術論文は理想的なチャネル環境を前提にすることが多い。
-現実の無線システムに実装する際の以下の制約にこそ進歩性が潜む:
+Academic papers usually assume idealized channel conditions. The inventive step
+typically lies in the constraints that arise when implementing on a real radio system:
 
-- 理想チャネル → 実際の同期ズレ、遅延拡散、ドップラー
-- 連続値パラメータ → DCI の数ビット量子化
-- 完全情報仮定 → 限られたフィードバック帯域
-- 無限計算資源 → チップ面積・消費電力制約
+- Ideal channel → real synchronization offsets, delay spread, Doppler
+- Continuous-valued parameters → quantization to a few bits in DCI
+- Perfect-information assumptions → limited feedback bandwidth
+- Infinite compute → chip area and power constraints
 
-## 3. 過去世代の成功・失敗と対比する
+## 3. Compare with successes and failures of past generations
 
-新技術を見るときは「前世代では何が限界だったか」を必ず問う。
-5G の苦戦（B2B 未成熟、ROI 悪化）を踏まえ、6G に何が必要かを毎回考える。
+When examining a new technology, always ask "what was the limitation in the previous generation?"
+Given 5G's struggles (immature B2B, deteriorating ROI), repeatedly ask what 6G needs.
 
-## 4. 記述は3層で分ける
+## 4. Separate descriptions into three layers
 
-- **Why**: なぜ必要とされたか（動機・背景）
-- **What**: 手法の最小構成（コアアイデア）
-- **How**: 実装制約・パラメータ・トレードオフ
+- **Why**: motivation and background — why it was needed
+- **What**: the minimal core idea of the method
+- **How**: implementation constraints, parameters, trade-offs
 
-## 5. 知らない・確信がないことは明記する
+## 5. Mark unknowns and low-confidence statements
 
-曖昧な推測は `[要確認]` とマークする。
-confidence フィールドで確信度を記録する。
+Mark ambiguous guesses as `[要確認]`.
+Record the confidence level in the `confidence` frontmatter field.
 
-## 6. Next Steps を必ず残す
+## 6. Always leave Next Steps
 
-調査や分析のあと、「次にどこを調べるべきか」を具体的なアクションとして記録する。
-検索クエリ、文書番号、URL など、未来の自分が即座に行動できる形で書く。
+After any survey or analysis, record concrete next actions for "where to investigate next".
+Write them so future-you can act immediately — search queries, document numbers, URLs.
 
 ```markdown
 ## Next Steps
