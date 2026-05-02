@@ -1,0 +1,112 @@
+preset: tex.ja-aspect43-9pt
+metadata:
+  title: "NR 周波数リソースの構造"
+  subtitle: "TS 38.101-1 Section 5 と TS 38.211 Section 4"
+  author: ""
+  institute: ""
+  date: "2026-04-23"
+slides:
+  - id: 01_title
+    source: generated
+    type: title
+    from_section: null
+  - id: 02_overview
+    source: generated
+    type: plain
+    from_section: "### Slide 1: この発表で扱う周波数リソース概念"
+  - id: 03_scs
+    source: generated
+    type: table
+    from_section: "### Slide 1b: SCS（Subcarrier Spacing: サブキャリア間隔）— 以降のスライドの前提知識"
+  - id: 04_op_bands
+    source: generated
+    type: table
+    from_section: "### Slide 2: Section 5.2 Operating Bands — NR が使える周波数帯の定義"
+  - id: 05_sul_motivation
+    source: generated
+    type: plain
+    from_section: "### Slide 3: SUL の設計動機 — 高周波 TDD の UL カバレッジ問題"
+  - id: 06_band_combination
+    source: generated
+    type: plain
+    from_section: "### Slide 4: Section 5.2A — バンドコンビネーション（CA/DC の組合せ定義）"
+  - id: 07_n_rb_table
+    source: generated
+    type: table
+    from_section: "### Slide 5: Section 5.3.2 — 最大伝送帯域幅構成（RB 数で定義される）"
+  - id: 08_guardband
+    source: generated
+    type: plain
+    from_section: "### Slide 6: Section 5.3.3 — ガードバンド計算式"
+  - id: 09_rb_alignment
+    source: generated
+    type: plain
+    from_section: "### Slide 7: Section 5.3.4 — RB 整列と複数ニューメロロジー多重化"
+  - id: 10_band_bw_per_band
+    source: generated
+    type: table
+    from_section: "### Slide 7b: Section 5.3.5 — 運用バンドごとの UE チャネル帯域幅"
+  - id: 11_three_raster
+    source: generated
+    type: plain
+    from_section: "### Slide 8: Section 5.4 — 3層ラスターの設計思想"
+  - id: 12_channel_spacing
+    source: generated
+    type: plain
+    from_section: "### Slide 9: Section 5.4.1 — チャネル間隔の計算式"
+  - id: 13_nr_arfcn
+    source: generated
+    type: plain
+    from_section: "### Slide 10: Section 5.4.2.1 — NR-ARFCN 計算式"
+  - id: 14_gscn_sync_raster
+    source: generated
+    type: plain
+    from_section: "### Slide 11: Section 5.4.3 — 同期ラスター（GSCN）と設計トレードオフ"
+  - id: 15_point_a
+    source: generated
+    type: plain
+    from_section: "### Slide 11b: Point A の決定経路 — ラスターからリソースグリッドへの接続"
+  - id: 16_cell_search
+    source: generated
+    type: plain
+    from_section: "### Slide 12: セルサーチ手順 — ラスターが手順の起点"
+  - id: 17_tx_rx_sep
+    source: generated
+    type: table
+    from_section: "### Slide 13: Section 5.5 — TX-RX Frequency Separation"
+  - id: 18_bwp_intro
+    source: generated
+    type: plain
+    from_section: "### Slide 14: Section 4.4.5 — BWP（Bandwidth Part）とは何か、なぜ必要か"
+  - id: 19_bwp_params
+    source: generated
+    type: plain
+    from_section: "### Slide 15: BWP の定義パラメータと CRB-PRB 変換"
+  - id: 20_bwp_types
+    source: generated
+    type: plain
+    from_section: "### Slide 16: BWP の種別と設定ルール"
+  - id: 21_bwp_switching
+    source: generated
+    type: table
+    from_section: "### Slide 17: BWP スイッチング方式"
+  - id: 22_bwp_tradeoff
+    source: generated
+    type: table
+    from_section: "### Slide 18: BWP サイズのトレードオフ"
+  - id: 23_ca_intro
+    source: generated
+    type: plain
+    from_section: "### Slide 19: Section 4.5 — CA の物理層での意味"
+  - id: 24_ca_slot_offset
+    source: generated
+    type: plain
+    from_section: "### Slide 20: ca-SlotOffset — 異 SCS CC 間のタイミング調整"
+  - id: 25_two_level_activation
+    source: generated
+    type: plain
+    from_section: "### Slide 21: 「キャリア活性化 + BWP 活性化」の2段階制御"
+  - id: 26_dependency_structure
+    source: generated
+    type: plain
+    from_section: "### Slide 22: パラメータの依存構造"

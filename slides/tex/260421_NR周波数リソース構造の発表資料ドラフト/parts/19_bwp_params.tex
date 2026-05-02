@@ -1,0 +1,15 @@
+% Slide type: plain
+\begin{frame}{BWP の定義パラメータと CRB-PRB 変換}
+\begin{itemize}
+  \item 正式定義: あるキャリアのあるニューメロロジー $\mu$ について、CRB の連続部分集合から選ばれた PRB の連続集合
+  \item パラメータ: $N_{\mathrm{start,BWP},i}$（開始 CRB）+ $N_{\mathrm{size,BWP},i}$（連続 RB 数）
+  \item 制約: キャリアの Resource Grid からはみ出さないこと
+  \item PRB は BWP 内でローカルに 0 から番号付け
+  \item 変換式: $n_{\mathrm{CRB}} = n_{\mathrm{PRB}} + N_{\mathrm{start,BWP},i}$
+  \item 2 番号体系の理由
+    \begin{itemize}
+      \item CRB（グローバル）: gNB が複数 BWP にまたがるリソース管理に使用
+      \item PRB（ローカル）: DCI のリソース割当でビット数を BWP サイズに応じて節約
+    \end{itemize}
+\end{itemize}
+\end{frame}

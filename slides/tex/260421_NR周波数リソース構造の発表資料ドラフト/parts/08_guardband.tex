@@ -1,0 +1,13 @@
+% Slide type: plain
+\begin{frame}{Section 5.3.3 ─ ガードバンド計算式}
+\begin{equation*}
+\mathrm{GB}\,[\mathrm{kHz}] = \frac{\mathrm{BW}_{\mathrm{ch}} \cdot 1000 - N_{\mathrm{RB}} \cdot \mathrm{SCS} \cdot 12}{2} - \frac{\mathrm{SCS}}{2}
+\end{equation*}
+
+\begin{itemize}
+  \item 各項: チャネル全体 $-$ データ占有 $\to$ 両端均等配分 $-$ 半 SC オフセット補正
+  \item 計算例: 30 kHz, 100 MHz $\to$ $(100000 - 98280)/2 - 15 = 845$ kHz
+  \item 「最小」の意味: $N_{\mathrm{RB}}$ に最大値を代入 $\to$ RB 使い切り時の最も狭いマージン
+  \item 目的: 隣接チャネル干渉 (ACI) 防止 $+$ フィルタロールオフ吸収
+\end{itemize}
+\end{frame}

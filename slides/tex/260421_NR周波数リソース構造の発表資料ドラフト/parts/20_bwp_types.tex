@@ -1,0 +1,18 @@
+% Slide type: plain
+\begin{frame}{BWP の種別と設定ルール}
+\textbf{4 種別}
+\begin{itemize}
+  \item \textbf{Initial BWP (\#0)}: 初期アクセス用。CORESET\#0 から導出 (MIB/SIB1)
+  \item \textbf{First Active BWP}: RRC 設定後の最初のデータ転送用
+  \item \textbf{Default BWP}: 非活動タイマー満了時のフォールバック先（通常は狭い → 省電力）
+  \item \textbf{Dedicated BWP}: サービス固有
+\end{itemize}
+
+\textbf{ルール / 制約}
+\begin{itemize}
+  \item UL/DL 各方向で最大 4 つ設定可能、同時アクティブは 1 つ
+  \item DL BWP $\geq$ SSB 帯域幅、各 DL BWP に CORESET 必須
+  \item アクティブ BWP 外で PDSCH/PDCCH/CSI-RS/TRS の受信禁止
+  \item Rel-17 RedCap UE: 最大 20 MHz BWP に制限
+\end{itemize}
+\end{frame}

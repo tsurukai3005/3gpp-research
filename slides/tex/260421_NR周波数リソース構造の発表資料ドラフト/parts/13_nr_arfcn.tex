@@ -1,0 +1,13 @@
+% Slide type: plain
+\begin{frame}{Section 5.4.2.1 ─ NR-ARFCN 計算式}
+\begin{equation*}
+F_{\mathrm{REF}} = F_{\mathrm{REF\text{-}Offs}} + \Delta F_{\mathrm{Global}} \times (N_{\mathrm{REF}} - N_{\mathrm{REF\text{-}Offs}})
+\end{equation*}
+
+\begin{itemize}
+  \item NR-ARFCN: キャリア中心周波数を一意に指定する整数値
+  \item 3 つの周波数範囲: $\Delta F_{\mathrm{Global}}$ = 5 kHz (0--3 GHz) / 15 kHz (3--24.25 GHz) / 60 kHz (24.25--100 GHz)
+  \item 高周波ほどステップが粗い（候補数を抑制、相対精度は十分）
+  \item 計算例: 3600 MHz $\to$ $N_{\mathrm{REF}} = 600{,}000 + (3{,}600{,}000 - 3{,}000{,}000)/15 = 640{,}000$
+\end{itemize}
+\end{frame}

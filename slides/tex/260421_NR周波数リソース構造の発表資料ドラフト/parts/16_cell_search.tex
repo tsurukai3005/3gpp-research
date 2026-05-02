@@ -1,0 +1,14 @@
+% Slide type: plain
+\begin{frame}{セルサーチ手順 ─ ラスターが手順の起点}
+\begin{enumerate}
+  \item GSCN 位置のみを走査 → SSB 候補周波数を絞る
+  \item PSS 検出 → 時間同期 + セクタ ID
+  \item SSS 検出 → 物理セル ID 確定 (1008 通り)
+  \item PBCH 復号 → MIB 取得（フレーム番号、kSSB、CORESET\#0 設定）
+  \item CORESET\#0 → SIB1 スケジューリング受信
+  \item SIB1 復号 → セルアクセス完了
+\end{enumerate}
+
+\vspace{0.4em}
+{\small 同期ラスターの粗さがセルサーチ所要時間（数百 ms 〜数秒）を決定する。}
+\end{frame}

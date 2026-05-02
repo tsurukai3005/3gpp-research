@@ -1,0 +1,13 @@
+% Slide type: plain
+\begin{frame}{Section 4.4.5 ─ BWP（Bandwidth Part）とは何か、なぜ必要か}
+\begin{itemize}
+  \item \textbf{BWP の定義}: キャリア帯域幅内の連続 RB のサブセットで、UE が実際に送受信する範囲。各 BWP は単一ニューメロロジー
+  \item LTE: Cell BW $=$ UE BW (1:1, 最大 20 MHz) → 全帯域モニタでも消費電力許容
+  \item NR: Cell BW 最大 100 MHz → 全帯域常時モニタは破綻
+    \begin{itemize}
+      \item 広帯域 ADC 常時動作で消費電力が帯域幅に比例
+      \item 低コスト UE (RedCap) に 100 MHz 受信能力なし
+    \end{itemize}
+  \item BWP $=$ Rel-15 で導入された UE 動作帯域幅の動的制御メカニズム
+\end{itemize}
+\end{frame}

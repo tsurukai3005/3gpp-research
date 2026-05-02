@@ -1,0 +1,11 @@
+% Slide type: plain
+\begin{frame}{Point A の決定経路 ─ ラスターからリソースグリッドへ}
+\begin{itemize}
+  \item Point A: 全周波数参照の起点。CRB 0 のサブキャリア 0 の中心周波数
+  \item 決定方法: キャリア中心周波数 (NR-ARFCN) から \texttt{offsetToPointA} で導出
+  \item \texttt{offsetToPointA}: 15 kHz SCS 単位の RB オフセット (RRC パラメータ)
+  \item CRB 番号は Point A から上方に連続付番。ニューメロロジー $\mu$ ごとに独立した CRB 系列
+  \item 5.4.2.2: キャリア中心は必ずしもサブキャリア中心に一致しない（半 SC オフセット許容）
+  \item 参照チェーン: Point A $\to$ CRB $\to$ BWP $\to$ PRB の起点
+\end{itemize}
+\end{frame}

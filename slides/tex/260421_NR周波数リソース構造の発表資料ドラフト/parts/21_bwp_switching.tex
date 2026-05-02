@@ -1,0 +1,17 @@
+% Slide type: table
+\begin{frame}{BWP スイッチング方式}
+\centering
+\begin{tabular}{llll}
+\toprule
+方式 & 遅延 & トリガー & 用途 \\
+\midrule
+DCI ベース  & $\sim$2 ms        & DCI Format 0\_1/1\_1     & 高速切替 \\
+タイマー    & タイマー依存      & bwp-InactivityTimer 満了 & 省電力フォールバック \\
+RRC ベース  & $\sim$10 ms       & RRC Reconfiguration      & 長期的帯域変更 \\
+MAC 起動    & 可変              & Random Access 手順       & 初期アクセス復帰 \\
+\bottomrule
+\end{tabular}
+
+\vspace{0.6em}
+{\small スイッチング中は送受信停止（ブラインド期間）。UE は遅延を Type 1/2 でケイパビリティ報告。}
+\end{frame}

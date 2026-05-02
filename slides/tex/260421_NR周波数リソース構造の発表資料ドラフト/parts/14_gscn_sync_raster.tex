@@ -1,0 +1,11 @@
+% Slide type: plain
+\begin{frame}{Section 5.4.3 ─ 同期ラスター（GSCN）と設計トレードオフ}
+\begin{itemize}
+  \item 同期ラスター: SSB を配置できる離散周波数位置（GSCN 番号で指定）
+  \item UE 電源投入時、全周波数を総当たりせず GSCN 上の位置だけを走査
+  \item 0--3 GHz: $\mathrm{SS}_{\mathrm{ref}} = N \times 1200 + M \times 50$ kHz, $M \in \{1, 3, 5\}$
+  \item 3--24.25 GHz: 1.44 MHz ステップ
+  \item 24.25--100 GHz: 17.28 MHz ステップ
+  \item トレードオフ: ラスター粗い → セルサーチ高速 / SSB 配置自由度低下
+\end{itemize}
+\end{frame}

@@ -1,0 +1,15 @@
+% Slide type: plain
+\begin{frame}{「キャリア活性化 $+$ BWP 活性化」の 2 段階制御}
+\textbf{レベル 1: キャリア活性化（MAC CE で制御）}
+\begin{itemize}
+  \item PCell: 常時アクティブ（デアクティベート不可）
+  \item SCell: RRC 設定後、MAC CE で活性化して初めて送受信対象
+  \item 速度はサブフレームレベル → 不要 SCell モニタ停止で UE 消費電力を抑制
+\end{itemize}
+
+\textbf{レベル 2: BWP 活性化（アクティブ CC 内のみ）}
+\begin{itemize}
+  \item 各アクティブ CC は DL/UL 各 1 つの Active BWP を持つ
+  \item BWP はアクティブなキャリア内でのみ活性化可能
+\end{itemize}
+\end{frame}

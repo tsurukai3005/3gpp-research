@@ -1,0 +1,14 @@
+% Slide type: plain
+\begin{frame}{Section 5.4 ─ 3 層ラスターの設計思想}
+\begin{itemize}
+  \item \textbf{グローバル周波数ラスター} (5/15/60 kHz): 全周波数参照の基盤、NR-ARFCN 計算の基礎
+  \item \textbf{チャネルラスター} (バンド別 $\Delta F_{\mathrm{Raster}}$): キャリア中心の配置位置
+    \begin{itemize}
+      \item sub-3 GHz バンド (n1, n3, n5, n8, n20 等): 100 kHz
+      \item C バンド (n77, n78, n79): 15 kHz（高精度配置可）
+      \item 一部バンドではサブセットラスター（特定位置のみ有効）
+    \end{itemize}
+  \item \textbf{同期ラスター} (GSCN, $\sim$1.2 MHz): SSB 配置位置（意図的に粗い）
+  \item SSB 中心 $\neq$ キャリア中心（オフセットは MIB 内 kSSB で通知）
+\end{itemize}
+\end{frame}

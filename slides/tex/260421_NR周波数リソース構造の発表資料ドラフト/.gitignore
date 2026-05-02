@@ -1,0 +1,19 @@
+# LaTeX 中間ファイル（latexmkrc で .latex-cache/ に隔離する設定だが、
+# 念のためビルドディレクトリ直下に出てしまった場合も無視する）
+.latex-cache/
+*.aux
+*.bbl
+*.blg
+*.fls
+*.fdb_latexmk
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+*.vrb
+*.synctex.gz
+
+# 最終 PDF はリポジトリで追跡しない（ローカルビルドでレビューする方針）
+main.pdf
+*.pdf

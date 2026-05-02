@@ -1,0 +1,17 @@
+% Slide type: table
+\begin{frame}{Section 5.3.2 ─ 最大伝送帯域幅構成（$N_{\mathrm{RB}}$ で定義）}
+\centering
+\begin{tabular}{lrrrrr}
+\toprule
+SCS & 5 MHz & 10 MHz & 20 MHz & 50 MHz & 100 MHz \\
+\midrule
+15 kHz & 25 & 52 & 106 & 270 & ─ \\
+30 kHz & 11 & 24 & 51  & 133 & \textbf{273} \\
+60 kHz & ─  & 11 & 24  & 65  & 135 \\
+\bottomrule
+\end{tabular}
+
+\vspace{0.6em}
+{\small 実占有帯域 $= N_{\mathrm{RB}} \times 12 \times \mathrm{SCS}$ [kHz]。
+例: 30 kHz $\times$ 100 MHz では 273 RB → 98.28 MHz、残り $\approx$ 1.72 MHz がガードバンド。}
+\end{frame}

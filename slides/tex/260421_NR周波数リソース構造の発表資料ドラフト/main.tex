@@ -1,0 +1,65 @@
+% !TEX program = lualatex
+% !TEX root    = main.tex
+
+\documentclass[aspectratio=43,9pt]{beamer}
+
+% --- テーマ ---
+\usetheme{metropolis}
+
+% --- 言語 / フォント ---
+\usepackage{luatexja}
+\usepackage[tsukuxuB-mgothic]{luatexja-preset}
+\usepackage{fontspec}
+\setsansfont{TeX Gyre Heros}
+\setmonofont{TeX Gyre Cursor}
+
+% --- 表組み・図 ---
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+
+% --- 数式 ---
+\usepackage{amsmath, amssymb}
+
+% --- ハイパーリンク ---
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, urlcolor=blue!60!black, linkcolor=., citecolor=.}
+
+% --- メタデータ ---
+\title{NR 周波数リソースの構造}
+\subtitle{TS 38.101-1 Section 5 と TS 38.211 Section 4}
+\author{}
+\institute{}
+\date{2026-04-23}
+
+\begin{document}
+
+\input{parts/01_title}
+\input{parts/02_overview}
+\input{parts/03_scs}
+\input{parts/04_op_bands}
+\input{parts/05_sul_motivation}
+\input{parts/06_band_combination}
+\input{parts/07_n_rb_table}
+\input{parts/08_guardband}
+\input{parts/09_rb_alignment}
+\input{parts/10_band_bw_per_band}
+\input{parts/11_three_raster}
+\input{parts/12_channel_spacing}
+\input{parts/13_nr_arfcn}
+\input{parts/14_gscn_sync_raster}
+\input{parts/15_point_a}
+\input{parts/16_cell_search}
+\input{parts/17_tx_rx_sep}
+\input{parts/18_bwp_intro}
+\input{parts/19_bwp_params}
+\input{parts/20_bwp_types}
+\input{parts/21_bwp_switching}
+\input{parts/22_bwp_tradeoff}
+\input{parts/23_ca_intro}
+\input{parts/24_ca_slot_offset}
+\input{parts/25_two_level_activation}
+\input{parts/26_dependency_structure}
+
+\end{document}

@@ -1,0 +1,22 @@
+# latexmk 設定 — /render-tex-slides の自動ビルドで使う。
+#
+# 方針:
+#   - LuaLaTeX を固定（日本語フォント・OpenType を扱うため）
+#   - -shell-escape は minted 等を使う場合のみ必要。既定は無効。
+#   - 中間ファイルは .latex-cache/ に隔離し、最終 PDF だけがビルドディレクトリ直下に残るようにする。
+
+$pdf_mode      = 4;            # 4 = lualatex
+$lualatex      = 'lualatex -interaction=nonstopmode -halt-on-error -file-line-error %O %S';
+$out_dir       = '.latex-cache';
+$pdf_previewer = 'open';
+$clean_ext     = 'aux bbl blg fls fdb_latexmk log nav out snm toc vrb synctex.gz';
+
+# ビルド成功後に PDF を出力ディレクトリ直下へコピーする。
+# 失敗時はコピーしない（古い PDF が残ったまま誤って共有されるのを防ぐ）。
+END {
+    my $src = "$out_dir/main.pdf";
+    if (-e $src) {
+        use File::Copy;
+        copy($src, "main.pdf") or warn "could not copy main.pdf: $!";
+    }
+}
