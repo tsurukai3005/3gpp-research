@@ -26,6 +26,7 @@ The following always apply during skill execution. Individual skills should not 
 4. **Do not write conversation history, diffs, or revision notes in the note body** — meta-comments such as "ユーザが○○と述べたので", "前回は X と書いたが今回 Y に修正", "ご指摘を反映して", "当初の記述では…だったが" are forbidden. The reader sees only the note body, so editing history belongs in git commit logs; the body must show **only the final result**. The frontmatter `updated` field is for the update date only — do not describe what changed.
 5. **Do not handle non-public or NDA-restricted information** — public sources only
 6. **Do not draft patent claims or give legal advice** — IP analysis is limited to research and discussion
+7. **Do not generate citation information from memory** — document numbers, authors, titles, year, DOI, arXiv ID, and Tdoc numbers must only be written after their existence has been verified against a primary source at the moment of writing. When verification is impossible, leave a `[要出典: <hint>]` marker instead of asserting (see [`framework/references-policy.md`](./references-policy.md) §0). This applies to all skills; an unverified document number is a Principle 1 violation regardless of how plausible it sounds.
 
 ## Unified structure of a skill file
 
