@@ -182,6 +182,12 @@
   },
   "active": "1eb78f8ddef00e98",
   "lastOpenFiles": [
+    "framework/anti-ai-writing.md",
+    "tools/kb_lint_report.md",
+    "tools/kb_lint.py",
+    "framework/templates/README.md.tmp.34048.1777714047839",
+    "framework/templates/claim-evidence-block.md",
+    "framework/skill-contract.md.tmp.34048.1777713992555",
     "documents/260420_プロジェクト設計書v2.md",
     "slides/tex/260421_NR周波数リソース構造の発表資料ドラフト/main.pdf",
     "references/Chair-Notes-RAN1-124-Waveform.md",
@@ -197,9 +203,6 @@
     "slides/tex/260421_NR周波数リソース構造の発表資料ドラフト/parts/25_two_level_activation.tex",
     "slides/tex/260421_NR周波数リソース構造の発表資料ドラフト/parts/24_ca_slot_offset.tex",
     "slides/tex/260421_NR周波数リソース構造の発表資料ドラフト/parts/23_ca_intro.tex",
-    "slides/tex/260421_NR周波数リソース構造の発表資料ドラフト/parts/22_bwp_tradeoff.tex",
-    "slides/tex/260421_NR周波数リソース構造の発表資料ドラフト/parts/21_bwp_switching.tex",
-    "slides/tex/260421_NR周波数リソース構造の発表資料ドラフト/parts/20_bwp_types.tex",
     "framework/templates/slide-tex/CHANGELOG.md",
     "framework/templates/slide-tex/README.md",
     "framework/templates/slide-tex/assets/metropolistheme/README.md",
@@ -214,8 +217,6 @@
     "references/NTT-DOCOMO-2024-05-20-5G-SEP-3rd-place.md",
     "documents/260424_Rel-15-企業別戦略背景と対立候補波形.md",
     "documents/260421_NRフレーム構造の発表資料ドラフト.md",
-    "documents/260420_標準化特許申請のための調査戦略.md",
-    "documents/260420_NRフレーム構造とリソースブロックの進化まとめ.md",
-    "documents/260422_Rel-15-NR-勉強会トピック調査ガイド.md"
+    "documents/260420_標準化特許申請のための調査戦略.md"
   ]
 }
