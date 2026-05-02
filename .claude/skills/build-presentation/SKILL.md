@@ -249,9 +249,12 @@ Expand each node in the format below. Present in batches of **3-5 slides** and o
 - **Include the rationale for naming and formula choices in the explanation** (e.g. why "minimum", why "common")
 - Always cite the corresponding spec section number
 
+**Anti-AI writing screening (mandatory before user confirmation)**:
+Before presenting each batch of 3-5 slides, scan every headline and script line against [`framework/anti-ai-writing.md`](../../../framework/anti-ai-writing.md) §1 patterns (metaphor escapes, vague attribution, adjective inflation, theatrical preambles, unsupported clichés). For every detection, decide explicitly: keep with reason, delete, or replace. Report the count and decisions in 1-3 lines per batch (e.g. `anti-ai 検査: 5件検出 → 3件削除 / 1件数値置換 / 1件保持(理由: ...)`). Do not skip this step.
+
 **Self-question**: does each slide actually prove its headline? Does the whole talk improve the audience's understanding / judgement / action? (3-5 line report. If a problem is found, consult the user without hesitation.)
 
-**Phase 4 completion (G4)**: every slide's content (headline, visual content, script, supplement) has been confirmed by the user batch-by-batch (3-5 at a time)
+**Phase 4 completion (G4)**: every slide's content (headline, visual content, script, supplement) has been confirmed by the user batch-by-batch (3-5 at a time), and the anti-ai screening has been applied per batch
 
 ---
 
@@ -355,6 +358,10 @@ lang: ja | en
 ### Expression rules (apply across all phases)
 
 These apply to every text this skill produces — slide content, script, tree, SCQA, etc.
+
+The tables below are the **canonical reference** for forbidden expressions in this skill.
+[`framework/anti-ai-writing.md`](../../../framework/anti-ai-writing.md) provides a Japanese-localized
+pattern dictionary plus grep-based self-check commands; consult it during the Phase 4 anti-ai screening.
 
 #### Forbidden expressions
 
