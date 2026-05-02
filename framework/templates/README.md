@@ -9,6 +9,7 @@
 |:---|:---|:---|:---|
 | トピック新規調査 | [[survey-topic]] | `/survey-topic` | 7項目の調査構造と frontmatter スキーマ |
 | 論文読解 | [[paper-digest]] | `/digest-paper` | 主張・前提・3GPP 実装制約ギャップテーブル |
+| Claim-Evidence ブロック | [[claim-evidence-block]] | `/digest-paper`（および主張抽出を行う他スキル） | Claim / Evidence / Method / Limitation / Project relevance の5フィールド |
 | ギャップ分析 | [[gap-analysis]] | `/analyze-gap` | Gap A/B/C の3バケット分類 |
 | 世代比較 | [[generation-comparison]] | `/success-pattern` | 5列マトリクス（3G〜6G）と普及要因の問い |
 | トピック間接続 | [[connect-dots]] | `/connect-dots` | 共通軸・相乗効果・矛盾の分析手順 |

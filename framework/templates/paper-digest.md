@@ -3,6 +3,7 @@ up: "[[README|templates]]"
 related:
   - "[[survey-topic]]"
   - "[[gap-analysis]]"
+  - "[[claim-evidence-block]]"
   - "[[../references-policy]]"
   - "[[../tools]]"
 ---
@@ -11,15 +12,29 @@ related:
 
 スキル `/digest-paper` から参照される。
 
-> 親: [[README|templates（テンプレ MoC）]] | 関連: [[survey-topic]] / [[gap-analysis]] / [[../references-policy|references-policy]] / [[../tools|pandoc/pdftotext 運用]]
+> 親: [[README|templates（テンプレ MoC）]] | 関連: [[survey-topic]] / [[gap-analysis]] / [[claim-evidence-block]] / [[../references-policy|references-policy]] / [[../tools|pandoc/pdftotext 運用]]
 
 ## 抽出項目
 
 ### メタ情報
 - 著者 / 年 / 会議 or ジャーナル / DOI or arXiv ID
 
-### 主張（Contribution）
-- 3-5点で要約
+### 主張（Contribution / Key Claims）
+
+3-5点で抽出する。各 Claim は **5フィールド形式**（`Claim` / `Evidence` / `Method` / `Limitation` / `Project relevance`）で記述する。
+詳細スキーマは [[claim-evidence-block]] を参照。
+
+- **Evidence が論文中に見つからない Claim は採用しない**（`[要確認: Evidence なし]` として保留）
+- `Claim` / `Evidence` / `Method` / `Limitation` は **著者の言葉**、`Project relevance` は **自分の解釈**。両者を混ぜない
+
+```markdown
+### Claim 1: <一行で主張>
+- **Claim**: ...
+- **Evidence**: ...
+- **Method**: ...
+- **Limitation**: ...
+- **Project relevance**: ...
+```
 
 ### 前提仮定
 以下を明示的に抽出する:

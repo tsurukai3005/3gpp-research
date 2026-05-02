@@ -36,7 +36,11 @@ This skill connects paper reading directly to discovering patent opportunities.
    - frontmatter follows the schema in `framework/references-policy.md` §3
 4. Extract metadata:
    - authors / year / venue (conference or journal) / DOI or arXiv ID
-5. Summarize the contribution in 3-5 bullets
+5. **Extract 3-5 Key Claims using the 5-field block** (template: `framework/templates/claim-evidence-block.md`).
+   For each claim, fill `Claim` / `Evidence` / `Method` / `Limitation` / `Project relevance`.
+   - `Claim` / `Evidence` / `Method` / `Limitation` are the author's words (paraphrased)
+   - `Project relevance` is your interpretation in the 3GPP / 6G context — never blend it with the author's words
+   - **A claim with no `Evidence` in the paper is not adopted**: leave it as `[要確認: Evidence なし]` and either re-read for the missing evidence or drop the claim
 6. **List assumptions explicitly** (preparation for the most important step):
    - channel model / SNR range / antenna configuration / CSI assumption / computational complexity / simulation environment
    - For implicit assumptions the paper does not state, mark them as `[暗黙の仮定]`
