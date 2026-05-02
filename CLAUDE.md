@@ -28,12 +28,29 @@
 
 ```
 3gpp-research/
-├── framework/      ← 調査ルール・分析軸の定義
-├── documents/      ← 自分の調査ノート（フラット、yymmdd_ プレフィックス）
-├── references/     ← 一次情報（論文・Tdoc・仕様書）の MD 化（フラット、原文の番号/タイトル名）
+├── framework/             ← 調査ルール・分析軸の定義
+│   ├── templates/
+│   │   └── slide-tex/     ← TeX/Beamer スライドのテンプレ・プリセット
+│   └── slide-styles-pptx.md   ← PPTX のスタイル規約
+├── documents/             ← 自分の調査ノート（フラット、yymmdd_ プレフィックス）
+├── references/            ← 一次情報（論文・Tdoc・仕様書）の MD 化（フラット、原文の番号/タイトル名）
+├── tools/
+│   └── pptx/              ← PPTX 構築・改変ライブラリと CLI（python-pptx）
+├── slides/
+│   ├── pptx/              ← PPTX 生成物（git 追跡対象）
+│   └── tex/<yymmdd>_<slug>/   ← TeX/Beamer ビルド成果物（PDF は git 追跡外）
 ├── CLAUDE.md
 └── README.md
 ```
+
+### スライド作成基盤の系統分離
+
+PPTX 系と TeX 系はテンプレ・出力先・スキル名・プリセット名前空間がすべて分離されている。混在させない。
+
+| 系統 | テンプレ | 出力 | スキル / ツール | プリセット名前空間 |
+|:---|:---|:---|:---|:---|
+| PPTX | `tools/pptx/styles*` | `slides/pptx/<title>.pptx` | `tools/pptx/build_slides.py`（`/build-presentation` から呼ぶ） | `default` |
+| TeX | `framework/templates/slide-tex/` | `slides/tex/<yymmdd>_<slug>/main.pdf` | `/render-tex-slides` | `tex.*` |
 
 ### documents/ の命名規則
 
@@ -64,6 +81,7 @@
 | `/demand-reverse` | ペルソナの課題から技術候補を逆引き |
 | `/trace-evolution` | 自然言語のトピック語から RAN1 議論変遷を縦に追い、会合横断のタイムラインを生成 |
 | `/build-presentation` | 研究ノートから発表資料を4フェーズで段階構築 |
+| `/render-tex-slides` | 研究ノート（`## Slide N` 構造）を Beamer/Metropolis でレンダリングし `latexmk` で PDF までビルド |
 
 ## コマンド一覧
 

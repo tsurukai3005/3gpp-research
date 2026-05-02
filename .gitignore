@@ -1,3 +1,23 @@
 .tmp
 .claude/settings.local.json
 .tmp_research
+
+# Python
+__pycache__/
+*.pyc
+
+# TeX/Beamer ビルド成果物（slides/tex/<...>/ 配下）
+slides/tex/**/.latex-cache/
+slides/tex/**/*.aux
+slides/tex/**/*.bbl
+slides/tex/**/*.blg
+slides/tex/**/*.fls
+slides/tex/**/*.fdb_latexmk
+slides/tex/**/*.log
+slides/tex/**/*.nav
+slides/tex/**/*.out
+slides/tex/**/*.snm
+slides/tex/**/*.toc
+slides/tex/**/*.vrb
+slides/tex/**/*.synctex.gz
+slides/tex/**/*.pdf

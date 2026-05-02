@@ -24,11 +24,19 @@
 ```
 3gpp-research/
 ├── framework/    調査フレームワーク（分析軸・レンズ・ペルソナ・テンプレート、リンク/参考文献ポリシー）
+│   └── templates/slide-tex/   TeX/Beamer スライドのテンプレ・プリセット
 ├── documents/    自分の調査ノート（フラット、ファイル名 yymmdd_<slug>.md）
 ├── references/   一次情報の Markdown 化（論文・Tdoc・仕様書、原文の番号/タイトルそのまま）
+├── tools/
+│   └── pptx/     PPTX 構築・改変ライブラリと CLI（python-pptx）
+├── slides/
+│   ├── pptx/     PPTX 生成物
+│   └── tex/      TeX/Beamer ビルドディレクトリ群（PDF は git 追跡外）
 ├── CLAUDE.md
 └── README.md
 ```
+
+スライド作成基盤は **PPTX 系**（`tools/pptx/` → `slides/pptx/`）と **TeX 系**（`framework/templates/slide-tex/` → `slides/tex/`、スキル `/render-tex-slides`）が完全に分離されている。
 
 ノート間は Obsidian wikilink (`[[ファイル名]]`) でつなぎ、frontmatter `up` / `related` で階層を表現する。
 孤立ノートは禁止。詳細は `framework/linking-policy.md` と `framework/references-policy.md` を参照。
