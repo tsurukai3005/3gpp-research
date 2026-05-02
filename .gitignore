@@ -6,6 +6,9 @@
 __pycache__/
 *.pyc
 
+# kb_lint の生成レポート（実行時に再生成）
+tools/kb_lint_report.md
+
 # TeX/Beamer ビルド成果物（slides/tex/<...>/ 配下）
 slides/tex/**/.latex-cache/
 slides/tex/**/*.aux

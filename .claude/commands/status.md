@@ -4,10 +4,11 @@ List status / confidence for every note, and surface staleness, unreviewed entri
 
 ## Steps
 
+0. **Run KB Lint first**: execute `python tools/kb_lint.py --root . --report tools/kb_lint_report.md` and parse the JSON output. Use the lint result as the authoritative source for the four mechanical checks (orphan notes / broken wikilinks / documents without primary source / missing required frontmatter). Do not duplicate this check by hand.
 1. Flat-scan every `.md` file (excluding README.md) under `documents/` and `references/`
 2. Extract `status`, `confidence`, `updated`, `up`, `related` from each frontmatter
-3. Read each body to count `[[...]]` wikilinks; detect broken links (wikilinks pointing to non-existent files) and orphan notes (zero inbound and outbound links)
-4. Output the listing in the format below
+3. Read each body to count `[[...]]` wikilinks; cross-reference with the lint result for broken links and orphan notes
+4. Output the listing in the format below, with the "要注意" section populated from the lint result
 
 ## Output format
 
@@ -34,8 +35,10 @@ List status / confidence for every note, and surface staleness, unreviewed entri
 - draft: N / reviewed: N / stable: N / obsolete: N
 - confidence low: N / medium: N / high: N
 - 3ヶ月以上未更新: N
-- 孤立ノート: N
-- リンク切れ: N
+- 孤立ノート: N（kb_lint）
+- リンク切れ: N（kb_lint）
+- 一次情報未紐付け documents: N（kb_lint）
+- frontmatter 必須フィールド欠損: N（kb_lint）
 ```
 
 ## "Needs attention" criteria
