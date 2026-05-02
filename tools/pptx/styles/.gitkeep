@@ -1,0 +1,3 @@
+reference_doc (.pptx) はここに配置する。
+PowerPoint で「表示 → スライドマスター」を編集して保存する運用。
+未配置でも build_slides.py は pandoc 既定スタイルで動作する。

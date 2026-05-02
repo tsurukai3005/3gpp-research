@@ -1,0 +1,42 @@
+name: default
+description: |
+  16:9 (13.333 x 7.5 inch)。本文ページは白背景・濃灰文字、上部に Main 色 (#CC0033) の見出しバー。
+  フォントはメイリオで統一。callout は薄い灰色 (Accent) のみで色分けしない。
+  表紙・目次は全面赤背景・白文字・中央配置（フッタなし）。
+slide_size:
+  width_inch: 13.333
+  height_inch: 7.5
+fonts:
+  primary: "Meiryo"
+  primary_jp: "Meiryo"
+  mono: "Consolas"
+  size_title_pt: 22
+  size_body_pt: 18
+  size_callout_pt: 18
+  size_footer_pt: 10
+  size_reference_pt: 10
+  size_cover_title_pt: 40
+  size_cover_subtitle_pt: 20
+  size_cover_meta_pt: 14
+  size_toc_title_pt: 32
+  size_toc_entry_pt: 20
+  line_spacing_body: 1.25
+  line_spacing_callout: 1.15
+colors:
+  main: "#CC0033"
+  assort: "#5B6B7E"
+  accent: "#E8ECF1"
+  text: "#1F1F1F"
+  bg: "#FFFFFF"
+layout:
+  header_height_inch: 0.7
+  footer_height_inch: 0.35
+  margin_x_inch: 0.5
+  body_top_gap_inch: 0.2
+  body_bottom_gap_inch: 0.1
+  reference_width_inch: 3.0
+  callout_height_inch: 0.55
+  callout_gap_inch: 0.14
+  bullet_to_callout_gap_inch: 0.18
+  table_row_height_inch: 0.45
+  table_cell_pad_inch: 0.06
